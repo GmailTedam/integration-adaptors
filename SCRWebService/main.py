@@ -39,6 +39,23 @@ def main():
     tornado.ioloop.IOLoop.current().start()
 
 
+
+
+from pathlib import Path as _CohortPath  # noqa: E402, I001
+try:
+    from .clinical_cohort_3tier_router import build_clinical_cohort_3tier_router as _build_cohort_3tier_router  # noqa: E402, I001
+except ImportError:
+    from clinical_cohort_3tier_router import build_clinical_cohort_3tier_router as _build_cohort_3tier_router  # noqa: E402, I001
+
+app.include_router(
+    _build_cohort_3tier_router(
+        service_name="integration-adaptors",
+        sibling_slug="integration_adaptors",
+        repo_root=_CohortPath(__file__).resolve().parents[1],
+    )
+)
+
+
 if __name__ == "__main__":
     try:
         main()
