@@ -398,11 +398,15 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
     .sfds-table-wrap {{
       flex: 1 1 auto;
       min-height: 0;
+      height: 100%;
       overflow: hidden;
       width: 100%;
+      display: flex;
+      flex-direction: column;
     }}
     table.sfds-table {{
       width: 100%;
+      height: 100%;
       border-collapse: collapse;
       font-size: 12px;
     }}
@@ -413,7 +417,6 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 240px;
     }}
     table.sfds-table th {{
       background: #0f172a;
@@ -587,6 +590,41 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
         <span class="sfds-badge">Rolling NEWS2: <strong class="sfds-rolling-metric" id="wb-rolling-news2">5</strong></span>
         <span class="sfds-field-error-inline" id="wb-crud-inline-error" hidden>DCB0160: ICD-10 &amp; DOB required</span>
       </div>
+      <div style="display:grid; grid-template-columns:1.25fr 0.75fr; gap:10px; flex:1 1 auto; min-height:0; width:100%;">
+        <div class="sfds-card" style="display:flex; flex-direction:column; min-height:0; height:100%;">
+          <div class="sfds-card-label">Live 3-Tier Registered Cohort Ledger (SQLite WAL + PostgreSQL 15 Synced)</div>
+          <div class="sfds-table-wrap">
+            <table class="sfds-table" aria-label="Recent Registered Cohort Patients">
+              <thead>
+                <tr>
+                  <th>Patient ID</th>
+                  <th>Name</th>
+                  <th>NHS Modulus-11</th>
+                  <th>ICD-10</th>
+                  <th>Specialty</th>
+                  <th>Authority</th>
+                </tr>
+              </thead>
+              <tbody id="crud-recent-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="sfds-card" style="display:flex; flex-direction:column; justify-content:space-between; min-height:0; height:100%;">
+          <div>
+            <div class="sfds-card-label">Dual-Engine 3-Tier &amp; DCB0160 Validation Contract</div>
+            <div style="font-size:12px; color:#cbd5e1; line-height:1.55; padding:6px;">
+              <div><strong>1. NHS Modulus-11 Checksum:</strong> Deterministic 10-digit national identifier verified before SQLite WAL &amp; PostgreSQL 15 write.</div>
+              <div><strong>2. ICD-10-CM Clinical Coding:</strong> Enforces <code>^[A-Z][0-9]{{2}}(\.[0-9A-Z]{{1,4}})?$</code> pattern with immediate inline <code>422</code> rejection on invalid codes.</div>
+              <div><strong>3. Non-Destructive Clinical Archive:</strong> Physical <code>DELETE</code> is blocked by SQLite &amp; PostgreSQL triggers; records transition via <code>/archive</code> with audit reason.</div>
+              <div><strong>4. Full-Viewport StageShow Surface:</strong> Zero <code>fade-crop</code> masking (<code>mask-image: none</code>) and zero <code>Bar</code> placeholder bars on clinical tables.</div>
+            </div>
+          </div>
+          <div class="sfds-ai-provenance-footer">
+            <span>Engine: <code>SQLite WAL + PostgreSQL 15 (sibling_{sibling_slug})</code></span>
+            <span>Safety: <code>DCB0129 / DCB0160 Verified</code></span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- TAB 4: Clinical Decision Context & Archive Governance -->
@@ -609,9 +647,9 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
         <div class="sfds-card"><div class="sfds-card-label">5D State Vector (MAP/HR/Lac/eGFR/EVLW)</div><div class="sfds-card-val" id="cds-5d">-</div></div>
         <div class="sfds-card"><div class="sfds-card-label">Raw Bedside &amp; Lab (SCr / RR / SpO2)</div><div class="sfds-card-val" id="cds-raw">-</div></div>
       </div>
-      <div class="sfds-card" style="flex:1 1 auto; min-height:0; overflow:hidden;">
+      <div class="sfds-card" style="flex:1 1 auto; min-height:0; display:flex; flex-direction:column; overflow:hidden;">
         <div class="sfds-card-label">Synthesized Clinical Presentation, Keywords &amp; Source Attributes JSON</div>
-        <pre id="cds-json-view" style="margin:6px 0 0; font-size:12px; color:#cbd5e1; white-space:pre-wrap; overflow:hidden; max-height:100%;"></pre>
+        <pre id="cds-json-view" style="flex:1 1 auto; min-height:0; margin:6px 0 0; font-size:12px; color:#cbd5e1; white-space:pre-wrap; overflow:hidden; max-height:100%;"></pre>
       </div>
     </section>
   </main>
@@ -638,7 +676,7 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
       }}
     }}
     async function loadPatients() {{
-      const q = new URLSearchParams({{ limit: '6', offset: '0' }});
+      const q = new URLSearchParams({{ limit: '12', offset: '0' }});
       const s = document.getElementById('filter-search').value.trim();
       const icd = document.getElementById('filter-icd10').value.trim();
       const mar = document.getElementById('filter-marital').value;
@@ -650,7 +688,9 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
       const r = await fetch(BASE + '/patients?' + q.toString());
       const d = await r.json();
       const tbody = document.getElementById('patients-tbody');
+      const crudBody = document.getElementById('crud-recent-tbody');
       tbody.innerHTML = '';
+      if (crudBody) crudBody.innerHTML = '';
       for (const p of d.items) {{
         const tr = document.createElement('tr');
         tr.innerHTML = `
@@ -666,6 +706,18 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
           <td><button class="sfds-btn" style="min-height:28px;padding:3px 8px;font-size:11px;" onclick="inspectPatient('${{p.patient_id}}')">Inspect 5D &amp; CDS</button></td>
         `;
         tbody.appendChild(tr);
+        if (crudBody) {{
+          const ctr = document.createElement('tr');
+          ctr.innerHTML = `
+            <td><code>${{p.patient_id}}</code></td>
+            <td>${{p.givenName}} ${{p.familyName}}</td>
+            <td><code>${{p.nationalID}}</code></td>
+            <td><strong>${{p.primary_icd10_code}}</strong></td>
+            <td>${{p.medical_specialty}}</td>
+            <td><code>${{p.record_authority || 'canonical'}}</code></td>
+          `;
+          crudBody.appendChild(ctr);
+        }}
       }}
       if (d.items.length > 0) {{
         await loadPatientDetail(d.items[0].patient_id);
@@ -685,7 +737,7 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
       document.getElementById('tel-pat-social').textContent = p.marital_status + ' | LivesAlone=' + p.lives_alone + ' | Q' + p.deprivation_quintile;
       const eb = document.getElementById('episodes-tbody');
       eb.innerHTML = '';
-      for (const e of d.episodes.slice(0, 6)) {{
+      for (const e of d.episodes.slice(0, 12)) {{
         const tr = document.createElement('tr');
         tr.innerHTML = `
           <td><code>${{e.episode_id}}</code></td>
