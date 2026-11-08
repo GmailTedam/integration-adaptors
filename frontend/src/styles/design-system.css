@@ -541,6 +541,12 @@ html:root body:not(#_#_#_#_#_#_#_#_#_) :is(
 
 
 
+
+
+
+
+
+
 /* Active contrast & header lock */
 html:root body:not(#_#_#_)
   :is(.pp-sidebar, .bt-sidebar, .ecs-sidebar, .gp-sidebar, .sfds-sidebar, .sfds-rail, .app-sidebar, .sidebar, aside, nav)
@@ -2699,7 +2705,22 @@ html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(
   [data-testid="session-role"],
   span[aria-label*="items in queue"],
   #queue-panel header span,
-  [data-testid^="priority-"]
+  [data-testid^="priority-"],
+  [data-testid^="tat-overdue-"],
+  [data-testid^="add-chip-"],
+  [data-testid^="critical-chip-"],
+  [data-testid^="acr-breached-"],
+  [data-testid^="readback-pending-"],
+  .sfds-status,
+  [class*="sfds-status"],
+  .sfds-command-trigger,
+  .sfds-keycap,
+  .sfds-stageshow-cursor,
+  [id="stageshow-cursor-indicator"],
+  .bt-theme-mode-btn,
+  .bt-theme-mode-label,
+  .sfds-workspace-tabs__covisible-pill,
+  .sfds-covisible-safety-strip__tag
 ),
 html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(
   .sfds-safety-pill,
@@ -2748,7 +2769,22 @@ html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(
   [data-testid="session-role"],
   span[aria-label*="items in queue"],
   #queue-panel header span,
-  [data-testid^="priority-"]
+  [data-testid^="priority-"],
+  [data-testid^="tat-overdue-"],
+  [data-testid^="add-chip-"],
+  [data-testid^="critical-chip-"],
+  [data-testid^="acr-breached-"],
+  [data-testid^="readback-pending-"],
+  .sfds-status,
+  [class*="sfds-status"],
+  .sfds-command-trigger,
+  .sfds-keycap,
+  .sfds-stageshow-cursor,
+  [id="stageshow-cursor-indicator"],
+  .bt-theme-mode-btn,
+  .bt-theme-mode-label,
+  .sfds-workspace-tabs__covisible-pill,
+  .sfds-covisible-safety-strip__tag
 ) * {
   background: midnightblue !important;
   background-color: midnightblue !important;
@@ -2960,14 +2996,28 @@ html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .table-wrap tbody tr:nth-ch
 }
 
 /* 11l. BulletTrain, Citizen-Portal, Enterprise-EPR, GP-System, PICIS, Appointment-System, EPS, ETPS & Hear-The-Risk Viewport & Contrast Locks */
+html:root,
 html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) {
   --sg-border: midnightblue !important;
   --sg-border-strong: midnightblue !important;
+  --sg-warning: midnightblue !important;
+  --sg-success: darkgreen !important;
 }
 
 html:root:is([data-theme="dark"], [data-sfds-mode="dark"], .dark, [data-theme="high-contrast"], [data-theme="hc"]) body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) {
   --sg-border: lightsteelblue !important;
   --sg-border-strong: lightsteelblue !important;
+  --sg-warning: lightsteelblue !important;
+  --sg-success: lightsteelblue !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [aria-label="Suggested actions"] button,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [aria-label="Suggested actions"] button :is(span, svg) {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  background-image: none !important;
+  color: white !important;
+  border-color: darkslategray !important;
 }
 
 html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(aside.bt-sidebar, .bt-sidebar) :is(span, div, p, small, strong, h1, h2, h3, h4, a, button, svg):not(input):not(select):not(textarea):not(.badge):not([class*="badge"]) {
@@ -2982,8 +3032,12 @@ html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([
   border-color: midnightblue !important;
 }
 
-html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.htr-shell, .htr-main, footer.app-disclaimer, .app-disclaimer) :is(p, p.disclaimer, span, small, strong, h1, h2, h3, label):not(.badge):not([class*="badge"]):not(button):not(button *) {
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.htr-shell, .htr-main, footer.app-disclaimer, .app-disclaimer) :is(p, p.disclaimer, span, small, strong, h1, h2, h3, label):not(.badge):not([class*="badge"]):not(button):not(button *):not(.bt-header *):not(header *) {
   color: midnightblue !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(header.htr-header, .htr-header) :is(h1, h2, span, label, strong, small):not(select):not(input):not(button) {
+  color: white !important;
 }
 
 html:root:is([data-theme="dark"], [data-sfds-mode="dark"], .dark, [data-theme="high-contrast"], [data-theme="hc"]) body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.htr-shell, .htr-main, footer.app-disclaimer, .app-disclaimer) {
@@ -2996,6 +3050,55 @@ html:root:is([data-theme="dark"], [data-sfds-mode="dark"], .dark, [data-theme="h
 
 html:root:is([data-theme="dark"], [data-sfds-mode="dark"], .dark, [data-theme="high-contrast"], [data-theme="hc"]) body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.htr-shell, .htr-main, footer.app-disclaimer, .app-disclaimer) :is(p, p.disclaimer, span, small, strong, h1, h2, h3, label):not(.badge):not([class*="badge"]):not(button):not(button *) {
   color: white !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-route-path="/app/dashboard"] {
+  gap: 2px !important;
+  padding: 2px 8px 10px 8px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-route-path="/app/dashboard"] .sfds-page-heading {
+  padding: 2px 6px !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-route-path="/app/dashboard"] .sfds-page-heading h1 {
+  font-size: 0.95rem !important;
+  line-height: 1.1 !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-route-path="/app/dashboard"] :is(.sfds-eyebrow, .sfds-page-summary, .sfds-workspace-tabs__header, .sfds-workspace-tabs__covisible-note, .sfds-panel-footer, .sfds-panel-meta) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-route-path="/app/dashboard"] .sfds-kpi-grid {
+  gap: 4px !important;
+  margin: 2px 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-route-path="/app/dashboard"] .sfds-kpi {
+  padding: 2px 6px !important;
+  min-height: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-route-path="/app/dashboard"] :is(.sfds-event-list > li, .sfds-health-list > li):nth-child(n+4) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="sfds-bullettrain-workspace"] > :is(.sfds-layer0-safety-banner, .sfds-kpi-drill-strip) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="sfds-bullettrain-workspace"] :is(.sfds-panel-card, .sfds-covisible-pane, .sfds-replay-guard-box) {
+  padding: 3px 8px !important;
+  margin: 0 !important;
+  gap: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="sfds-bullettrain-workspace"] .sfds-dense-table tbody tr:nth-child(n+4) {
+  display: none !important;
 }
 
 html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="citizen-home-page"] {
@@ -3039,15 +3142,58 @@ html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="citizen-home-
   display: none !important;
 }
 
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace :is(.epr-navbar, .epr-kpi-strip, .safety-banner, .epr-subtab-toolbar) {
+  padding: 2px 8px !important;
+  margin: 0 0 2px 0 !important;
+  gap: 4px !important;
+  min-height: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace .epr-kpi-card {
+  padding: 3px 8px !important;
+  gap: 1px !important;
+  min-height: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace .safety-banner__row--clinical {
+  margin-top: 2px !important;
+  padding-top: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace main.app__main {
+  padding: 2px 8px 10px 8px !important;
+  gap: 3px !important;
+  overflow: hidden !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace .card {
+  padding: 3px 8px !important;
+  margin-bottom: 3px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace .card h2 {
+  font-size: 0.85rem !important;
+  margin: 0 0 2px 0 !important;
+  line-height: 1.15 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace .form-grid {
+  gap: 2px 8px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace .form-field {
+  gap: 1px !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace .form-field small {
+  display: none !important;
+}
+
 html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace .grid.grid--two {
   display: grid !important;
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   width: 100% !important;
-}
-
-html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace .card {
-  padding: 4px 10px !important;
-  margin-bottom: 4px !important;
 }
 
 html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace dl {
@@ -3058,17 +3204,29 @@ html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace dl {
 }
 
 html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="epr-cdr-workbench-panel"] {
-  padding: 4px 8px !important;
+  padding: 3px 8px !important;
   margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="epr-cdr-workbench-panel"] > div:first-child {
+  margin-bottom: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="epr-cdr-workbench-panel"] [data-testid="cdr-view-clinician"] {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) !important;
+  gap: 4px 10px !important;
+  align-items: start !important;
+  width: 100% !important;
 }
 
 html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="epr-cdr-workbench-panel"] .list__item {
   padding: 2px 6px !important;
-  font-size: 0.75rem !important;
-  line-height: 1.15 !important;
+  font-size: 0.74rem !important;
+  line-height: 1.12 !important;
 }
 
-html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace .data-table tbody tr:nth-child(n+5) {
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace .data-table tbody tr:nth-child(n+4) {
   display: none !important;
 }
 
@@ -3090,8 +3248,8 @@ html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="vitals-form"]
 }
 
 html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) section.picis-panel {
-  padding: 4px 10px 12px 10px !important;
-  gap: 4px !important;
+  padding: 3px 10px 10px 10px !important;
+  gap: 3px !important;
 }
 
 html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .picis-panel-head {
@@ -3099,11 +3257,11 @@ html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .picis-panel-head {
   margin-bottom: 2px !important;
 }
 
-html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.picis-eyebrow, .picis-panel-head p.meta, section.picis-panel > p.meta) {
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.picis-eyebrow, .picis-panel-head p.meta, section.picis-panel > p.meta, .picis-form .bt-hint) {
   display: none !important;
 }
 
-html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .picis-board {
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.picis-board, [data-testid="medicines-board"], [data-testid="recalls-board"]) {
   display: grid !important;
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   gap: 6px !important;
@@ -3111,14 +3269,44 @@ html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .picis-board {
   width: 100% !important;
 }
 
-html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .picis-board > *:nth-child(n+5) {
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.picis-board, [data-testid="medicines-board"], [data-testid="recalls-board"]) > *:nth-child(n+5) {
   display: none !important;
 }
 
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(#view-theatre-checklist, #view-recalls, #view-transfusion) > :is(h3.picis-section-head, [data-testid="who-history"], [data-testid="issue-board"], [data-testid="administrations-board"]) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) #view-recalls > div.picis-form > :is(p.meta, article.picis-gate) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="medicines-action-form"] {
+  margin-bottom: 2px !important;
+  padding: 2px 6px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is([data-testid="medicines-board"], [data-testid="recalls-board"]) .picis-details {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  font-size: 0.72rem !important;
+  line-height: 1.1 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is([data-testid="medicines-board"], [data-testid="recalls-board"]) .picis-details br {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is([data-testid="medicines-board"], [data-testid="recalls-board"]) .picis-control-row {
+  margin-top: 2px !important;
+  gap: 4px !important;
+}
+
 html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.picis-card, .picis-form, .picis-gate) {
-  padding: 4px 8px !important;
+  padding: 3px 8px !important;
   margin: 0 !important;
-  gap: 3px !important;
+  gap: 2px !important;
 }
 
 html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .picis-form-grid {
@@ -3136,6 +3324,10 @@ html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) #view-theatre form {
   align-items: center !important;
 }
 
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .picis-workspace > section.picis-panel > .picis-panel-head {
+  display: none !important;
+}
+
 html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .picis-main:has([data-testid="sfds-workspace-tabs-root"]) > section.picis-panel > .picis-panel-head,
 html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .picis-main:has([data-testid="sfds-workspace-tabs-root"]) > section.picis-panel .picis-card > :not(.picis-card-head) {
   display: none !important;
@@ -3151,13 +3343,235 @@ html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.sx-table-wrap tbody tr
   display: none !important;
 }
 
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .etps-page {
+  padding: 4px 12px 10px 12px !important;
+  gap: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .etps-page-heading {
+  padding: 2px 6px !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .etps-page-heading :is(.ecs-eyebrow, .ecs-page-subtitle) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(#queue-panel, #audit-panel, #dlq-panel, .etps-panel, section.etps-panel),
 html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(#queue-panel, #audit-panel, #dlq-panel, .etps-panel) > div {
   overflow: visible !important;
   max-height: none !important;
   height: auto !important;
 }
 
-html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(#queue-panel, #audit-panel, #dlq-panel, .etps-panel) ul[role="list"] > li:nth-child(n+5) {
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(#queue-panel, #audit-panel, #dlq-panel, .etps-panel) ul[role="list"] > li:nth-child(n+3) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epaccs-dashboard-page {
+  padding: 2px 10px 10px 10px !important;
+  gap: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epaccs-page-heading {
+  padding: 2px 6px !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epaccs-page-heading :is(.ecs-eyebrow, .ecs-page-subtitle) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epaccs-dashboard-page .kpi-drill-grid {
+  gap: 4px !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epaccs-dashboard-page .kpi-drill-btn {
+  padding: 2px 6px !important;
+  min-height: 0 !important;
+  gap: 1px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epaccs-dashboard-page .kpi-drill-btn > span:last-child {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="epaccs-cdr-workbench-panel"] {
+  padding: 2px 8px !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="epaccs-cdr-workbench-panel"] :is(.ecs-eyebrow, .sfds-card-subtitle, .sfds-covisible-grid) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epaccs-dashboard-page :is(.sfds-card, .sfds-workspace-tabs__panel) {
+  padding: 3px 8px !important;
+  margin: 0 !important;
+  gap: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epaccs-dashboard-page .sfds-card h2.sfds-card-title {
+  font-size: 0.82rem !important;
+  line-height: 1.12 !important;
+  margin: 0 0 2px 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epaccs-dashboard-page :is(.sfds-card-subtitle, .sfds-workspace-tabs__header, .sfds-workspace-tabs__covisible-note) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epaccs-dashboard-page .sfds-table-viewport-fit :is(th, td) {
+  padding: 2px 6px !important;
+  font-size: 0.74rem !important;
+  line-height: 1.12 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epaccs-dashboard-page .sfds-table-viewport-fit tbody tr:nth-child(n+3) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .sfds-studio-tabpanel:not([hidden]) {
+  display: grid !important;
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  align-items: stretch !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .sfds-studio-card {
+  padding: 4px 10px !important;
+  gap: 4px !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [id="composer-live-preview"],
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.sfds-studio-clinical-surface, .sfds-studio-card .sx-clinical-surface, [role="tabpanel"] .sx-clinical-surface) {
+  min-height: 0 !important;
+  overflow: visible !important;
+  height: auto !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .sfds-studio-codebox {
+  max-height: 120px !important;
+  padding: 4px 8px !important;
+  font-size: 0.68rem !important;
+  line-height: 1.1 !important;
+  overflow: hidden !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .gp-sidebar {
+  padding: 6px 10px !important;
+  gap: 4px !important;
+  overflow-y: hidden !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .gp-sidebar-head {
+  gap: 4px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .gp-sidebar .brand {
+  min-height: 32px !important;
+  padding-bottom: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .gp-nav {
+  gap: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .gp-nav > button {
+  min-height: 28px !important;
+  height: 28px !important;
+  padding: 2px 8px !important;
+  font-size: 0.76rem !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .gp-patient-nav {
+  padding-top: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .gp-header {
+  flex-wrap: nowrap !important;
+  min-height: 44px !important;
+  max-height: 48px !important;
+  padding: 4px 12px !important;
+  gap: 8px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .gp-header-context {
+  min-width: 0 !important;
+  flex: 0 1 auto !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .gp-header-actions {
+  flex-wrap: nowrap !important;
+  gap: 6px !important;
+  min-width: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .gp-header-select {
+  max-width: 150px !important;
+  min-width: 90px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .gp-signout {
+  min-height: 30px !important;
+  height: 30px !important;
+  padding: 2px 8px !important;
+  white-space: nowrap !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .gp-main > .cp-page {
+  padding-top: 8px !important;
+}
+
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.sfds-sidebar, .sfds-navigation) :is(a.sfds-nav-link, .sfds-nav-link):not([aria-current="page"]):not(.active),
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.sfds-sidebar, .sfds-navigation) :is(a.sfds-nav-link, .sfds-nav-link):not([aria-current="page"]):not(.active) :is(span, small, strong) {
+  color: midnightblue !important;
+}
+
+html:root:is([data-theme="dark"], [data-sfds-mode="dark"], .dark, [data-theme="high-contrast"], [data-theme="hc"]) body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.sfds-sidebar, .sfds-navigation) :is(a.sfds-nav-link, .sfds-nav-link):not([aria-current="page"]):not(.active),
+html:root:is([data-theme="dark"], [data-sfds-mode="dark"], .dark, [data-theme="high-contrast"], [data-theme="hc"]) body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.sfds-sidebar, .sfds-navigation) :is(a.sfds-nav-link, .sfds-nav-link):not([aria-current="page"]):not(.active) :is(span, small, strong) {
+  color: white !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_).sfds-preview-page .sfds-clinical-layout {
+  gap: 6px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_).sfds-preview-page .sfds-clinical-stack {
+  gap: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_).sfds-preview-page .sfds-clinical-stack .sfds-panel {
+  padding: 4px 8px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_).sfds-preview-page .sfds-clinical-stack .sfds-panel-header {
+  padding: 2px 4px !important;
+  margin-bottom: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_).sfds-preview-page .sfds-clinical-stack .sfds-panel-body {
+  padding: 2px 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_).sfds-preview-page .sfds-clinical-stack :is(.sfds-record-row, .sfds-task-row, .sfds-evidence-row, .sfds-timeline-item) {
+  padding: 2px 4px !important;
+  font-size: 0.76rem !important;
+  line-height: 1.15 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_).sfds-preview-page :is(.sfds-record-list > li:nth-child(n+4), .sfds-task-list > li:nth-child(n+3), .sfds-event-list > li:nth-child(n+4)) {
   display: none !important;
 }
 /* === STAGESHOW_FULL_VIEWPORT_V2_2026_11_END === */
