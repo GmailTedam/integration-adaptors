@@ -969,11 +969,11 @@ html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([
   color: midnightblue !important;
 }
 
-html:root body:not(#_#_#_) :is(.vr-btn, .vr-status-pill, [ class*="vr-status-" ]) {
-  background: royalblue !important;
-  background-color: royalblue !important;
+html:root body:not(#_#_#_) :is(.vr-btn, .vr-status-pill, [class*="vr-status-"]) {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
   color: white !important;
-  border: 1px solid royalblue !important;
+  border: 1px solid midnightblue !important;
 }
 
 /* ORMDET, HMIS & Universal Auth Card Contrast Lock (midnightblue on white) */
