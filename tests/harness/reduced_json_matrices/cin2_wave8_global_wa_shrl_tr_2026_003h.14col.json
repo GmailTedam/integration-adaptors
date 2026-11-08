@@ -1,0 +1,382 @@
+[
+  {
+    "use_case_id": "UC-SHRL-TR-2026-003H-POS-01",
+    "component": "integration-adaptors (CIN-Counterpoint-GhanaCard-QR)",
+    "scenario": "SHRL-TR-2026-003H CIN-Counterpoint-GhanaCard-QR scenario 1: RESOLVED_PROCEED",
+    "test_type": "positive",
+    "priority": "P0",
+    "expected_outcomes": [
+      "HTTP 200 RESOLVED_PROCEED with conservation_law_satisfied=True"
+    ],
+    "preconditions": [
+      "integration-adaptors FastAPI + SQLite WAL active",
+      "CAID IVA 8-Dimension frontend controls mounted with noValidate"
+    ],
+    "test_data": {
+      "study_id": "SHRL-TR-2026-003H",
+      "repo_name": "integration-adaptors",
+      "scenario_code": "RESOLVED_PROCEED"
+    },
+    "validation_rules": [
+      "Conservation laws satisfied (0.00% PCLVR)",
+      "All 8 CAID IVA dimensions (DIM-01..DIM-08) enforced"
+    ],
+    "dependencies": [
+      "cin2-research",
+      "caid-agent",
+      "nexus-a2a-protocol"
+    ],
+    "tags": [
+      "SHRL-TR-2026-003H",
+      "CIN-Counterpoint-GhanaCard-QR",
+      "positive",
+      "CHEDT-41",
+      "CAID-IVA"
+    ],
+    "estimated_duration": "1.0s",
+    "notes": "Wave 7 canonical 14-column verification row for integration-adaptors.",
+    "automation_status": "automated"
+  },
+  {
+    "use_case_id": "UC-SHRL-TR-2026-003H-POS-02",
+    "component": "integration-adaptors (CIN-Counterpoint-GhanaCard-QR)",
+    "scenario": "SHRL-TR-2026-003H CIN-Counterpoint-GhanaCard-QR scenario 2: CONTRAINDICATED_PIVOT",
+    "test_type": "positive",
+    "priority": "P0",
+    "expected_outcomes": [
+      "HTTP 200 CONTRAINDICATED_PIVOT blocking physical law breach"
+    ],
+    "preconditions": [
+      "integration-adaptors FastAPI + SQLite WAL active",
+      "CAID IVA 8-Dimension frontend controls mounted with noValidate"
+    ],
+    "test_data": {
+      "study_id": "SHRL-TR-2026-003H",
+      "repo_name": "integration-adaptors",
+      "scenario_code": "CONTRAINDICATED_PIVOT"
+    },
+    "validation_rules": [
+      "Conservation laws satisfied (0.00% PCLVR)",
+      "All 8 CAID IVA dimensions (DIM-01..DIM-08) enforced"
+    ],
+    "dependencies": [
+      "cin2-research",
+      "caid-agent",
+      "nexus-a2a-protocol"
+    ],
+    "tags": [
+      "SHRL-TR-2026-003H",
+      "CIN-Counterpoint-GhanaCard-QR",
+      "positive",
+      "CHEDT-41",
+      "CAID-IVA"
+    ],
+    "estimated_duration": "1.0s",
+    "notes": "Wave 7 canonical 14-column verification row for integration-adaptors.",
+    "automation_status": "automated"
+  },
+  {
+    "use_case_id": "UC-SHRL-TR-2026-003H-POS-03",
+    "component": "integration-adaptors (CIN-Counterpoint-GhanaCard-QR)",
+    "scenario": "SHRL-TR-2026-003H CIN-Counterpoint-GhanaCard-QR scenario 3: ABSTAIN_GATHER_INFO",
+    "test_type": "positive",
+    "priority": "P0",
+    "expected_outcomes": [
+      "HTTP 200 ABSTAIN_GATHER_INFO requesting missing boundary condition"
+    ],
+    "preconditions": [
+      "integration-adaptors FastAPI + SQLite WAL active",
+      "CAID IVA 8-Dimension frontend controls mounted with noValidate"
+    ],
+    "test_data": {
+      "study_id": "SHRL-TR-2026-003H",
+      "repo_name": "integration-adaptors",
+      "scenario_code": "ABSTAIN_GATHER_INFO"
+    },
+    "validation_rules": [
+      "Conservation laws satisfied (0.00% PCLVR)",
+      "All 8 CAID IVA dimensions (DIM-01..DIM-08) enforced"
+    ],
+    "dependencies": [
+      "cin2-research",
+      "caid-agent",
+      "nexus-a2a-protocol"
+    ],
+    "tags": [
+      "SHRL-TR-2026-003H",
+      "CIN-Counterpoint-GhanaCard-QR",
+      "positive",
+      "CHEDT-41",
+      "CAID-IVA"
+    ],
+    "estimated_duration": "1.0s",
+    "notes": "Wave 7 canonical 14-column verification row for integration-adaptors.",
+    "automation_status": "automated"
+  },
+  {
+    "use_case_id": "UC-SHRL-TR-2026-003H-POS-04",
+    "component": "integration-adaptors (CIN-Counterpoint-GhanaCard-QR)",
+    "scenario": "SHRL-TR-2026-003H CIN-Counterpoint-GhanaCard-QR scenario 4: TURN2_REVISED",
+    "test_type": "positive",
+    "priority": "P0",
+    "expected_outcomes": [
+      "HTTP 200 TURN2_REVISED re-solving trajectory on Turn-2 callback"
+    ],
+    "preconditions": [
+      "integration-adaptors FastAPI + SQLite WAL active",
+      "CAID IVA 8-Dimension frontend controls mounted with noValidate"
+    ],
+    "test_data": {
+      "study_id": "SHRL-TR-2026-003H",
+      "repo_name": "integration-adaptors",
+      "scenario_code": "TURN2_REVISED"
+    },
+    "validation_rules": [
+      "Conservation laws satisfied (0.00% PCLVR)",
+      "All 8 CAID IVA dimensions (DIM-01..DIM-08) enforced"
+    ],
+    "dependencies": [
+      "cin2-research",
+      "caid-agent",
+      "nexus-a2a-protocol"
+    ],
+    "tags": [
+      "SHRL-TR-2026-003H",
+      "CIN-Counterpoint-GhanaCard-QR",
+      "positive",
+      "CHEDT-41",
+      "CAID-IVA"
+    ],
+    "estimated_duration": "1.0s",
+    "notes": "Wave 7 canonical 14-column verification row for integration-adaptors.",
+    "automation_status": "automated"
+  },
+  {
+    "use_case_id": "UC-SHRL-TR-2026-003H-POS-05",
+    "component": "integration-adaptors (CIN-Counterpoint-GhanaCard-QR)",
+    "scenario": "SHRL-TR-2026-003H CIN-Counterpoint-GhanaCard-QR scenario 5: PLANE2_NEXUS_A2A",
+    "test_type": "positive",
+    "priority": "P0",
+    "expected_outcomes": [
+      "HTTP 200 Direct Nexus A2A peer delegation with DAEC 1.0.0 hash chain"
+    ],
+    "preconditions": [
+      "integration-adaptors FastAPI + SQLite WAL active",
+      "CAID IVA 8-Dimension frontend controls mounted with noValidate"
+    ],
+    "test_data": {
+      "study_id": "SHRL-TR-2026-003H",
+      "repo_name": "integration-adaptors",
+      "scenario_code": "PLANE2_NEXUS_A2A"
+    },
+    "validation_rules": [
+      "Conservation laws satisfied (0.00% PCLVR)",
+      "All 8 CAID IVA dimensions (DIM-01..DIM-08) enforced"
+    ],
+    "dependencies": [
+      "cin2-research",
+      "caid-agent",
+      "nexus-a2a-protocol"
+    ],
+    "tags": [
+      "SHRL-TR-2026-003H",
+      "CIN-Counterpoint-GhanaCard-QR",
+      "positive",
+      "CHEDT-41",
+      "CAID-IVA"
+    ],
+    "estimated_duration": "1.0s",
+    "notes": "Wave 7 canonical 14-column verification row for integration-adaptors.",
+    "automation_status": "automated"
+  },
+  {
+    "use_case_id": "UC-SHRL-TR-2026-003H-POS-06",
+    "component": "integration-adaptors (CIN-Counterpoint-GhanaCard-QR)",
+    "scenario": "SHRL-TR-2026-003H CIN-Counterpoint-GhanaCard-QR scenario 6: WAL_DURABILITY_AND_KUMA_NTFY",
+    "test_type": "positive",
+    "priority": "P0",
+    "expected_outcomes": [
+      "HTTP 200 SQLite WAL state reloaded across worker restart & Kuma/ntfy heartbeat"
+    ],
+    "preconditions": [
+      "integration-adaptors FastAPI + SQLite WAL active",
+      "CAID IVA 8-Dimension frontend controls mounted with noValidate"
+    ],
+    "test_data": {
+      "study_id": "SHRL-TR-2026-003H",
+      "repo_name": "integration-adaptors",
+      "scenario_code": "WAL_DURABILITY_AND_KUMA_NTFY"
+    },
+    "validation_rules": [
+      "Conservation laws satisfied (0.00% PCLVR)",
+      "All 8 CAID IVA dimensions (DIM-01..DIM-08) enforced"
+    ],
+    "dependencies": [
+      "cin2-research",
+      "caid-agent",
+      "nexus-a2a-protocol"
+    ],
+    "tags": [
+      "SHRL-TR-2026-003H",
+      "CIN-Counterpoint-GhanaCard-QR",
+      "positive",
+      "CHEDT-41",
+      "CAID-IVA"
+    ],
+    "estimated_duration": "1.0s",
+    "notes": "Wave 7 canonical 14-column verification row for integration-adaptors.",
+    "automation_status": "automated"
+  },
+  {
+    "use_case_id": "UC-SHRL-TR-2026-003H-NEG-01",
+    "component": "integration-adaptors (CIN-Counterpoint-GhanaCard-QR)",
+    "scenario": "SHRL-TR-2026-003H CIN-Counterpoint-GhanaCard-QR scenario 7: REJECT_WHITESPACE_AND_BOUNDS",
+    "test_type": "negative",
+    "priority": "P0",
+    "expected_outcomes": [
+      "HTTP 422 / role='alert' rejecting out-of-range DIM-06 or whitespace DIM-07 input"
+    ],
+    "preconditions": [
+      "integration-adaptors FastAPI + SQLite WAL active",
+      "CAID IVA 8-Dimension frontend controls mounted with noValidate"
+    ],
+    "test_data": {
+      "study_id": "SHRL-TR-2026-003H",
+      "repo_name": "integration-adaptors",
+      "scenario_code": "REJECT_WHITESPACE_AND_BOUNDS"
+    },
+    "validation_rules": [
+      "Conservation laws satisfied (0.00% PCLVR)",
+      "All 8 CAID IVA dimensions (DIM-01..DIM-08) enforced"
+    ],
+    "dependencies": [
+      "cin2-research",
+      "caid-agent",
+      "nexus-a2a-protocol"
+    ],
+    "tags": [
+      "SHRL-TR-2026-003H",
+      "CIN-Counterpoint-GhanaCard-QR",
+      "negative",
+      "CHEDT-41",
+      "CAID-IVA"
+    ],
+    "estimated_duration": "1.0s",
+    "notes": "Wave 7 canonical 14-column verification row for integration-adaptors.",
+    "automation_status": "automated"
+  },
+  {
+    "use_case_id": "UC-SHRL-TR-2026-003H-NEG-02",
+    "component": "integration-adaptors (CIN-Counterpoint-GhanaCard-QR)",
+    "scenario": "SHRL-TR-2026-003H CIN-Counterpoint-GhanaCard-QR scenario 8: REJECT_STALE_LEASE_AND_FAKE_OIDC",
+    "test_type": "negative",
+    "priority": "P0",
+    "expected_outcomes": [
+      "HTTP 409 Conflict on stale CapabilityLease epoch and HTTP 403 on direct_memory_injection"
+    ],
+    "preconditions": [
+      "integration-adaptors FastAPI + SQLite WAL active",
+      "CAID IVA 8-Dimension frontend controls mounted with noValidate"
+    ],
+    "test_data": {
+      "study_id": "SHRL-TR-2026-003H",
+      "repo_name": "integration-adaptors",
+      "scenario_code": "REJECT_STALE_LEASE_AND_FAKE_OIDC"
+    },
+    "validation_rules": [
+      "Conservation laws satisfied (0.00% PCLVR)",
+      "All 8 CAID IVA dimensions (DIM-01..DIM-08) enforced"
+    ],
+    "dependencies": [
+      "cin2-research",
+      "caid-agent",
+      "nexus-a2a-protocol"
+    ],
+    "tags": [
+      "SHRL-TR-2026-003H",
+      "CIN-Counterpoint-GhanaCard-QR",
+      "negative",
+      "CHEDT-41",
+      "CAID-IVA"
+    ],
+    "estimated_duration": "1.0s",
+    "notes": "Wave 7 canonical 14-column verification row for integration-adaptors.",
+    "automation_status": "automated"
+  },
+  {
+    "use_case_id": "UC-SHRL-TR-2026-003H-EDGE-01",
+    "component": "integration-adaptors (CIN-Counterpoint-GhanaCard-QR)",
+    "scenario": "SHRL-TR-2026-003H CIN-Counterpoint-GhanaCard-QR scenario 9: BOUNDARY_THRESHOLD_CLAMP",
+    "test_type": "edge",
+    "priority": "P0",
+    "expected_outcomes": [
+      "HTTP 200 exact physical threshold clamp at conservation boundary in <50ms"
+    ],
+    "preconditions": [
+      "integration-adaptors FastAPI + SQLite WAL active",
+      "CAID IVA 8-Dimension frontend controls mounted with noValidate"
+    ],
+    "test_data": {
+      "study_id": "SHRL-TR-2026-003H",
+      "repo_name": "integration-adaptors",
+      "scenario_code": "BOUNDARY_THRESHOLD_CLAMP"
+    },
+    "validation_rules": [
+      "Conservation laws satisfied (0.00% PCLVR)",
+      "All 8 CAID IVA dimensions (DIM-01..DIM-08) enforced"
+    ],
+    "dependencies": [
+      "cin2-research",
+      "caid-agent",
+      "nexus-a2a-protocol"
+    ],
+    "tags": [
+      "SHRL-TR-2026-003H",
+      "CIN-Counterpoint-GhanaCard-QR",
+      "edge",
+      "CHEDT-41",
+      "CAID-IVA"
+    ],
+    "estimated_duration": "1.0s",
+    "notes": "Wave 7 canonical 14-column verification row for integration-adaptors.",
+    "automation_status": "automated"
+  },
+  {
+    "use_case_id": "UC-SHRL-TR-2026-003H-EDGE-02",
+    "component": "integration-adaptors (CIN-Counterpoint-GhanaCard-QR)",
+    "scenario": "SHRL-TR-2026-003H CIN-Counterpoint-GhanaCard-QR scenario 10: DOUBLE_SUBMIT_AND_SINGLE_STREAM_TTS",
+    "test_type": "edge",
+    "priority": "P0",
+    "expected_outcomes": [
+      "HTTP 200 single-flight submit lock (DIM-08) and single-stream en_GB-cori-high.onnx voice"
+    ],
+    "preconditions": [
+      "integration-adaptors FastAPI + SQLite WAL active",
+      "CAID IVA 8-Dimension frontend controls mounted with noValidate"
+    ],
+    "test_data": {
+      "study_id": "SHRL-TR-2026-003H",
+      "repo_name": "integration-adaptors",
+      "scenario_code": "DOUBLE_SUBMIT_AND_SINGLE_STREAM_TTS"
+    },
+    "validation_rules": [
+      "Conservation laws satisfied (0.00% PCLVR)",
+      "All 8 CAID IVA dimensions (DIM-01..DIM-08) enforced"
+    ],
+    "dependencies": [
+      "cin2-research",
+      "caid-agent",
+      "nexus-a2a-protocol"
+    ],
+    "tags": [
+      "SHRL-TR-2026-003H",
+      "CIN-Counterpoint-GhanaCard-QR",
+      "edge",
+      "CHEDT-41",
+      "CAID-IVA"
+    ],
+    "estimated_duration": "1.0s",
+    "notes": "Wave 7 canonical 14-column verification row for integration-adaptors.",
+    "automation_status": "automated"
+  }
+]

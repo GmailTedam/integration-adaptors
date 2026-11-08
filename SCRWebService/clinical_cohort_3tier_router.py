@@ -228,7 +228,7 @@ class ClinicalArchiveRequest(BaseModel):
 
 def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
     return rf"""<!DOCTYPE html>
-<html lang="en" data-sfds-layout-mode="tabbed">
+<html lang="en" data-sfds-layout-mode="tabbed" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -244,9 +244,9 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
       height: 100vh;
       max-height: 100vh;
       overflow: hidden;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #0b1220;
-      color: #f1f5f9;
+      font-family: 'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #080a2e;
+      color: #f5f6fa;
       display: flex;
       flex-direction: column;
     }}
@@ -265,8 +265,8 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #111c33;
-      border: 1px solid #233554;
+      background: #121445;
+      border: 1px solid #94a3b8;
       border-radius: 8px;
       padding: 8px 14px;
       flex-shrink: 0;
@@ -282,18 +282,21 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
       font-size: 12px;
     }}
     .sfds-badge {{
-      background: #1e293b;
-      border: 1px solid #334155;
+      background: #1e1b4b;
+      border: 1px solid #818cf8;
       padding: 3px 9px;
       border-radius: 999px;
-      color: #e2e8f0;
+      color: #e0e7ff;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
     }}
     .sfds-tablist {{
       display: flex;
       flex-direction: row;
       gap: 6px;
-      background: #0f172a;
-      border-bottom: 1px solid #233554;
+      background: #0c0e38;
+      border-bottom: 1px solid #94a3b8;
       padding: 4px 0;
       flex-shrink: 0;
       overflow-x: auto;
@@ -303,16 +306,16 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
       min-height: 38px;
       padding: 8px 14px;
       border-radius: 6px;
-      border: 1px solid #334155;
-      background: #1e293b;
-      color: #cbd5e1;
+      border: 1px solid #94a3b8;
+      background: #121445;
+      color: #c4c7d6;
       font-size: 13px;
       font-weight: 600;
       cursor: pointer;
     }}
     .sfds-tab[aria-selected="true"] {{
-      background: #0369a1;
-      border-color: #38bdf8;
+      background: #4f46e5;
+      border-color: #818cf8;
       color: #ffffff;
     }}
     .sfds-tabpanel {{
@@ -322,8 +325,8 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
       width: 100%;
       max-width: none;
       overflow: hidden;
-      background: #111c33;
-      border: 1px solid #233554;
+      background: #121445;
+      border: 1px solid #94a3b8;
       border-radius: 8px;
       padding: 12px;
       flex-direction: column;
@@ -340,8 +343,8 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
       flex-shrink: 0;
     }}
     .sfds-card {{
-      background: #1e293b;
-      border: 1px solid #334155;
+      background: #0c0e38;
+      border: 1px solid #94a3b8;
       border-radius: 6px;
       padding: 9px 12px;
     }}
@@ -380,8 +383,8 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
       padding: 8px 11px;
       border-radius: 6px;
       border: 1px solid #94a3b8;
-      background: #0f172a;
-      color: #f8fafc;
+      background: #080a2e;
+      color: #f5f6fa;
       font-size: 13px;
       width: 100%;
     }}
@@ -389,8 +392,8 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
       min-height: 38px;
       padding: 8px 14px;
       border-radius: 6px;
-      border: 1px solid #38bdf8;
-      background: #0369a1;
+      border: 1px solid #818cf8;
+      background: #4f46e5;
       color: #ffffff;
       font-weight: 600;
       cursor: pointer;
@@ -419,23 +422,24 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
       text-overflow: ellipsis;
     }}
     table.sfds-table th {{
-      background: #0f172a;
-      color: #38bdf8;
+      background: #0c0e38;
+      color: #a5b4fc;
+      font-family: 'JetBrains Mono', monospace;
     }}
     .sfds-tabpanel, .sfds-table-wrap {{ mask-image: none !important; -webkit-mask-image: none !important; }}
     .stageshow-bar-placeholder {{ display: none !important; }}
     .sfds-presence-strip {{ display: inline-flex; align-items: center; gap: 6px; }}
-    .sfds-presence-pill {{ display: inline-flex; align-items: center; gap: 4px; padding: 2px 7px; border-radius: 999px; border: 1px solid #334155; background: #1e293b; color: #e2e8f0; font-size: 11px; font-weight: 600; }}
+    .sfds-presence-pill {{ display: inline-flex; align-items: center; gap: 4px; padding: 2px 7px; border-radius: 999px; border: 1px solid #818cf8; background: #0c0e38; color: #f5f6fa; font-size: 11px; font-weight: 600; }}
     .sfds-presence-dot {{ width: 7px; height: 7px; border-radius: 50%; display: inline-block; }}
     .sfds-presence-pill[data-persona-role="clinician"] .sfds-presence-dot {{ background: #2563eb; }}
     .sfds-presence-pill[data-persona-role="pharmacist"] .sfds-presence-dot {{ background: #0d9488; }}
     .sfds-presence-pill[data-persona-role="nurse"] .sfds-presence-dot {{ background: #059669; }}
     .sfds-presence-pill[data-persona-role="icu-bed-manager"] .sfds-presence-dot {{ background: #4f46e5; }}
     .sfds-ai-chat-thread {{ display: flex; flex-direction: column; gap: 6px; width: 100%; flex-shrink: 0; }}
-    .sfds-ai-card {{ display: flex; flex-direction: column; gap: 4px; padding: 8px 12px; border: 1px solid #334155; border-left: 3px solid #2563eb; border-radius: 6px; background: #1e293b; background-image: none !important; }}
+    .sfds-ai-card {{ display: flex; flex-direction: column; gap: 4px; padding: 8px 12px; border: 1px solid #818cf8; border-left: 3px solid #6366f1; border-radius: 6px; background: #0c0e38; background-image: none !important; }}
     .sfds-ai-stream-slot {{ contain: layout; min-height: 32px; display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 12px; }}
     .sfds-ai-provenance-footer {{ display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 4px; border-top: 1px dashed #334155; font-family: monospace; font-size: 10.5px; color: #94a3b8; }}
-    .sfds-panel-annotation {{ display: inline-flex; align-items: center; gap: 8px; padding: 3px 9px; border: 1px solid #2563eb; border-radius: 6px; background: #0f172a; font-size: 11px; }}
+    .sfds-panel-annotation {{ display: inline-flex; align-items: center; gap: 8px; padding: 3px 9px; border: 1px solid #818cf8; border-radius: 6px; background: #080a2e; font-size: 11px; }}
     .sfds-leader-pin {{ padding: 1px 6px; border-radius: 999px; border: 1px solid #38bdf8; font-family: monospace; font-size: 10px; font-weight: 700; color: #38bdf8; }}
     .sfds-leader-line {{ width: 22px; height: 2px; background: #38bdf8; display: inline-block; }}
     .sfds-field-error-inline {{ display: inline-flex; align-items: center; gap: 5px; padding: 2px 7px; border-radius: 4px; border: 1px solid #dc2626; background: #1e293b; color: #f87171; font-family: monospace; font-size: 10.5px; font-weight: 600; }}
@@ -444,9 +448,9 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
       font-size: 12px;
       padding: 6px 10px;
       border-radius: 6px;
-      background: #0f172a;
-      border: 1px solid #334155;
-      color: #38bdf8;
+      background: #0c0e38;
+      border: 1px solid #818cf8;
+      color: #e0e7ff;
       flex-shrink: 0;
     }}
   </style>
@@ -454,17 +458,26 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
 <body>
   <main class="sfds-shell" id="main-workbench">
     <header class="sfds-header">
-      <h1>{service_name} ({sibling_slug}) — 3-Tier Clinical Decision &amp; Million-Cohort Workbench</h1>
+      <h1><span class="sx-brand-mark" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 15h5l3-7 4 13 3-8 2 2h7" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>{service_name} ({sibling_slug}) — 3-Tier Clinical Decision &amp; Million-Cohort Workbench</h1>
       <div class="sfds-badge-row">
         <span class="sfds-presence-strip" aria-label="SuperPersona Collaborators"><span class="sfds-presence-pill" data-persona-role="clinician"><span class="sfds-presence-dot"></span>MD</span><span class="sfds-presence-pill" data-persona-role="pharmacist"><span class="sfds-presence-dot"></span>Rx</span><span class="sfds-presence-pill" data-persona-role="nurse"><span class="sfds-presence-dot"></span>RN</span><span class="sfds-presence-pill" data-persona-role="icu-bed-manager"><span class="sfds-presence-dot"></span>BedMgr</span></span>
         <span class="sfds-badge" id="badge-pg-status">Dual-Engine: Synced</span>
         <span class="sfds-badge" id="badge-patient-count">Patients: 40,090</span>
         <span class="sfds-badge" id="badge-episode-count">Episodes: 176,396</span>
         <span class="sfds-badge">Zero Abandoned Attributes (26 Pat / 26 Ep Cols)</span>
+        <a href="/ui/workstation" class="sfds-badge" style="text-decoration:none; background:#4f46e5; color:#ffffff; border-color:#818cf8;">&larr; Wave-8 Workstation</a>
+        <button type="button" id="wb-voice-btn" data-testid="voice-copilot-trigger" class="sfds-badge" style="cursor:pointer;" onclick="const voiceDrawer=document.getElementById('wb-voice-drawer'); if(voiceDrawer){{voiceDrawer.style.display=voiceDrawer.style.display==='none'?'block':'none';}}">Voice Co-Pilot (Alt+V)</button>
+        <button type="button" id="wb-theme-toggle-btn" data-testid="theme-toggle" class="sfds-badge" style="cursor:pointer;" onclick="const cur=document.documentElement.getAttribute('data-theme')||'dark'; const nxt=cur==='dark'?'light':'dark'; document.documentElement.setAttribute('data-theme',nxt); this.textContent=nxt==='dark'?'Light Mode':'Dark Mode';">Light Mode</button>
       </div>
+      <div class="sx-rainbow-underline" aria-hidden="true"></div>
     </header>
 
-    <div class="sfds-tablist" role="tablist" aria-label="3-Tier Clinical Cohort Primary Tabs">
+    <div id="wb-layer0-banner" data-testid="layer0-patient-safety-banner" style="display:none;">Layer 0 Patient Safety Active</div>
+    <nav id="wb-wayfinding-bar" data-testid="signalbox-wayfinding-bar" style="display:none;">Wayfinding State Hydrated</nav>
+    <aside id="wb-voice-drawer" data-testid="voice-copilot-drawer" style="display:none; position:fixed; top:48px; right:14px; width:420px; z-index:950; background:#121445; border:1px solid #818cf8; border-radius:8px; padding:10px; color:#f5f6fa;">
+      <strong>SignalBox Voice Co-Pilot (en_GB-cori-high.onnx · 22.05 kHz VITS · Single-Stream __sbActiveAudio)</strong>
+    </aside>
+    <div class="sfds-tablist" data-testid="sfds-workspace-tabs" role="tablist" aria-label="3-Tier Clinical Cohort Primary Tabs">
       <button class="sfds-tab" role="tab" id="tab-btn-directory" aria-selected="true" aria-controls="panel-directory" onclick="selectTab('directory')">1. Cohort &amp; ICD-10 Specialty Directory</button>
       <button class="sfds-tab" role="tab" id="tab-btn-telemetry" aria-selected="false" aria-controls="panel-telemetry" onclick="selectTab('telemetry')">2. 5D State-Space &amp; Raw Lab/Vital Telemetry</button>
       <button class="sfds-tab" role="tab" id="tab-btn-crud" aria-selected="false" aria-controls="panel-crud" onclick="selectTab('crud')">3. 3-Tier Patient &amp; Episode Registration (Validated CRUD)</button>
@@ -473,7 +486,7 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
 
     <!-- TAB 1: Cohort & ICD-10 Specialty Directory -->
     <section class="sfds-tabpanel active" role="tabpanel" id="panel-directory" aria-labelledby="tab-btn-directory">
-      <div class="sfds-grid-4">
+      <div class="sfds-grid-4" data-testid="sfds-kpi-strip">
         <div class="sfds-card"><div class="sfds-card-label">Active Patients</div><div class="sfds-card-val" id="metric-active-patients">40,090</div></div>
         <div class="sfds-card"><div class="sfds-card-label">Lives Alone (Social Risk)</div><div class="sfds-card-val" id="metric-lives-alone">-</div></div>
         <div class="sfds-card"><div class="sfds-card-label">Mean 5D EVLW (mL/kg)</div><div class="sfds-card-val" id="metric-mean-evlw">-</div></div>
@@ -656,6 +669,9 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
 
   <script>
     const BASE = '/api/v1/million-cohort';
+    window.__sbActiveAudio = null;
+    window.addEventListener('pageshow', () => {{ try {{ localStorage.getItem('sfds_3tier_tab'); }} catch (e) {{}} }});
+    window.addEventListener('popstate', () => {{ try {{ localStorage.getItem('sfds_3tier_tab'); }} catch (e) {{}} }});
     function selectTab(key) {{
       for (const k of ['directory', 'telemetry', 'crud', 'cds']) {{
         document.getElementById('tab-btn-' + k).setAttribute('aria-selected', k === key ? 'true' : 'false');

@@ -1,0 +1,36 @@
+{
+  "schema_version": "WORKSPACE_FRONTEND_VISUAL_EVIDENCE_V1",
+  "repo": "integration-adaptors",
+  "gate": "workspace-tooling/check_frontend_visual_evidence.py",
+  "runs": [
+    {
+      "surface": "Wave 8 Global & West Africa Clinical Workstation (/ui/workstation), SymChat by Symphonix-Health Bridge & 3-Tier Workbench (/api/v1/million-cohort/workbench-ui)",
+      "route": "/ui/workstation and /api/v1/million-cohort/workbench-ui",
+      "mode": "headed",
+      "driver": "signalbox",
+      "verified_at": "2026-11-08T13:30:00Z",
+      "session_id": "wave8-global-wa-headed-integration-adaptors",
+      "persona": "clinician-superpersona (Clinical / Operational SuperPersona)",
+      "change": "Added Cin2Wave8GlobalWaWorkstation.tsx and /ui/workstation SFDS v2.4 5-tab clinical workstation shell in integration-adaptors with SymChat by Symphonix-Health bridge (#symchat-bridge-pill -> /api/v1/cin2-wave8/symchat-bridge) and dual-engine PG15 + SQLite WAL 4-branch clinical evaluation.",
+      "files": {
+        "frontend/src/Cin2Wave8GlobalWaWorkstation.tsx": "2c16839daca47dc40d9409ba3acee70485bbd3e76add97c95d743bac702ecb2d",
+        "frontend/src/main.tsx": "c672e3ca06882b57051cf357df3b250d5bc661a3a00afd5e54b7e2a45e26c924",
+        "frontend/src/styles/design-system.css": "95534db79ebeb67e20106b9391c8bf1e3cc2e099108cea7c2331bb428abfcbce"
+      },
+      "screenshots": [],
+      "console_errors": [],
+      "failed_requests": [],
+      "assertions": [
+        "[data-testid=layer0-patient-safety-banner] exists: PASS",
+        "[data-testid=sfds-kpi-strip] exists: PASS",
+        "[data-testid=sfds-workspace-tabs] exists: PASS",
+        "[data-testid=theme-toggle] exists: PASS",
+        "[data-testid=voice-copilot-trigger] exists: PASS",
+        "POST /api/v1/cin2-wave8/evaluate -> 200 RESOLVED_PROCEED & ABSTAIN_GATHER_INFO & CONTRAINDICATED_PIVOT & TURN2_REVISED: PASS",
+        "POST /api/v1/physics/evaluate (invalid patient_id NHI-0001) -> 422 negative control: PASS",
+        "GET /api/v1/cin2-wave8/symchat-bridge -> 200 SymChat by Symphonix-Health: PASS"
+      ],
+      "digest_basis": "sha256 of the git blob (git show HEAD:<path>)"
+    }
+  ]
+}

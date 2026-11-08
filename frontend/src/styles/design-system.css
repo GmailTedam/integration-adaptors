@@ -1,0 +1,15 @@
+/*
+ * Symphonix-Health Design System v2.4 — Compiled Canonical Bundle
+ * Source layers: colors_and_type.css, utilities.css, healthcare/tokens.css
+ */
+:root, [data-theme='light'], [data-theme='dark'] {
+  --brand-500: var(--brand-600);
+  --sg-primary: var(--brand-500);
+  --clinical-critical: var(--status-critical);
+  --surface-0: var(--bg-canvas);
+  --text-0: var(--fg-primary);
+  --f-sans: 'Inter', system-ui, sans-serif;
+}
+.bt-app { min-height: 100vh; }
+.bt-shell { display: flex; width: 100%; }
+.bt-card, .cp-card { border-radius: 8px; }
