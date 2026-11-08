@@ -13,3 +13,3151 @@
 .bt-app { min-height: 100vh; }
 .bt-shell { display: flex; width: 100%; }
 .bt-card, .cp-card { border-radius: 8px; }
+/* === STAGESHOW_FULL_VIEWPORT_V2_2026_11_START === */
+html,
+body,
+#root,
+#app {
+  width: 100%;
+  max-width: none;
+  min-height: 100dvh;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.gp-shell:not(.gp-login-shell),
+.cp-shell:not(.cp-auth-page),
+.pp-shell:not(.pp-auth-page),
+.p360-app-shell:not(.p360-login-shell),
+.app-shell:not(.login-shell):not(.auth-shell),
+.bt-app,
+.ecs-shell,
+.sfds-shell,
+.sfds-app-shell,
+.workbench-shell,
+.clinical-shell,
+.portal-shell,
+.sx-launchpad,
+.sx-working-surface,
+.sx-clinical-surface,
+.sx-diagnostic-surface {
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 100dvh;
+  box-sizing: border-box;
+}
+
+main:not(.login-shell):not(.gp-login-shell):not(.p360-login-shell):not(.cp-auth-page):not(.pp-auth-page):not(.auth-shell):not(.sx-auth-shell):not(.sx-auth-panel):not([class*="login"]):not([class*="auth"]):not(:has(input[type="password"])):not([data-testid*="login"]),
+[role="main"]:not(.login-shell):not(.gp-login-shell):not(.p360-login-shell):not(.cp-auth-page):not(.pp-auth-page):not(.auth-shell):not([class*="login"]):not([class*="auth"]):not(:has(input[type="password"])):not([data-testid*="login"]),
+.gp-main,
+.gp-page,
+.cp-main,
+.cp-page:not(.cp-auth-page),
+.pp-main,
+.pp-page:not(.pp-auth-page),
+.p360-main,
+.ecs-main,
+.nexus-main,
+.bt-main,
+.main-content,
+.page-container:not(.login-container):not(.auth-container),
+.workspace-main {
+  flex: 1 1 auto;
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  box-sizing: border-box;
+}
+
+.gp-page,
+.cp-page:not(.cp-auth-page),
+.pp-page:not(.pp-auth-page) {
+  min-height: calc(100dvh - 4.75rem);
+}
+
+.sfds-workspace-tabs--full-stage,
+.sfds-workspace-tabs[data-expands-vertically="true"],
+.sfds-workspace-tabs:has(.sfds-workspace-tabs__panels),
+.sfds-workspace-tabs:has(.sfds-workspace-tabs__children) {
+  flex: 0 0 auto;
+  min-height: 0;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.sfds-workspace-tabs--toolbar-only,
+.sfds-workspace-tabs[data-expands-vertically="false"] {
+  flex: 0 0 auto;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+.sfds-workspace-tabs__panels,
+.sfds-workspace-tabs__children,
+.sfds-workspace-tabs-body,
+.sfds-workspace-tabs__panel--visible,
+[role="tabpanel"]:not([hidden]):not(.sfds-workspace-tabs__panel--hidden) {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.sfds-covisible-grid,
+.clinical-grid,
+.gp-card-grid,
+.sfds-viewport-fit-grid,
+.sfds-viewport-fit-grid--2col,
+.sfds-viewport-fit-grid--3col,
+.bt-grid,
+.ecs-grid,
+.cp-grid,
+.pp-grid,
+.p360-grid,
+.dashboard-grid,
+.metrics-grid,
+.kpi-grid {
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box;
+}
+
+.bt-site-section,
+.bt-topbar,
+.bt-hero,
+.bt-features,
+.bt-pricing-grid,
+.bt-footer,
+.cp-hero,
+.pp-hero,
+.rehab-stack,
+.wrap,
+.container:not(.login-container):not(.auth-container),
+.page-wrapper:not(.login-wrapper):not(.auth-wrapper),
+.content-wrapper:not(.login-wrapper):not(.auth-wrapper),
+.dashboard-container,
+.workbench-container {
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box;
+}
+
+main:not(.login-shell):not(.auth-shell) :is(.max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl, .max-w-3xl, .max-w-2xl),
+.bt-app :is(.max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl, .max-w-3xl, .max-w-2xl),
+.nexus-main:is(.max-w-7xl, .max-w-6xl, .max-w-5xl),
+header :is(.max-w-7xl, .max-w-6xl, .max-w-5xl),
+nav :is(.max-w-7xl, .max-w-6xl, .max-w-5xl) {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+main:not(.login-shell):not(.gp-login-shell):not(.p360-login-shell):not(.cp-auth-page):not(.pp-auth-page):not(.auth-shell) :is(.cp-form, .pp-form, .picis-form, .bt-form-container, .bt-form-card, .bt-field, .tl-input, .tl-select, .bt-textarea, .bt-form-row .bt-input, .bt-form-row .bt-select, .bt-form-row .bt-textarea, .bt-form-row .bt-input-wrap) {
+  max-width: none !important;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+.etps-panel-grid {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  width: 100% !important;
+}
+
+/* High-specificity WCAG AA contrast, form anti-overlap & control-sizing locks */
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(.bt-badge, [class*="bt-badge"], .cp-badge, [class*="cp-badge"], .pp-badge, [class*="pp-badge"], .ecs-badge, .gp-badge, .bt-tag, [class*="bt-tag"], .badge, .id-chip, [class*="id-chip"], [class*="status-badge"], [class*="role-badge"]),
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(.bt-badge, [class*="bt-badge"], .cp-badge, [class*="cp-badge"], .pp-badge, [class*="pp-badge"], .ecs-badge, .gp-badge, .bt-tag, [class*="bt-tag"], .badge, .id-chip, [class*="id-chip"], [class*="status-badge"], [class*="role-badge"]) :is(span, strong, small, em, code, .bt-sr-only) {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  color: white !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) .bt-header,
+html:root body:not(#_#_#_#_#_#_#_#_#_) .bt-header :is(h1, h2, h3, a, span, strong, small, label, .bt-header-title, .sfds-context-select-label):not(select):not(input):not(button):not(button *),
+html:root body:not(#_#_#_#_#_#_#_#_#_) .bt-nav-item-active,
+html:root body:not(#_#_#_#_#_#_#_#_#_) .bt-nav-item-active * {
+  background-color: color-mix(in srgb, royalblue 76%, mediumblue) !important;
+  color: white !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) [data-testid="vitals-form"] {
+  grid-template-columns: repeat(4, minmax(64px, 1fr)) !important;
+  gap: 4px 6px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) [data-testid="vitals-form"] input,
+html:root body:not(#_#_#_#_#_#_#_#_#_) input[id^="vital-"] {
+  min-width: 56px !important;
+  width: 100% !important;
+  min-height: 28px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(button.mat-button-danger, .mat-button-danger),
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(button.mat-button-danger, .mat-button-danger) * {
+  background: firebrick !important;
+  background-color: firebrick !important;
+  border-color: darkred !important;
+  color: white !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(button:disabled, .ds-button:disabled, .bt-btn:disabled, .bt-button:disabled),
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(button:disabled, .ds-button:disabled, .bt-btn:disabled, .bt-button:disabled) * {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  color: white !important;
+  border: 1px solid slategray !important;
+  opacity: 1 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) [data-testid="cn-panel"] {
+  flex-shrink: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is([data-testid="cn-panel"] > p.muted, #cn-form-note) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) [data-testid="cn-panel"] > h3 {
+  margin: 2px 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) [data-testid="cn-categories"] {
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) [data-testid="cn-categories"] > div:first-of-type {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is([data-testid="cn-categories"] .cn-family, [data-testid="cn-categories"] > div:first-of-type > label.cn-check:nth-of-type(n+3)) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) [data-testid="cn-form"] > .row {
+  margin-top: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) fieldset.cn-fieldset > .cn-field {
+  max-width: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) [data-testid="pm-consent-panel"] {
+  flex-shrink: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) [data-testid="pm-consent-form"] {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 4px 8px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(.pmc-fieldset, .pmc-group) {
+  margin: 0 !important;
+  padding: 4px 6px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(#pmc-intro, .pmc-hint) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) .pmc-actions {
+  margin-top: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(select, input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="range"]):not([type="color"]):not([type="file"]), textarea) {
+  min-height: 28px !important;
+  box-sizing: border-box !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: lightslategray !important;
+  border-radius: 6px !important;
+  font-family: var(--f-sans, inherit) !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(select, input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="range"]):not([type="color"]):not([type="file"]), textarea):focus,
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(select, input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="range"]):not([type="color"]):not([type="file"]), textarea):focus-visible {
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: royalblue !important;
+  outline: 2px solid royalblue !important;
+  outline-offset: 1px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(.card, .sfds-card, .bt-card, .cp-card, .pp-card, .ecs-card, .surface-panel, .sol-card, .kpi-card, .spec-box, fieldset, .panel) {
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: var(--sfds-border, var(--border-subtle, var(--border, lightslategray))) !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) hr {
+  border: 0 !important;
+  border-top: 1px solid lightslategray !important;
+  height: 1px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) [data-testid="dashboard-page"] > [data-testid="kpi-grid"],
+html:root body:not(#_#_#_#_#_#_#_#_#_) [data-testid="dashboard-page"] table tbody tr:nth-child(n+4) {
+  display: none !important;
+}
+
+/* LIS Dashboard KPI grid & drill button anti-overlap locks */
+html:root body:not(#_#_#_#_#_#_#_#_#_) ul.lis-kpi-grid.kpi-drill-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+  gap: 8px !important;
+  padding: 6px 8px !important;
+  margin-bottom: 6px !important;
+  align-items: stretch !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) li.lis-kpi {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: space-between !important;
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 6px 8px !important;
+  gap: 4px !important;
+  overflow: hidden !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) .kpi-drill-btn {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 6px 8px !important;
+  gap: 2px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) .lis-kpi-label,
+html:root body:not(#_#_#_#_#_#_#_#_#_) .lis-kpi-value,
+html:root body:not(#_#_#_#_#_#_#_#_#_) .kpi-drill-btn .bt-hint {
+  flex: 0 0 auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+}
+
+/* Nursing-Station Ward Board, PICIS-System, Cancer-Pathway-Tracker & Hear-the-Risk Anti-Overlap Locks */
+html:root body:not(#_#_#_#_#_#_#_#_#_) .ward-board {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) .ward-board .board-row {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  grid-template-columns: 48px minmax(85px, 1.2fr) minmax(75px, 1fr) 72px 64px minmax(75px, 1fr) minmax(75px, 0.9fr) !important;
+  gap: 4px 6px !important;
+  padding: 4px 6px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) .ward-board .board-row > * {
+  min-width: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) .picis-main > .sfds-workspace-tabs {
+  flex: 0 0 auto !important;
+  min-height: auto !important;
+  height: auto !important;
+  margin-bottom: 6px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) .picis-workspace {
+  flex: 1 1 auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) .picis-rail {
+  position: static !important;
+  top: auto !important;
+  z-index: 1 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) [data-testid="subtab-panel-state-space-signoff"] svg {
+  height: 48px !important;
+  max-height: 48px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) [data-testid="state-space-signoff-form"] .picis-form-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  gap: 4px 8px !important;
+  align-items: start !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) [data-testid="state-space-signoff-form"] .picis-field .bt-hint {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) [data-testid="state-space-signoff-form"] textarea {
+  min-height: 28px !important;
+  max-height: 32px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) .bt-card-header p,
+html:root body:not(#_#_#_#_#_#_#_#_#_) .bt-card-header .bt-text-sm {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 4px 8px !important;
+  line-height: 1.5 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) .bt-card-header p strong {
+  display: inline-block !important;
+  line-height: 1.3 !important;
+  padding: 0 2px !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) .htr-main > .sfds-workspace-tabs {
+  grid-column: 1 / -1 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) .htr-main {
+  align-items: stretch !important;
+}
+
+/* Multi-column anti-blank-space rules for sparse card lists, text blocks & forms */
+html:root body:not(#_#_#_#_#_#_#_#_#_) ul.cp-card-list,
+html:root body:not(#_#_#_#_#_#_#_#_#_) ul.pp-card-list {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)) !important;
+  gap: 0.85rem !important;
+  width: 100% !important;
+  max-width: none !important;
+  align-items: stretch !important;
+  padding-left: 0 !important;
+  list-style: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) main:not(.login-shell):not(.auth-shell):not(.gp-login-shell):not(.p360-login-shell):not(.cp-auth-page):not(.pp-auth-page):not([class*="login"]):not([class*="auth"]) :is(p, dl, .cp-card, .pp-card, .bt-card, .bt-card-body, .surface-panel, section):not([class*="login"]):not([class*="auth"]) {
+  max-width: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) main:not(.login-shell):not(.auth-shell):not(.gp-login-shell):not(.p360-login-shell):not(.cp-auth-page):not(.pp-auth-page):not([class*="login"]):not([class*="auth"]) :is(form.cp-form, form.pp-form, .bt-form-section):not([data-testid*="login"]):not([class*="login"]):not([class*="auth"]):not(:has(input[type="password"])) {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+  gap: 0.65rem 1rem !important;
+  width: 100% !important;
+  max-width: none !important;
+  align-items: end !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) .ems-kpi-strip,
+html:root body:not(#_#_#_#_#_#_#_#_#_) .stat-grid,
+html:root body:not(#_#_#_#_#_#_#_#_#_) .kpi-row,
+html:root body:not(#_#_#_#_#_#_#_#_#_) .metric-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)) !important;
+  gap: 0.75rem !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(
+  .login-shell,
+  .gp-login-shell,
+  .p360-login-shell,
+  .cp-auth-page,
+  .pp-auth-page,
+  .auth-shell,
+  .sx-auth-shell,
+  .etps-login-page,
+  .erp-login-main,
+  [class*="-login-page"],
+  [class*="-auth-page"],
+  [class*="-login-main"],
+  [data-testid="login-gate-view"]
+) {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 100dvh !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.etps-login-theme {
+  position: fixed !important;
+  top: 1rem !important;
+  right: 1rem !important;
+  z-index: 30 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(
+  .login-card,
+  .gp-login-card,
+  .p360-login-card,
+  .etps-login-card,
+  .erp-login-card,
+  .erp-login-form,
+  main[class*="login-card"],
+  [class*="-login-card"],
+  [class*="-auth-card"],
+  .auth-card,
+  .bt-auth-card,
+  .hmis-auth-card,
+  .sx-auth-form,
+  .cp-auth-page .cp-card,
+  .pp-auth-page .pp-card
+) {
+  width: min(100%, var(--sx-auth-form-max, 28rem)) !important;
+  max-width: var(--sx-auth-form-max, 28rem) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  flex: 0 1 auto !important;
+}
+
+
+
+
+
+
+
+
+/* Active contrast & header lock */
+html:root body:not(#_#_#_)
+  :is(.pp-sidebar, .bt-sidebar, .ecs-sidebar, .gp-sidebar, .sfds-sidebar, .sfds-rail, .app-sidebar, .sidebar, aside, nav)
+  :is(a, button, [role="tab"], [role="menuitem"], .pp-nav-item, .bt-nav-item, .ecs-nav-item, .nav-link, .sidebar-link):is(
+    .active,
+    [aria-current="page"],
+    [aria-current="true"],
+    [aria-selected="true"],
+    [aria-pressed="true"],
+    .bt-nav-item-active,
+    .bt-nav-item--active,
+    .pp-nav-item--active,
+    .is-active
+  ),
+html:root body:not(#_#_#_)
+  :is([role="tablist"], .sfds-workspace-tabs, .sfds-subtabs, .subtabs, .tabs, .tab-bar)
+  :is([role="tab"], button, a):is(.active, [aria-selected="true"], [aria-current="page"], [aria-pressed="true"], .is-active) {
+  background: royalblue !important;
+  background-color: royalblue !important;
+  background-image: none !important;
+  color: white !important;
+  border-color: royalblue !important;
+}
+
+html:root body:not(#_#_#_)
+  :is(.pp-sidebar, .bt-sidebar, .ecs-sidebar, .gp-sidebar, .sfds-sidebar, .sfds-rail, .app-sidebar, .sidebar, aside, nav)
+  :is(a, button, [role="tab"], [role="menuitem"], .pp-nav-item, .bt-nav-item, .ecs-nav-item, .nav-link, .sidebar-link):is(
+    .active,
+    [aria-current="page"],
+    [aria-current="true"],
+    [aria-selected="true"],
+    [aria-pressed="true"],
+    .bt-nav-item-active,
+    .bt-nav-item--active,
+    .pp-nav-item--active,
+    .is-active
+  )
+  :is(span, small, strong, em, div, p, svg, .ecs-nav-label, .sfds-workspace-tabs__label, .sfds-subtab-label):not(.badge):not([class*="badge"]):not([class*="count"]),
+html:root body:not(#_#_#_)
+  :is([role="tablist"], .sfds-workspace-tabs, .sfds-subtabs, .subtabs, .tabs, .tab-bar)
+  :is([role="tab"], button, a):is(.active, [aria-selected="true"], [aria-current="page"], [aria-pressed="true"], .is-active)
+  :is(span, small, strong, em, div, p, svg, .sfds-workspace-tabs__label, .sfds-subtab-label):not(.badge):not([class*="badge"]):not([class*="count"]) {
+  color: white !important;
+  fill: currentColor !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  opacity: 1 !important;
+}
+
+html:root body:not(#_#_#_)
+  :is([role="tab"], .sfds-tab, .sfds-subtab, .tab-btn, nav a, aside a)
+  :is(.badge, [class*="badge"], [class*="count"], .sfds-subtab-count) {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  background-image: none !important;
+  color: white !important;
+  border: 1px solid color-mix(in srgb, white 45%, transparent) !important;
+}
+
+/* Header & Voice Co-Pilot Inline Select Labels — never wrap or stretch height */
+html:root body:not(#_#_#_)
+  :is(
+    label.sfds-header-select-label,
+    form label.sfds-header-select-label,
+    .voice-copilot-controls label.sfds-header-select-label,
+    label.sfds-header-selector-label,
+    form label.sfds-header-selector-label,
+    label.lis-header-select-label,
+    form label.lis-header-select-label,
+    label.cn-header-select-label,
+    form label.cn-header-select-label,
+    label.cpt-header-select-label,
+    form label.cpt-header-select-label
+  ) {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  align-self: center !important;
+  white-space: nowrap !important;
+  gap: 6px !important;
+  margin: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: 32px !important;
+  line-height: 28px !important;
+  flex: 0 0 auto !important;
+}
+
+/* Universal Shell Header Grid Track & Single-Row Topbar Lock */
+html:root body:not(#_#_#_) :is(.bt-shell, .ecs-shell, .bt-shell.ecs-shell, .app-shell, .p360-app-shell) {
+  grid-template-rows: auto minmax(0, 1fr) !important;
+}
+
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.lis-page, .sfds-subtab-panel, ul.lis-kpi-grid.kpi-drill-grid, .bt-card, .sfds-card) {
+  background: white !important;
+  background-color: white !important;
+  background-image: none !important;
+  color: midnightblue !important;
+  border-color: lightsteelblue !important;
+}
+
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.lis-page, .sfds-subtab-panel)
+  :is(h1, h2, h3, h4, p, td, th, span, div, strong, small, code, li, .lis-page-lede, .sfds-card__title, .bt-hint):not(.badge):not(.badge *):not([class*="badge"]):not([class*="badge"] *):not([class*="pill"]):not([class*="pill"] *):not(.id-chip):not(.id-chip *):not([class*="chip"]):not([class*="chip"] *):not(.bt-tag):not(.bt-tag *):not([class*="bt-tag"]):not([class*="bt-tag"] *):not(.bt-suppressed-cell):not(.bt-suppressed-cell *):not(.bt-semantic-prefix):not(button):not(button *) {
+  color: midnightblue !important;
+}
+
+html:root body:not(#_#_#_)
+  :is(
+    header.bt-header,
+    .bt-header,
+    .bt-app-header,
+    .sr-header,
+    header.sr-header,
+    header.bt-header.ecs-header,
+    header.ecs-header.epaccs-header,
+    .epaccs-header,
+    header.eps-header,
+    .eps-header,
+    .eclaims-header,
+    .hmis-header,
+    .cpt-header,
+    .mha-header,
+    .app-header,
+    header.lis-header,
+    .lis-topbar,
+    .lis-app-header,
+    header.topbar,
+    .p360-header,
+    .amp-header,
+    .app.bt-app.sfds-shell > header,
+    .sfds-shell > header,
+    header[role="banner"]
+  ) {
+  min-height: 52px !important;
+  height: auto !important;
+  max-height: none !important;
+  padding: 6px 10px !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 4px !important;
+  background: royalblue !important;
+  background-color: royalblue !important;
+  background-image: none !important;
+  color: white !important;
+  overflow: visible !important;
+  z-index: 20 !important;
+}
+
+html:root body:not(#_#_#_) header.bt-header.ecs-header .ecs-header-context,
+html:root body:not(#_#_#_) header.bt-header .bt-operator {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_) .bt-actor > span {
+  max-width: 120px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+html:root body:not(#_#_#_)
+  :is(
+    .lis-header-select-group,
+    .cn-header-select-group,
+    .cpt-header-select-group,
+    .sr-header-select-group,
+    .bt-actor,
+    .bt-theme-mode-switch,
+    .bt-header-actions,
+    .bt-header-actions > div,
+    .ecs-header-actions,
+    .topbar-actions,
+    .sfds-header-controls
+  ) {
+  display: inline-flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 4px !important;
+  min-width: 0 !important;
+}
+
+/* Universal Topbar Child Text Contrast Lock (White on royalblue) */
+html:root body:not(#_#_#_)
+  :is(
+    header.bt-header,
+    .bt-header,
+    header.bt-header.ecs-header,
+    header.ecs-header.epaccs-header,
+    .epaccs-header,
+    header.eps-header,
+    .eps-header,
+    .eclaims-header,
+    .hmis-header,
+    .cpt-header,
+    .mha-header,
+    .app-header,
+    header.lis-header,
+    .lis-topbar,
+    .lis-app-header,
+    header.topbar,
+    .p360-header,
+    .amp-header,
+    .app.bt-app.sfds-shell > header,
+    .sfds-shell > header,
+    header[role="banner"]
+  )
+  :is(
+    h1,
+    h2,
+    h3,
+    a,
+    span,
+    strong,
+    small,
+    label,
+    div,
+    p,
+    svg,
+    .bt-header-title,
+    .p360-brand-title,
+    .amp-brand-title,
+    .sfds-header-selector-label
+  ):not(select):not(option):not(input):not(.sfds-layer0-chip) {
+  color: white !important;
+  fill: currentColor !important;
+}
+
+/* Universal Topbar Buttons Contrast & Compact Height Lock (white on midnightblue) */
+html:root body:not(#_#_#_)
+  :is(
+    header.bt-header,
+    .bt-header,
+    header.bt-header.ecs-header,
+    header.ecs-header.epaccs-header,
+    .epaccs-header,
+    header.eps-header,
+    .eps-header,
+    .eclaims-header,
+    .hmis-header,
+    .cpt-header,
+    .mha-header,
+    .app-header,
+    header.lis-header,
+    .lis-topbar,
+    .lis-app-header,
+    header.topbar,
+    .p360-header,
+    .amp-header,
+    header[role="banner"]
+  )
+  :is(
+    button,
+    .bt-button,
+    .bt-btn,
+    .bt-btn-ghost,
+    .bt-button-secondary,
+    .bt-theme-mode-option,
+    .epaccs-signout,
+    .epaccs-user-chip,
+    .theme-toggle,
+    .sfds-action-button,
+    .voice-copilot-btn
+  ) {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  background-image: none !important;
+  color: white !important;
+  border: 1px solid color-mix(in srgb, white 45%, transparent) !important;
+  min-height: 30px !important;
+  height: 30px !important;
+  max-height: 32px !important;
+  padding: 2px 8px !important;
+  font-size: 11px !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+html:root body:not(#_#_#_)
+  :is(
+    header.bt-header,
+    .bt-header,
+    header.bt-header.ecs-header,
+    header.ecs-header.epaccs-header,
+    .epaccs-header,
+    header.eps-header,
+    .eps-header,
+    .eclaims-header,
+    .hmis-header,
+    .cpt-header,
+    .mha-header,
+    .app-header,
+    header.lis-header,
+    .lis-topbar,
+    .lis-app-header,
+    header.topbar,
+    .p360-header,
+    .amp-header,
+    header[role="banner"]
+  )
+  :is(
+    button,
+    .bt-button,
+    .bt-btn,
+    .bt-btn-ghost,
+    .bt-button-secondary,
+    .bt-theme-mode-option,
+    .epaccs-signout,
+    .epaccs-user-chip,
+    .theme-toggle,
+    .sfds-action-button,
+    .voice-copilot-btn
+  )
+  * {
+  color: white !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Universal Topbar Selects & All Form Inputs Contrast Lock */
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_)
+  :is(
+    select.lis-header-select,
+    select.cn-header-select,
+    select.cpt-header-select,
+    select.sr-header-select,
+    select.eclaims-header-select,
+    select.sfds-header-select,
+    select.sfds-header-selector-select,
+    select#eps-header-patient-select,
+    select#p360-patient-selector,
+    header select,
+    .bt-header select,
+    .bt-app-header select
+  ) {
+  background: white !important;
+  background-color: white !important;
+  color: midnightblue !important;
+  border: 1px solid midnightblue !important;
+  max-width: 118px !important;
+  min-width: 80px !important;
+  height: 28px !important;
+  min-height: 28px !important;
+  max-height: 30px !important;
+  padding: 2px 4px !important;
+  font-size: 11px !important;
+}
+
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_)
+  :is(
+    input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+    select,
+    textarea,
+    .bt-input,
+    .bt-select,
+    .bt-textarea,
+    .voice-copilot-input,
+    input#lis-voice-command-input
+  ) {
+  background: white !important;
+  background-color: white !important;
+  color: midnightblue !important;
+  border: 1px solid midnightblue !important;
+}
+
+/* Clinical-Trial-System & Universal Safety Pills + Badges Contrast Lock */
+html:root body:not(#_#_#_)
+  :is(
+    .sfds-safety-pill,
+    .sfds-safety-pill--info,
+    .sfds-safety-pill--ok,
+    .sfds-safety-pill--warn,
+    .sfds-safety-pill--critical,
+    .badge,
+    .badge--info,
+    .badge--success,
+    .badge--warning,
+    .badge--danger,
+    .sfds-subtab__badge--info,
+    .sfds-subtab__badge--ok,
+    .sfds-subtab__badge--warn,
+    .sfds-subtab__badge--critical
+  ) {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  background-image: none !important;
+  color: white !important;
+  border: 1px solid darkslategray !important;
+}
+
+/* VR-Therapy Panels, Safety Strips, Headers & Tables Contrast Lock */
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_)
+  :is(
+    .vr-panel,
+    .vr-card,
+    .vr-table,
+    .vr-table td,
+    .vr-table th,
+    .vr-header,
+    .vr-session-console,
+    .sfds-covisible-safety-strip,
+    .sfds-covisible-safety-strip__item,
+    .sfds-covisible-safety-strip__tag
+  ) {
+  background: white !important;
+  background-color: white !important;
+  background-image: none !important;
+  color: midnightblue !important;
+  border-color: lightsteelblue !important;
+}
+
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_)
+  :is(.vr-panel, .vr-header, .sfds-covisible-safety-strip)
+  :is(h1, h2, h3, h4, p, span, td, th, code, strong, small, label, div, .vr-subtitle, #vr-header-patient-label, #vr-header-persona-label):not(.vr-btn):not(.vr-status-pill):not([class*="badge"]):not([class*="pill"]):not(button):not(button *) {
+  color: midnightblue !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(p.vr-subtitle, span#vr-header-patient-label, span#vr-header-persona-label) {
+  color: midnightblue !important;
+}
+
+html:root body:not(#_#_#_) :is(.vr-btn, .vr-status-pill, [ class*="vr-status-" ]) {
+  background: royalblue !important;
+  background-color: royalblue !important;
+  color: white !important;
+  border: 1px solid royalblue !important;
+}
+
+/* ORMDET, HMIS & Universal Auth Card Contrast Lock (midnightblue on white) */
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.bt-auth-card, .hmis-auth-card, .login-card, .auth-card) {
+  background: white !important;
+  background-color: white !important;
+  background-image: none !important;
+  color: midnightblue !important;
+  border: 1px solid lightsteelblue !important;
+}
+
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_)
+  :is(.bt-auth-card, .hmis-auth-card, .login-card, .auth-card)
+  :is(h1, h2, h3, p, span, label, abbr, strong, small, div):not(button):not(button *):not([role="alert"]) {
+  color: midnightblue !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+html:root body:not(#_#_#_) :is(button[data-testid="login-submit"], button.bt-btn[type="submit"], .bt-auth-card button[type="submit"], .hmis-auth-card button[type="submit"]) {
+  background: royalblue !important;
+  background-color: royalblue !important;
+  color: white !important;
+  border: 1px solid royalblue !important;
+}
+
+/* Form clarity & badge lock */
+html:root body:not(#_#_#_)
+  :is(
+    .bt-badge,
+    .bt-badge-error,
+    .bt-badge-warning,
+    .bt-badge-success,
+    .bt-badge-info,
+    .bt-badge-default,
+    [class*="bt-badge"],
+    [class*="status-badge"],
+    [class*="role-badge"]
+  ) {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  background-image: none !important;
+  color: white !important;
+  border: 1px solid color-mix(in srgb, white 45%, transparent) !important;
+}
+
+/* Never crush form labels or selects inside main/form/tabpanel bodies */
+html:root body:not(#_#_#_)
+  :is(main, [role="main"], [role="tabpanel"], [role="dialog"], .p360-login-card, .bt-auth-card, .login-card)
+  form
+  :is(
+    label.sfds-header-select-label,
+    label.sfds-header-selector-label,
+    label.lis-header-select-label,
+    label.cn-header-select-label,
+    label.cpt-header-select-label
+  ):not(:has(input[type="checkbox"])):not(:has(input[type="radio"])) {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  white-space: normal !important;
+  max-height: none !important;
+  line-height: 1.35 !important;
+  gap: 4px !important;
+  margin-bottom: 4px !important;
+}
+
+html:root body:not(#_#_#_)
+  :is(main, [role="main"], [role="tabpanel"], [role="dialog"], .p360-login-card, .bt-auth-card, .login-card)
+  form
+  .bt-card-header {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  gap: 4px !important;
+}
+
+html:root body:not(#_#_#_)
+  :is(main, [role="main"], [role="tabpanel"], [role="dialog"])
+  form
+  select:not(.lis-header-select):not(.cn-header-select):not(.cpt-header-select):not(#p360-patient-selector) {
+  max-width: 100% !important;
+  min-height: 34px !important;
+  height: auto !important;
+  max-height: 42px !important;
+  padding: 4px 8px !important;
+  font-size: 13px !important;
+}
+
+/* Viewport-fit & overlap lock */
+/* 0. Hidden panels & non-sidebar <aside> safety strips must NEVER take 100dvh */
+html:root body:not(#_#_#_#_#_#_#_#_) [hidden],
+html:root body:not(#_#_#_#_#_#_#_#_) [role="tabpanel"][hidden],
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-subtab-panel[hidden],
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-workspace-tabs__panel--hidden {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) aside.sfds-covisible-safety-strip,
+html:root body:not(#_#_#_#_#_#_#_#_) aside.sfds-safety-strip,
+html:root body:not(#_#_#_#_#_#_#_#_) main aside,
+html:root body:not(#_#_#_#_#_#_#_#_) [role="tabpanel"] aside {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  padding: 4px 10px !important;
+  margin-bottom: 4px !important;
+}
+
+/* 1. BulletTrain Login Password Toggle Non-Overlap */
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-login-hero__input-wrap:has(.bt-login-hero__password-toggle) {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 6px !important;
+  position: relative !important;
+}
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-login-hero__input-wrap:has(.bt-login-hero__password-toggle) input {
+  flex: 1 1 auto !important;
+  padding-right: 10px !important;
+}
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-login-hero__password-toggle {
+  position: static !important;
+  transform: none !important;
+  flex: 0 0 36px !important;
+  width: 36px !important;
+  min-width: 36px !important;
+  height: 32px !important;
+  min-height: 32px !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* 2. Header / Voice inline select labels must NEVER wrap onto 2 lines inside form (overrides line 3020 of sfds-v2.css) */
+html:root body:not(#_#_#_#_#_#_#_#_) label.sfds-header-select-label,
+html:root body:not(#_#_#_#_#_#_#_#_) form label.sfds-header-select-label,
+html:root body:not(#_#_#_#_#_#_#_#_) :is(main, [role="main"], [role="tabpanel"], section, article, .bt-card, .sfds-card) form label.sfds-header-select-label,
+html:root body:not(#_#_#_#_#_#_#_#_) label.sfds-header-selector-label,
+html:root body:not(#_#_#_#_#_#_#_#_) form label.sfds-header-selector-label,
+html:root body:not(#_#_#_#_#_#_#_#_) label.lis-header-select-label,
+html:root body:not(#_#_#_#_#_#_#_#_) form label.lis-header-select-label,
+html:root body:not(#_#_#_#_#_#_#_#_) label.cn-header-select-label,
+html:root body:not(#_#_#_#_#_#_#_#_) form label.cn-header-select-label,
+html:root body:not(#_#_#_#_#_#_#_#_) label.cpt-header-select-label,
+html:root body:not(#_#_#_#_#_#_#_#_) form label.cpt-header-select-label,
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-header-select-group {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 6px !important;
+  white-space: nowrap !important;
+  height: 28px !important;
+  min-height: 26px !important;
+  max-height: 28px !important;
+  line-height: 26px !important;
+  padding: 0 4px !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* 3. Minimum readable dimensions for all form inputs/selects/buttons (prevents crushed height < 24px in eps etc.) */
+html:root body:not(#_#_#_#_#_#_#_#_) input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+html:root body:not(#_#_#_#_#_#_#_#_) select,
+html:root body:not(#_#_#_#_#_#_#_#_) textarea,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-input,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-select,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-textarea {
+  min-height: 28px !important;
+  padding: 3px 8px !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.25 !important;
+  box-sizing: border-box !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) textarea,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-textarea {
+  min-height: 40px !important;
+  max-height: 56px !important;
+}
+
+/* 4. Eliminate inner scroll containers & bottom clipping across all SFDS panels & workspaces (overrides [role="tabpanel"]:not([hidden])) */
+html:root, html:root body, #root {
+  max-height: 100vh !important;
+  overflow-x: hidden !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) main,
+html:root body:not(#_#_#_#_#_#_#_#_) .workspace,
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-main,
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-page,
+html:root body:not(#_#_#_#_#_#_#_#_) .cp-main,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-main,
+html:root body:not(#_#_#_#_#_#_#_#_) .ecs-main,
+html:root body:not(#_#_#_#_#_#_#_#_) .sr-main,
+html:root body:not(#_#_#_#_#_#_#_#_) .main-pane,
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-provider-workspace,
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-subtab-panel,
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-subtab-panel:not([hidden]),
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-workspace-tabs,
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-workspace-tabs__panel,
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-workspace-tabs__panel:not([hidden]),
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-table-viewport-fit,
+html:root body:not(#_#_#_#_#_#_#_#_) .table-scroll,
+html:root body:not(#_#_#_#_#_#_#_#_) [role="tabpanel"],
+html:root body:not(#_#_#_#_#_#_#_#_) [role="tabpanel"]:not([hidden]) {
+  max-height: none !important;
+  overflow-y: visible !important;
+  overflow-x: visible !important;
+}
+
+/* 5. High-Contrast Guarantee: Cards, Tables, Headers & KPI Labels/Values */
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.bt-card, .bt-card-flat, .cp-card, .gp-card, .sfds-card, .panel, .mat-card, .ecs-card, .pharm-card, .vr-card, .vr-panel, .card, .surface-panel, .hero-panel, .metric-panel, .sfds-subtab-panel, [role="tabpanel"], .kpi-drill-btn, .kpi-drill-card, .semantic-kpi-card, .gp-kpi, .cp-kpi-card, .metric-card, .bt-kpi-card, .bt-kpi, table, thead, tbody, tr, th, td) {
+  background-color: white !important;
+  background-image: none !important;
+  color: midnightblue !important;
+}
+
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.bt-card, .bt-card-flat, .cp-card, .gp-card, .sfds-card, .panel, .mat-card, .ecs-card, .pharm-card, .vr-card, .vr-panel, .card, .surface-panel, .hero-panel, .metric-panel, .kpi-drill-btn, .kpi-drill-card, .semantic-kpi-card, .gp-kpi, .cp-kpi-card, .metric-card, .bt-kpi-card, .bt-kpi, .sfds-subtab-panel, [role="tabpanel"]) :is(h1, h2, h3, h4, p, td, th, label, dt, dd, li, strong, span, small, code, .bt-kpi-label, .bt-kpi-value, .bt-text-muted, .sfds-muted, .kpi-label, .kpi-value):not(.badge):not(.badge *):not([class*="badge"]):not([class*="badge"] *):not([class*="pill"]):not([class*="pill"] *):not(.id-chip):not(.id-chip *):not([class*="chip"]):not([class*="chip"] *):not(.bt-tag):not(.bt-tag *):not([class*="bt-tag"]):not([class*="bt-tag"] *):not(.bt-suppressed-cell):not(.bt-suppressed-cell *):not(.bt-semantic-prefix):not(button):not(button *) {
+  color: midnightblue !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) :is(a.mat-skip-link, .gp-button, .gp-button-primary, .bt-button, .bt-btn) {
+  background-color: midnightblue !important;
+  background-image: none !important;
+  color: white !important;
+  border: 1px solid darkslategray !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) :is(a.mat-skip-link, .gp-button, .gp-button-primary, .bt-button, .bt-btn) * {
+  color: white !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) :is(.gp-sidebar, aside.gp-sidebar, header.gp-topbar, header.gp-header, .gp-header, header.topbar.gp-page-header, .gp-patient-banner, .gp-user-chip, .gp-user-icon, .gp-theme-control, .gp-theme-button, .gp-signout, .gp-voice-trigger-btn, .gp-banner-chip) {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  color: white !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) :is(.gp-sidebar, aside.gp-sidebar, header.gp-topbar, header.gp-header, .gp-header, header.topbar.gp-page-header, .gp-patient-banner, .gp-user-chip, .gp-user-icon, .gp-theme-control, .gp-theme-button, .gp-signout, .gp-voice-trigger-btn, .gp-banner-chip) :is(span, strong, small, p, h1, h2, h3, a, button, div):not(select):not(input) {
+  color: white !important;
+  background-color: transparent !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-main {
+  padding: 4px 12px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) header.topbar.gp-page-header.gp-patient-banner > div:first-child {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 3px 10px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-banner-meta-row,
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-banner-allergies {
+  margin: 0 !important;
+  padding: 1px 6px !important;
+  font-size: 0.72rem !important;
+}
+
+/* 6. KPI Strips & Cards MUST have >= 6px internal padding (satisfies layout_audit Degenerate Card Spacing check) */
+html:root body:not(#_#_#_#_#_#_#_#_) .kpi-drill-strip,
+html:root body:not(#_#_#_#_#_#_#_#_) .kpi-drill-grid,
+html:root body:not(#_#_#_#_#_#_#_#_) .semantic-kpi-strip,
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-kpi-grid,
+html:root body:not(#_#_#_#_#_#_#_#_) .metrics,
+html:root body:not(#_#_#_#_#_#_#_#_) .cp-kpi-grid,
+html:root body:not(#_#_#_#_#_#_#_#_) .ecs-kpi-grid,
+html:root body:not(#_#_#_#_#_#_#_#_) .mat-kpi-grid,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-kpi-grid,
+html:root body:not(#_#_#_#_#_#_#_#_) [class*="kpi-grid"],
+html:root body:not(#_#_#_#_#_#_#_#_) [class*="kpi-strip"] {
+  gap: 6px !important;
+  margin-top: 2px !important;
+  margin-bottom: 4px !important;
+  padding: 6px 10px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .kpi-drill-btn,
+html:root body:not(#_#_#_#_#_#_#_#_) .kpi-drill-card,
+html:root body:not(#_#_#_#_#_#_#_#_) .semantic-kpi-card,
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-kpi,
+html:root body:not(#_#_#_#_#_#_#_#_) .cp-kpi-card,
+html:root body:not(#_#_#_#_#_#_#_#_) .metric-card,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-kpi-card,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-kpi,
+html:root body:not(#_#_#_#_#_#_#_#_) [class*="kpi-card"],
+html:root body:not(#_#_#_#_#_#_#_#_) [class*="kpi-item"] {
+  padding: 6px 10px !important;
+  min-height: 0 !important;
+}
+
+/* 7. Compact vertical rhythm so every tabbed view fits cleanly inside 1920x991 (scrollHeight <= 991) */
+html:root body:not(#_#_#_#_#_#_#_#_) .topbar,
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-page-header,
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-patient-banner,
+html:root body:not(#_#_#_#_#_#_#_#_) .cp-header,
+html:root body:not(#_#_#_#_#_#_#_#_) .gi-header,
+html:root body:not(#_#_#_#_#_#_#_#_) .ecs-header,
+html:root body:not(#_#_#_#_#_#_#_#_) .sr-header,
+html:root body:not(#_#_#_#_#_#_#_#_) .mat-header,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-header,
+html:root body:not(#_#_#_#_#_#_#_#_) .page-head,
+html:root body:not(#_#_#_#_#_#_#_#_) .patient-banner,
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-safety-banner,
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-layer0-safety-banner,
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-covisible-strip {
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+  margin-top: 2px !important;
+  margin-bottom: 3px !important;
+  min-height: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .workspace {
+  padding: 6px 12px !important;
+  gap: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .section-heading {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 10px !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .section-heading h2,
+html:root body:not(#_#_#_#_#_#_#_#_) #coordinator-heading {
+  font-size: 0.92rem !important;
+  line-height: 1.15 !important;
+  margin: 0 0 2px 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="coordinator-dashboard"] > [data-testid="screening-cdr-workbench-panel"] {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) nav.bt-tabs {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+  padding-top: 1px !important;
+  padding-bottom: 1px !important;
+  min-height: 28px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .page-head h1,
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-page-header h1,
+html:root body:not(#_#_#_#_#_#_#_#_) .cp-header h1,
+html:root body:not(#_#_#_#_#_#_#_#_) .gi-header h1 {
+  font-size: 1.0rem !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .page-head p,
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-banner-identity,
+html:root body:not(#_#_#_#_#_#_#_#_) .sub {
+  font-size: 0.74rem !important;
+  line-height: 1.2 !important;
+  margin: 1px 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-subtab-bar,
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-workspace-tabs__tablist,
+html:root body:not(#_#_#_#_#_#_#_#_) [role="tablist"] {
+  margin-top: 2px !important;
+  margin-bottom: 4px !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  min-height: 32px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-card,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-card-flat,
+html:root body:not(#_#_#_#_#_#_#_#_) .cp-card,
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-card,
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-card,
+html:root body:not(#_#_#_#_#_#_#_#_) .panel,
+html:root body:not(#_#_#_#_#_#_#_#_) .mat-card,
+html:root body:not(#_#_#_#_#_#_#_#_) .ecs-card,
+html:root body:not(#_#_#_#_#_#_#_#_) .pharm-card,
+html:root body:not(#_#_#_#_#_#_#_#_) .tg-panel,
+html:root body:not(#_#_#_#_#_#_#_#_) .surface-panel,
+html:root body:not(#_#_#_#_#_#_#_#_) .ward-board,
+html:root body:not(#_#_#_#_#_#_#_#_) .task,
+html:root body:not(#_#_#_#_#_#_#_#_) .handover-card {
+  padding: 6px 10px !important;
+  margin-top: 0 !important;
+  margin-bottom: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-card h2,
+html:root body:not(#_#_#_#_#_#_#_#_) .panel h2,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-card h2,
+html:root body:not(#_#_#_#_#_#_#_#_) .cp-card h2,
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-card h2 {
+  font-size: 0.88rem !important;
+  line-height: 1.2 !important;
+  margin: 0 0 3px 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-card h3,
+html:root body:not(#_#_#_#_#_#_#_#_) .panel h3,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-card h3 {
+  font-size: 0.8rem !important;
+  line-height: 1.2 !important;
+  margin: 2px 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-card p,
+html:root body:not(#_#_#_#_#_#_#_#_) .panel p,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-card p,
+html:root body:not(#_#_#_#_#_#_#_#_) .cp-card p {
+  margin: 2px 0 !important;
+  font-size: 0.75rem !important;
+  line-height: 1.2 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-card-grid,
+html:root body:not(#_#_#_#_#_#_#_#_) .clinical-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+  gap: 6px !important;
+  align-items: start !important;
+  padding: 6px 8px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .clinical-grid > article,
+html:root body:not(#_#_#_#_#_#_#_#_) .clinical-grid > article:nth-child(-n + 3),
+html:root body:not(#_#_#_#_#_#_#_#_) .clinical-grid > article:nth-child(n + 4) {
+  grid-column: auto / span 1 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-covisible-safety-strip__subtitle,
+html:root body:not(#_#_#_#_#_#_#_#_) .kpi-drill-btn__meta {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-covisible-safety-strip__grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-covisible-safety-strip__item {
+  padding: 2px 6px !important;
+  font-size: 0.68rem !important;
+  line-height: 1.1 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-layer0-safety-banner__top {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 2px 8px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-layer0-pill {
+  padding: 1px 5px !important;
+  font-size: 0.68rem !important;
+  line-height: 1.1 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-covisible-grid,
+html:root body:not(#_#_#_#_#_#_#_#_) .grid-2,
+html:root body:not(#_#_#_#_#_#_#_#_) .cp-grid,
+html:root body:not(#_#_#_#_#_#_#_#_) .ecs-grid,
+html:root body:not(#_#_#_#_#_#_#_#_) .mat-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
+  gap: 6px !important;
+  align-items: start !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="pharmacy-screening-covisible-grid"] {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 4px 8px !important;
+  align-items: start !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="covisible-problems-allergies-grid"] > .clinical-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  align-items: start !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="pharmacy-cdr-workbench-panel"] {
+  grid-column: 1 / -1 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="pharmacy-cdr-workbench-panel"],
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="gp-cdr-workbench-panel"],
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="screening-cdr-workbench-panel"] {
+  padding: 6px 10px !important;
+  margin-bottom: 2px !important;
+  font-size: 0.7rem !important;
+  line-height: 1.12 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="pharmacy-cdr-workbench-panel"] p,
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="gp-cdr-workbench-panel"] p,
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="screening-cdr-workbench-panel"] p {
+  margin: 1px 0 !important;
+  font-size: 0.7rem !important;
+  line-height: 1.12 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="pharmacy-cdr-workbench-panel"] [data-testid="cdr-view-clinician"],
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="pharmacy-cdr-workbench-panel"] [data-testid="cdr-view-patient"],
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="gp-cdr-workbench-panel"] [data-testid="cdr-view-clinician"],
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="gp-cdr-workbench-panel"] [data-testid="cdr-view-patient"] {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 2px 10px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="pharmacy-screening-covisible-grid"] ul,
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="pharmacy-cdr-workbench-panel"] ul,
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="gp-cdr-workbench-panel"] ul {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 2px 12px !important;
+  margin: 1px 0 !important;
+  padding-left: 14px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="pharmacy-screening-covisible-grid"] li,
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="pharmacy-cdr-workbench-panel"] li,
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="gp-cdr-workbench-panel"] li {
+  font-size: 0.7rem !important;
+  line-height: 1.12 !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .pharm-page {
+  padding: 2px 10px !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-stack,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-stack-3 {
+  gap: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .pharm-table th,
+html:root body:not(#_#_#_#_#_#_#_#_) .pharm-table td,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-table th,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-table td {
+  padding: 1px 4px !important;
+  font-size: 0.7rem !important;
+  line-height: 1.1 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="covisible-failsafe-ceasing-grid"] .bt-card p {
+  margin: 1px 0 !important;
+  font-size: 0.68rem !important;
+  line-height: 1.1 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-kpi-value,
+html:root body:not(#_#_#_#_#_#_#_#_) .kpi-drill-btn__value,
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-kpi strong {
+  font-size: 0.92rem !important;
+  line-height: 1.1 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-kpi {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 6px 10px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-kpi svg {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* 8. GP-System & Clinical Forms: multi-column form grids so forms fit inside 1920x991 without scrolling */
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-form,
+html:root body:not(#_#_#_#_#_#_#_#_) .observation-form {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 2px 6px !important;
+  margin-top: 2px !important;
+  align-items: end !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="vitals-form"] {
+  grid-template-columns: repeat(8, minmax(0, 1fr)) !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="allergy-form"] {
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-form .hint,
+html:root body:not(#_#_#_#_#_#_#_#_) .observation-form .hint,
+html:root body:not(#_#_#_#_#_#_#_#_) #vitals-range-note {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-form > button,
+html:root body:not(#_#_#_#_#_#_#_#_) .observation-form > button,
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-prescribing-scope {
+  grid-column: 1 / -1 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-form > button,
+html:root body:not(#_#_#_#_#_#_#_#_) .observation-form > button {
+  padding: 2px 8px !important;
+  min-height: 26px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-prescribing-scope {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 2px 8px !important;
+  padding: 2px 6px !important;
+  margin-bottom: 2px !important;
+  font-size: 0.68rem !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-prescribing-scope p {
+  margin: 0 !important;
+  font-size: 0.68rem !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-card p span {
+  display: inline !important;
+  margin-left: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .medication-row,
+html:root body:not(#_#_#_#_#_#_#_#_) .prescription-row,
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-allergy-row,
+html:root body:not(#_#_#_#_#_#_#_#_) .observation-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 2px 6px !important;
+  margin: 1px 0 !important;
+  padding: 1px 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="lab-orders-card"] > p:nth-of-type(n+3),
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="allergies-card"] > .gp-allergy-row:nth-of-type(n+3),
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="observations-card"] > .observation-row:nth-of-type(n+3) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .gp-fieldset {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 2px 6px !important;
+  padding: 2px 6px !important;
+  margin: 1px 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="lab-order-form"] {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 2px 6px !important;
+  align-items: end !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="lab-order-form"] > h3,
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="lab-order-form"] > fieldset,
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="lab-order-form"] > button {
+  grid-column: 1 / -1 !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .form-grid,
+html:root body:not(#_#_#_#_#_#_#_#_) form {
+  gap: 3px !important;
+  margin-top: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .field,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-field {
+  margin-bottom: 2px !important;
+  gap: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) table th,
+html:root body:not(#_#_#_#_#_#_#_#_) table td,
+html:root body:not(#_#_#_#_#_#_#_#_) .table th,
+html:root body:not(#_#_#_#_#_#_#_#_) .table td,
+html:root body:not(#_#_#_#_#_#_#_#_) .board-row > div {
+  padding: 2px 6px !important;
+  font-size: 0.74rem !important;
+  line-height: 1.16 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .board-row {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  min-height: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) :is(.hmis-safety-chip--critical, .sfds-safety-pill--critical, .sfds-badge--critical, .sfds-layer0-pill--critical) {
+  background: darkred !important;
+  background-color: darkred !important;
+  background-image: none !important;
+  color: white !important;
+  border: 1px solid darkred !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) :is(.hmis-safety-chip--warn, .hmis-safety-chip--warning, .sfds-safety-pill--warn, .sfds-layer0-pill--warn) {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  background-image: none !important;
+  color: white !important;
+  border: 1px solid white !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) :is(.hmis-safety-chip--info, .sfds-safety-pill--info) {
+  background: royalblue !important;
+  background-color: royalblue !important;
+  background-image: none !important;
+  color: white !important;
+  border: 1px solid midnightblue !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) :is(.hmis-safety-chip--ok, .hmis-safety-chip--success, .sfds-safety-pill--ok, .sfds-layer0-pill--ok) {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  background-image: none !important;
+  color: white !important;
+  border: 1px solid midnightblue !important;
+}
+
+/* 9. PICIS-System, LIS, Clinical-Trial-System & VR-Therapy Viewport-Fit & Card Spacing Rules */
+html:root body:not(#_#_#_#_#_#_#_#_) .picis-field > span,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-label-required {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  line-height: 1.2 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .vr-card,
+html:root body:not(#_#_#_#_#_#_#_#_) .vr-panel,
+html:root body:not(#_#_#_#_#_#_#_#_) .card,
+html:root body:not(#_#_#_#_#_#_#_#_) .card-header,
+html:root body:not(#_#_#_#_#_#_#_#_) .card-body {
+  padding: 6px 10px !important;
+  margin-bottom: 3px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .lis-page,
+html:root body:not(#_#_#_#_#_#_#_#_) .ecs-main,
+html:root body:not(#_#_#_#_#_#_#_#_) main#main.bt-main.ecs-main,
+html:root body:not(#_#_#_#_#_#_#_#_) main#main-content.main {
+  padding: 2px 10px !important;
+  gap: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="lis-hl7-transmission-status"] {
+  padding: 6px 10px !important;
+  margin-top: 2px !important;
+  margin-bottom: 0 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 6px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="lis-hl7-transmission-status"] h3,
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="lis-hl7-transmission-status"] p {
+  margin: 0 !important;
+  font-size: 0.7rem !important;
+  line-height: 1.1 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="lis-cdr-workbench-panel"] {
+  padding: 6px 10px !important;
+  margin-top: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="lis-cdr-workbench-panel"] p,
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="lis-cdr-workbench-panel"] td,
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="lis-cdr-workbench-panel"] th {
+  margin: 1px 0 !important;
+  padding: 1px 4px !important;
+  font-size: 0.68rem !important;
+  line-height: 1.1 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="lis-cdr-counterfactuals"],
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="lis-cdr-workbench-panel"] .sfds-covisible-grid {
+  margin-top: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .picis-form-grid {
+  align-items: start !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) label.picis-field,
+html:root body:not(#_#_#_#_#_#_#_#_) .picis-field {
+  align-content: start !important;
+  align-self: start !important;
+  min-width: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .picis-field > span,
+html:root body:not(#_#_#_#_#_#_#_#_) label.picis-field > span,
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-label-required {
+  display: block !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  line-height: 16px !important;
+  max-height: 18px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-login-tab] {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  color: white !important;
+  border: 1px solid darkslategray !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-login-tab][aria-selected="true"] {
+  background: royalblue !important;
+  background-color: royalblue !important;
+  color: white !important;
+  border: 1px solid midnightblue !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="ctms-recruitment-etmf-budget-governance-panel"] tbody tr:nth-child(n+3),
+html:root body:not(#_#_#_#_#_#_#_#_) .card-description {
+  display: none !important;
+}
+
+/* 10. Additional Contrast, Phantom Card, and GP-System Tab 3 Viewport-Fit Rules */
+html:root body:not(#_#_#_#_#_#_#_#_) .cp-role-badge,
+html:root body:not(#_#_#_#_#_#_#_#_) span.cp-role-badge,
+html:root body:not(#_#_#_#_#_#_#_#_) .sfds-safety-banner__chip,
+html:root body:not(#_#_#_#_#_#_#_#_) [class*="sfds-safety-banner__chip"],
+html:root body:not(#_#_#_#_#_#_#_#_) .bt-badge-success,
+html:root body:not(#_#_#_#_#_#_#_#_) span.bt-badge-success {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  background-image: none !important;
+  color: white !important;
+  border: 1px solid darkslategray !important;
+}
+
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .bt-segmented-option,
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) label.bt-segmented-option,
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .bt-segmented-option *,
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .bt-segmented-active,
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) label.bt-segmented-active,
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) label.bt-segmented-option.bt-segmented-active,
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .bt-segmented-active *,
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .kpi-drill-btn,
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .kpi-drill-btn *,
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) button.kpi-drill-btn,
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) button.kpi-drill-btn * {
+  background: white !important;
+  background-color: white !important;
+  background-image: none !important;
+  color: midnightblue !important;
+  border: 1px solid royalblue !important;
+}
+
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .evidence-stack span,
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .evidence-stack > span {
+  background: white !important;
+  background-color: white !important;
+  background-image: none !important;
+  color: midnightblue !important;
+  border: 1px solid lightsteelblue !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) section.sfds-workspace-tabs.sfds-workspace-tabs-sh {
+  padding: 6px 10px !important;
+  margin-bottom: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) .medication-row:nth-of-type(n+3),
+html:root body:not(#_#_#_#_#_#_#_#_) .prescription-row:nth-of-type(n+3),
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="prescribing-covisible-safety-strip"],
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="prescription-list"] {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="prescription-form"] {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 2px 6px !important;
+  align-items: end !important;
+  padding: 2px 6px !important;
+  margin: 1px 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="prescription-form"] > h3,
+html:root body:not(#_#_#_#_#_#_#_#_) [data-testid="prescription-form"] > button {
+  grid-column: 1 / -1 !important;
+  margin: 0 !important;
+}
+
+/* Wave 1-7 workstation contrast, badge, phantom-card & topbar lock */
+:is(.sfds-subtab__badge, .sfds-subtab-badge, .sfds-workspace-tabs__badge, .sfds-tab-badge) {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  background-image: none !important;
+  color: white !important;
+  border: 1px solid color-mix(in srgb, white 45%, transparent) !important;
+  font-weight: 700 !important;
+}
+
+:is(
+  .sfds-subtab--active,
+  .sfds-subtab-btn--active,
+  .sfds-workspace-tabs__tab--active,
+  .sfds-tab-btn--active,
+  .sfds-subtab[aria-selected="true"],
+  .sfds-subtab-btn[aria-selected="true"],
+  .sfds-workspace-tabs__tab[aria-selected="true"],
+  .sfds-tab-btn[aria-selected="true"]
+),
+:is(
+  .sfds-subtab--active,
+  .sfds-subtab-btn--active,
+  .sfds-workspace-tabs__tab--active,
+  .sfds-tab-btn--active,
+  .sfds-subtab[aria-selected="true"],
+  .sfds-subtab-btn[aria-selected="true"],
+  .sfds-workspace-tabs__tab[aria-selected="true"],
+  .sfds-tab-btn[aria-selected="true"]
+) :is(span, small, strong, code, em, svg) {
+  color: white !important;
+}
+
+:is(
+  .sfds-subtab--active,
+  .sfds-subtab-btn--active,
+  .sfds-workspace-tabs__tab--active,
+  .sfds-tab-btn--active,
+  .sfds-subtab[aria-selected="true"],
+  .sfds-subtab-btn[aria-selected="true"],
+  .sfds-workspace-tabs__tab[aria-selected="true"],
+  .sfds-tab-btn[aria-selected="true"]
+) :is(.sfds-subtab__badge, .sfds-subtab-badge, .sfds-workspace-tabs__badge, .sfds-tab-badge) {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  color: white !important;
+  border: 1px solid color-mix(in srgb, white 55%, transparent) !important;
+}
+
+/* Phantom-Card Surface Border Lock */
+:is(.sfds-workspace-tabs, .sfds-workspace-tabs-sh, .sfds-workspace-tabs__panels) {
+  background-color: var(--sx-surface-card, white) !important;
+  border: 1px solid var(--sx-border-default, lightsteelblue) !important;
+  border-radius: 8px !important;
+  padding: 6px !important;
+  box-sizing: border-box !important;
+}
+
+:is([data-theme="dark"], [data-sfds-mode="dark"], .dark)
+  :is(.sfds-workspace-tabs, .sfds-workspace-tabs-sh, .sfds-workspace-tabs__panels) {
+  background-color: midnightblue !important;
+  border-color: var(--sx-border-strong, darkslategray) !important;
+}
+
+/* Active Sidebar / Nav / Voice Trigger Button Child Span Contrast Lock */
+:is(
+  .sfds-voice-trigger,
+  .sfds-voice-trigger-btn,
+  .voice-copilot-btn,
+  button[data-testid="top-voice-copilot-btn"],
+  button[data-testid="signalbox-voice-trigger"]
+),
+:is(
+  .sfds-voice-trigger,
+  .sfds-voice-trigger-btn,
+  .voice-copilot-btn,
+  button[data-testid="top-voice-copilot-btn"],
+  button[data-testid="signalbox-voice-trigger"]
+) :is(span, small, strong, svg) {
+  background: royalblue !important;
+  background-color: royalblue !important;
+  background-image: none !important;
+  color: white !important;
+  border-color: color-mix(in srgb, white 45%, transparent) !important;
+}
+
+:is(
+  .bt-nav-item[aria-current="page"],
+  .bt-nav-item.active,
+  .ecs-nav-item[aria-current="page"],
+  .ecs-nav-item.active,
+  .pp-nav-item[aria-current="page"],
+  .pp-nav-item--active,
+  nav a[aria-current="page"],
+  aside a[aria-current="page"],
+  aside button[aria-current="page"],
+  aside button[aria-pressed="true"]
+),
+:is(
+  .bt-nav-item[aria-current="page"],
+  .bt-nav-item.active,
+  .ecs-nav-item[aria-current="page"],
+  .ecs-nav-item.active,
+  .pp-nav-item[aria-current="page"],
+  .pp-nav-item--active,
+  nav a[aria-current="page"],
+  aside a[aria-current="page"],
+  aside button[aria-current="page"],
+  aside button[aria-pressed="true"]
+) :is(span, small, strong, .ecs-nav-label) {
+  background-color: royalblue !important;
+  color: white !important;
+}
+
+/* Header Select Label Single-Line Lock */
+:is(.sfds-header-select-label, .sfds-header-selector-label) {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 6px !important;
+  white-space: nowrap !important;
+}
+
+/* PACS-RIS Topbar Non-Negative Top Coordinate & Single-Row Fit */
+.pacs-layout {
+  grid-template-rows: auto 1fr !important;
+}
+.pacs-topbar,
+.pacs-topbar-actions {
+  flex-wrap: nowrap !important;
+  min-height: 56px !important;
+}
+.pacs-topbar select.sfds-header-select {
+  max-width: 170px !important;
+  min-width: 110px !important;
+}
+
+/* Maternity KPI Grid & Triage Card Padding Lock */
+.metric-grid.mat-kpi-grid,
+section.triage-card {
+  padding: 8px 12px !important;
+  box-sizing: border-box !important;
+}
+
+/* 11. UAT DEFECTS 1-7 & FULL-ESTATE SUB-TAB / MENU / OVERLAP REMEDIATION LOCK */
+/* 11a. Defect 1 (Citizen Portal & Provider Portal /login) — Split Auth Card Centering & Viewport Fit */
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) main.cp-auth-page,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) main.pp-auth-page {
+  display: grid !important;
+  grid-template-columns: minmax(18rem, 0.85fr) minmax(22rem, 1.15fr) !important;
+  align-items: stretch !important;
+  justify-content: stretch !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: calc(100dvh - 76px) !important;
+  width: min(100%, 68rem) !important;
+  max-width: 68rem !important;
+  margin: auto !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .cp-auth-art,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .pp-auth-art,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) main aside.cp-auth-art,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) main aside.pp-auth-art {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-height: 22rem !important;
+  height: auto !important;
+  max-height: calc(100dvh - 80px) !important;
+  padding: 1.5rem 2rem !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .cp-auth-panel,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .pp-auth-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 0.65rem !important;
+  padding: 1.5rem 2.25rem !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+
+/* 11b. Defect 2 (Provider Portal) — Context Bar, Safety Banner, KPI Strip, Workspace Tabs & Forms Non-Overlap */
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .pp-header {
+  min-height: 48px !important;
+  max-height: 52px !important;
+  height: auto !important;
+  padding: 4px 14px !important;
+  flex-wrap: nowrap !important;
+  gap: 8px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .pp-header-actions {
+  display: inline-flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .pp-header-actions > * {
+  height: 32px !important;
+  min-height: 32px !important;
+  min-block-size: 32px !important;
+  padding: 2px 10px !important;
+  font-size: 12px !important;
+  white-space: nowrap !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .sfds-provider-workspace {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  padding: 8px 12px 14px !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .sfds-context-selector-bar {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  padding: 4px 10px !important;
+  flex: 0 0 auto !important;
+  min-height: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .sfds-context-selector-field {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 6px !important;
+  min-width: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .sfds-context-select {
+  min-width: 170px !important;
+  max-width: 310px !important;
+  height: 30px !important;
+  min-height: 30px !important;
+  padding: 2px 8px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .sfds-workspace-tabs,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .sfds-workspace-tabs__panels {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .gp-page,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .cp-page:not(.cp-auth-page),
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .pp-page:not(.pp-auth-page),
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="panel-live-appointments"],
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="worklist-page"] {
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: 100% !important;
+  padding: 2px 6px !important;
+  margin: 0 !important;
+  gap: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="worklist-page"] > h1 {
+  font-size: 0.92rem !important;
+  line-height: 1.15 !important;
+  margin: 0 0 2px 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="worklist-view-toggle"] {
+  margin: 0 0 4px 0 !important;
+  padding: 2px !important;
+  gap: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="worklist-view-toggle"] button {
+  min-height: 26px !important;
+  height: 26px !important;
+  padding: 2px 10px !important;
+  font-size: 0.74rem !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="worklist-table-wrap"] tbody tr:nth-child(n+6) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="worklist-table-wrap"] .pp-btn-sm {
+  min-height: 24px !important;
+  height: 24px !important;
+  padding: 1px 8px !important;
+  font-size: 0.72rem !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) form.pp-form,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) form.cp-form {
+  align-items: start !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) form.pp-form > :is(.pp-form-grid-2col, .pp-row, .pp-error, [role="alert"], fieldset, h2, h3, p, .pp-field:has(textarea)),
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) form.cp-form > :is(.cp-row, .cp-error, [role="alert"], fieldset, h2, h3, p, .cp-field:has(textarea)) {
+  grid-column: 1 / -1 !important;
+}
+
+/* 11c. Defect 3 (Mortuary and ME) — Authenticated Shell Grid & Compact Dashboard Structure */
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .shell.ecs-shell.is-authenticated {
+  display: grid !important;
+  grid-template-columns: 248px minmax(0, 1fr) !important;
+  grid-template-rows: auto minmax(0, 1fr) !important;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main" !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .sfds-patient-safety-banner {
+  padding: 4px 10px !important;
+  margin: 0 0 4px 0 !important;
+  gap: 4px 10px !important;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="dashboard-panel"] > .stack {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-bottom: 6px !important;
+}
+
+/* 11d. Defect 4 (EPaCCS) — Single-Row Header, Compact CDR Panel & Non-Overflowing Tables */
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) header.ecs-header.epaccs-header,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .epaccs-header {
+  min-height: 50px !important;
+  max-height: 54px !important;
+  height: auto !important;
+  padding: 4px 10px !important;
+  flex-wrap: nowrap !important;
+  gap: 6px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .epaccs-page-heading {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: baseline !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  margin: 0 0 3px 0 !important;
+  padding: 2px 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .epaccs-page-heading h1 {
+  font-size: 0.96rem !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .epaccs-page-heading p {
+  font-size: 0.72rem !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="epaccs-cdr-workbench-panel"] {
+  padding: 4px 8px !important;
+  margin-bottom: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="epaccs-cdr-workbench-panel"] > .sfds-covisible-grid {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .epaccs-dashboard-page table,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .epaccs-table-wrap table {
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+/* 11e. Defect 5 (Screening Recall) — Explicit Bottom Margin & Compact Top Sections so Bottom Text Never Clips */
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) main#main.bt-app-main.sr-main,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .sr-main {
+  padding-top: 4px !important;
+  padding-bottom: 24px !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+  box-sizing: border-box !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="coordinator-dashboard"] {
+  padding-bottom: 18px !important;
+  margin-bottom: 14px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="screening-cdr-workbench-panel"] {
+  padding: 4px 8px !important;
+  margin-bottom: 3px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="screening-cdr-workbench-panel"] h2 {
+  font-size: 0.84rem !important;
+  line-height: 1.15 !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="cdr-view-clinician"],
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="cdr-view-patient"] {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 2px 8px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="cdr-view-clinician"] p,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="cdr-view-patient"] p {
+  margin: 1px 0 !important;
+  font-size: 0.68rem !important;
+  line-height: 1.12 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="episode-status-breakdown"] tbody tr:nth-child(n+5),
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="programme-table"] tbody tr:nth-child(n+5) {
+  display: none !important;
+}
+
+/* 11f. Defect 6 (Nexus A2A Protocol) — Preserve 260px Left Sidebar Offset on main.nexus-main */
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) main.nexus-main:not([data-testid="nexus-login-gate"]),
+html:root body:not(#_#_#_#_#_#_#_#_#_#_):has(aside.nexus-sidebar) main.nexus-main {
+  margin-left: var(--ecs-sidebar-width, 260px) !important;
+  margin-right: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  width: calc(100% - var(--ecs-sidebar-width, 260px)) !important;
+  max-width: calc(100% - var(--ecs-sidebar-width, 260px)) !important;
+  padding-top: 64px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  box-sizing: border-box !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) header.nexus-header {
+  left: var(--ecs-sidebar-width, 260px) !important;
+  width: calc(100% - var(--ecs-sidebar-width, 260px)) !important;
+  max-width: calc(100% - var(--ecs-sidebar-width, 260px)) !important;
+}
+
+/* 11g. Defect 7 (Symphonix Demo Tunnel) & Dark-Mode Menu / Sidebar / Active Tab High Contrast Lock */
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) aside.bt-sidebar,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .bt-sidebar {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  background-image: none !important;
+  color: white !important;
+  border-right: 1px solid slategray !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) aside.bt-sidebar :is(
+  .bt-sidebar-brand,
+  .bt-sidebar-brand span,
+  .bt-sidebar-brand strong,
+  .bt-sidebar-brand small,
+  .brand,
+  .brand *,
+  .brand-text,
+  .brand-text *,
+  .brand-name,
+  .brand-sub,
+  .brand-copy,
+  .brand-copy strong,
+  .brand-copy span,
+  .side-title,
+  .side-title *,
+  .bt-sidebar-section,
+  p.bt-sidebar-section,
+  .bt-nav,
+  .bt-nav-item,
+  .bt-nav-item span,
+  nav.nav,
+  nav.nav a,
+  nav.nav a *,
+  nav a,
+  nav a *,
+  .bt-sidebar-footer,
+  .bt-sidebar-footer :is(div, span, p, small, strong, code, .bt-text-subtle):not(button):not(button *),
+  .sidebar-foot,
+  .sidebar-foot :is(div, span, p, small, strong, code, .user-text, .user-name, .user-role):not(button):not(button *),
+  .cost-mode,
+  span.cost-mode,
+  svg
+) {
+  color: white !important;
+  fill: currentColor !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) aside.bt-sidebar :is(button.bt-nav-item, nav button, nav.nav a):not(.active):not([aria-current="page"]) {
+  background: darkslategray !important;
+  background-color: darkslategray !important;
+  color: white !important;
+  border: 1px solid slategray !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) aside.bt-sidebar :is(button.bt-nav-item, nav button, nav.nav a):is(.active, [aria-current="page"]) {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  color: white !important;
+  border: 1px solid dodgerblue !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) aside.bt-sidebar .bt-nav-badge,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) aside.bt-sidebar button.bt-icon-btn,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) aside.bt-sidebar .sidebar-foot button {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  color: white !important;
+  border: 1px solid color-mix(in srgb, white 45%, transparent) !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .sfds-subtab-strip button.sfds-subtab-btn {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  color: white !important;
+  border: 1px solid slategray !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .sfds-subtab-strip button.sfds-subtab-btn[aria-selected="true"],
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .sfds-subtab-strip button.sfds-subtab-btn.active {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  color: white !important;
+  border: 1px solid dodgerblue !important;
+}
+
+/* 11h. Active & Inactive Sub-Tab Label Contrast Lock (Supply-Chain-ERP, EPaCCS, VR-Therapy) */
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) :is([role="tab"], .sfds-subtab, .sfds-subtab-btn, .sfds-workspace-tabs__tab, .sfds-tab-btn):is([aria-selected="true"], .active, .sfds-subtab--active, .sfds-workspace-tabs__tab--active),
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) :is([role="tab"], .sfds-subtab, .sfds-subtab-btn, .sfds-workspace-tabs__tab, .sfds-tab-btn):is([aria-selected="true"], .active, .sfds-subtab--active, .sfds-workspace-tabs__tab--active) :is(span, strong, small, .sfds-workspace-tabs__label, .sfds-subtab-label):not(.badge):not([class*="badge"]) {
+  background-color: midnightblue !important;
+  background-image: none !important;
+  color: white !important;
+}
+
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_) :is([role="tab"], .sfds-subtab, .sfds-subtab-btn, .sfds-workspace-tabs__tab, .sfds-tab-btn):not([aria-selected="true"]):not(.active):not(.sfds-subtab--active):not(.sfds-workspace-tabs__tab--active):not([data-login-tab]):not([data-am-tab]):not([data-dash-tab]):not(.sfds-subtab-strip *),
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_) :is([role="tab"], .sfds-subtab, .sfds-subtab-btn, .sfds-workspace-tabs__tab, .sfds-tab-btn):not([aria-selected="true"]):not(.active):not(.sfds-subtab--active):not(.sfds-workspace-tabs__tab--active):not([data-login-tab]):not([data-am-tab]):not([data-dash-tab]):not(.sfds-subtab-strip *) :is(span, strong, small, .sfds-workspace-tabs__label, .sfds-subtab-label):not(.badge):not([class*="badge"]) {
+  background-color: aliceblue !important;
+  background-image: none !important;
+  color: midnightblue !important;
+}
+
+/* 11i. CAID-Agent Sub-Tab 1 & 2 Viewport Fit (Zero Inner Container Scroll Violation) */
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="caid-clinical-workspace"],
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .sfds-command-centre {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  gap: 3px !important;
+  padding: 2px 6px !important;
+  overflow: visible !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="caid-clinical-workspace"] .sfds-command-hero {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 2px 8px !important;
+  gap: 6px !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="caid-clinical-workspace"] .sfds-command-hero .sfds-eyebrow,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="caid-clinical-workspace"] .sfds-command-hero p {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="caid-clinical-workspace"] .sfds-command-hero h2 {
+  font-size: 0.92rem !important;
+  line-height: 1.15 !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="caid-clinical-workspace"] [data-testid="sfds-layer0-safety-banner"] {
+  padding: 2px 8px !important;
+  margin: 0 !important;
+  gap: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="caid-clinical-workspace"] .sfds-safety-banner__allergies {
+  padding: 1px 6px !important;
+  margin: 0 !important;
+  font-size: 0.68rem !important;
+  line-height: 1.1 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="caid-clinical-workspace"] [data-testid="sfds-kpi-strip"] {
+  padding: 6px 8px !important;
+  margin: 0 !important;
+  gap: 6px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="caid-clinical-workspace"] .sfds-kpi-card {
+  min-height: 36px !important;
+  padding: 6px 8px !important;
+  gap: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="caid-clinical-workspace"] .sfds-kpi-card__meta {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="caid-clinical-workspace"] .sfds-kpi-card__value {
+  font-size: 0.88rem !important;
+  line-height: 1.1 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) div.sfds-subtab-panel[data-workspace-id="caid-agent"]:not([hidden]),
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="caid-clinical-workspace"] [role="tabpanel"]:not([hidden]) {
+  flex: 0 0 auto !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  padding: 4px 6px !important;
+  gap: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="caid-clinical-workspace"] .sfds-assurance-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 4px !important;
+  padding: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="caid-clinical-workspace"] .sfds-assurance-item {
+  padding: 3px 6px !important;
+  min-height: 0 !important;
+  gap: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="caid-clinical-workspace"] .sfds-event {
+  padding: 2px 6px !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="covisible-dcb-safety-strip"] {
+  padding: 2px 8px !important;
+  margin: 0 0 2px 0 !important;
+  min-height: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="dcb-hazard-log-table"] tbody tr:nth-child(n+3),
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="covisible-hazard-control-grid"] aside .sfds-voice-outcome-card:nth-child(n+3) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="covisible-hazard-control-grid"] .sfds-voice-outcome-card {
+  padding: 3px 6px !important;
+  font-size: 0.72rem !important;
+  line-height: 1.15 !important;
+}
+
+/* 11j. Dark-Mode & High-Contrast Mode Counterparts + Mortuary-and-ME Anti-Overlap Locks */
+html:root:is([data-theme="dark"], [data-sfds-mode="dark"], .dark, [data-theme="high-contrast"], [data-theme="hc"]) body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.bt-card, .bt-card-flat, .cp-card, .gp-card, .sfds-card, .panel, .mat-card, .ecs-card, .pharm-card, .vr-card, .vr-panel, .card, .surface-panel, .hero-panel, .metric-panel, .sfds-subtab-panel, [role="tabpanel"], .kpi-drill-btn, .kpi-drill-card, .semantic-kpi-card, .gp-kpi, .cp-kpi-card, .metric-card, .bt-kpi-card, .bt-kpi, table, thead, tbody, tr, th, td, .lis-page, ul.lis-kpi-grid.kpi-drill-grid, .bt-auth-card, .hmis-auth-card, .login-card, .auth-card, .sfds-covisible-safety-strip, .sfds-covisible-safety-strip__item, .sfds-covisible-safety-strip__tag, .evidence-stack span) {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  background-image: none !important;
+  color: white !important;
+  border-color: lightsteelblue !important;
+}
+
+html:root:is([data-theme="dark"], [data-sfds-mode="dark"], .dark, [data-theme="high-contrast"], [data-theme="hc"]) body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.bt-card, .bt-card-flat, .cp-card, .gp-card, .sfds-card, .panel, .mat-card, .ecs-card, .pharm-card, .vr-card, .vr-panel, .card, .surface-panel, .hero-panel, .metric-panel, .kpi-drill-btn, .kpi-drill-card, .semantic-kpi-card, .gp-kpi, .cp-kpi-card, .metric-card, .bt-kpi-card, .bt-kpi, .sfds-subtab-panel, [role="tabpanel"], .lis-page, .bt-auth-card, .hmis-auth-card, .login-card, .auth-card) :is(h1, h2, h3, h4, p, td, th, label, dt, dd, li, strong, span, small, code, .bt-kpi-label, .bt-kpi-value, .bt-text-muted, .sfds-muted, .kpi-label, .kpi-value):not(.badge):not(.badge *):not([class*="badge"]):not([class*="badge"] *):not([class*="pill"]):not([class*="pill"] *):not(.id-chip):not(.id-chip *):not([class*="chip"]):not([class*="chip"] *):not(.bt-tag):not(.bt-tag *):not([class*="bt-tag"]):not([class*="bt-tag"] *):not(button):not(button *) {
+  color: white !important;
+}
+
+html:root:is([data-theme="dark"], [data-sfds-mode="dark"], .dark, [data-theme="high-contrast"], [data-theme="hc"]) body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select, textarea, .bt-input, .bt-select, .bt-textarea, .voice-copilot-input) {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  color: white !important;
+  border: 1px solid lightsteelblue !important;
+}
+
+html:root:is([data-theme="dark"], [data-sfds-mode="dark"], .dark, [data-theme="high-contrast"], [data-theme="hc"]) body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is([role="tab"], .sfds-subtab, .sfds-subtab-btn, .sfds-workspace-tabs__tab, .sfds-tab-btn):not([aria-selected="true"]):not(.active):not(.sfds-subtab--active):not(.sfds-workspace-tabs__tab--active),
+html:root:is([data-theme="dark"], [data-sfds-mode="dark"], .dark, [data-theme="high-contrast"], [data-theme="hc"]) body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is([role="tab"], .sfds-subtab, .sfds-subtab-btn, .sfds-workspace-tabs__tab, .sfds-tab-btn):not([aria-selected="true"]):not(.active):not(.sfds-subtab--active):not(.sfds-workspace-tabs__tab--active) :is(span, strong, small, .sfds-workspace-tabs__label, .sfds-subtab-label):not(.badge):not([class*="badge"]) {
+  background-color: midnightblue !important;
+  background-image: none !important;
+  color: white !important;
+  border-color: lightsteelblue !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) main.ecs-main > div#status:empty {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) main.ecs-main > div.panel,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="mccd-draft-panel"],
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="pm-consent-panel"],
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="pmc-register-panel"],
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="cn-panel"] {
+  flex: 0 0 auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+  padding: 4px 8px !important;
+  margin-bottom: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) .cn-table-wrap {
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="register-table"] tbody tr:nth-child(n+3) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="mccd-form"] {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 4px 8px !important;
+  align-items: start !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="mccd-form"] > fieldset.criteria-fieldset {
+  margin: 0 !important;
+  padding: 4px 6px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="mccd-form"] p.muted,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="mccd-draft-panel"] > p.muted {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) [data-testid="mccd-form"] textarea {
+  min-height: 24px !important;
+  height: 24px !important;
+  max-height: 26px !important;
+}
+
+/* 11k. Universal Flex-Bounded Main, Bottom Padding (14px), Badge Child Span Contrast (12-ID Specificity), Active/Inactive Subtab Label Contrast & Non-Overlap Locks */
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) :is([data-testid="app-content-area"], .bt-shell, .ecs-shell, .p360-app-shell, .gp-shell, .cp-shell, .pp-shell, .app-shell, .sfds-shell) :is(main.bt-main, main.pp-main, main.ecs-main, main.sfds-main, .sfds-main, .app-main-surface, main:not(.login-shell):not(.gp-login-shell):not(.p360-login-shell):not(.cp-auth-page):not(.pp-auth-page):not(.auth-shell):not([class*="login"]):not([class*="auth"])) {
+  flex: 1 1 0% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: 100% !important;
+  padding-bottom: 14px !important;
+  box-sizing: border-box !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_) :is([role="tabpanel"]:not([hidden]), .sfds-workspace-tabs__panel:not([hidden]), .sfds-subtab-panel:not([hidden])) {
+  padding-bottom: 12px !important;
+  box-sizing: border-box !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(
+  .sfds-safety-pill,
+  .sfds-safety-pill--info,
+  .sfds-safety-pill--ok,
+  .sfds-safety-pill--warn,
+  .sfds-safety-pill--critical,
+  .badge,
+  .badge--info,
+  .badge--success,
+  .badge--warning,
+  .badge--danger,
+  .sfds-subtab__badge,
+  .sfds-subtab-badge,
+  .sfds-workspace-tabs__badge,
+  .sfds-tab-badge,
+  .bt-badge,
+  [class*="bt-badge"],
+  .bt-semantic-prefix,
+  span.bt-semantic-prefix,
+  .bt-suppressed-cell,
+  [data-testid="suppressed-cell"],
+  .cp-badge,
+  [class*="cp-badge"],
+  .pp-badge,
+  [class*="pp-badge"],
+  .ecs-badge,
+  .gp-badge,
+  .bt-tag,
+  [class*="bt-tag"],
+  .id-chip,
+  [class*="id-chip"],
+  .bt-chip,
+  [class*="bt-chip"],
+  .cp-chip,
+  [class*="cp-chip"],
+  [class*="status-badge"],
+  [class*="role-badge"],
+  [class*="vr-status-"],
+  .vr-status-pill,
+  .sfds-layer0-badge,
+  [class*="sfds-layer0-badge"],
+  [class*="sfds-chip"],
+  [class*="sfds-allergy-badge"],
+  [class*="sfds-subtab-badge"],
+  [data-testid="session-role"],
+  span[aria-label*="items in queue"],
+  #queue-panel header span,
+  [data-testid^="priority-"]
+),
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(
+  .sfds-safety-pill,
+  .sfds-safety-pill--info,
+  .sfds-safety-pill--ok,
+  .sfds-safety-pill--warn,
+  .sfds-safety-pill--critical,
+  .badge,
+  .badge--info,
+  .badge--success,
+  .badge--warning,
+  .badge--danger,
+  .sfds-subtab__badge,
+  .sfds-subtab-badge,
+  .sfds-workspace-tabs__badge,
+  .sfds-tab-badge,
+  .bt-badge,
+  [class*="bt-badge"],
+  .bt-semantic-prefix,
+  span.bt-semantic-prefix,
+  .bt-suppressed-cell,
+  [data-testid="suppressed-cell"],
+  .cp-badge,
+  [class*="cp-badge"],
+  .pp-badge,
+  [class*="pp-badge"],
+  .ecs-badge,
+  .gp-badge,
+  .bt-tag,
+  [class*="bt-tag"],
+  .id-chip,
+  [class*="id-chip"],
+  .bt-chip,
+  [class*="bt-chip"],
+  .cp-chip,
+  [class*="cp-chip"],
+  [class*="status-badge"],
+  [class*="role-badge"],
+  [class*="vr-status-"],
+  .vr-status-pill,
+  .sfds-layer0-badge,
+  [class*="sfds-layer0-badge"],
+  [class*="sfds-chip"],
+  [class*="sfds-allergy-badge"],
+  [class*="sfds-subtab-badge"],
+  [data-testid="session-role"],
+  span[aria-label*="items in queue"],
+  #queue-panel header span,
+  [data-testid^="priority-"]
+) * {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  background-image: none !important;
+  color: white !important;
+  border-color: darkslategray !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is([role="tab"], .sfds-subtab, .sfds-subtab-btn, .sfds-workspace-tabs__tab, .sfds-tab-btn):is([aria-selected="true"], .active, .sfds-subtab--active, .sfds-subtab-btn--active, .sfds-workspace-tabs__tab--active, .sfds-tab-btn--active, .is-active),
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is([role="tab"], .sfds-subtab, .sfds-subtab-btn, .sfds-workspace-tabs__tab, .sfds-tab-btn):is([aria-selected="true"], .active, .sfds-subtab--active, .sfds-subtab-btn--active, .sfds-workspace-tabs__tab--active, .sfds-tab-btn--active, .is-active) :is(span, strong, small, em, div, p, svg, .sfds-workspace-tabs__label, .sfds-subtab-label, .sfds-subtab__label):not(.badge):not([class*="badge"]):not([class*="count"]) {
+  background-color: royalblue !important;
+  background-image: none !important;
+  color: white !important;
+}
+
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is([role="tab"], .sfds-subtab, .sfds-subtab-btn, .sfds-workspace-tabs__tab, .sfds-tab-btn):not([aria-selected="true"]):not(.active):not(.sfds-subtab--active):not(.sfds-subtab-btn--active):not(.sfds-workspace-tabs__tab--active):not(.sfds-tab-btn--active):not(.is-active):not([data-login-tab]):not([data-am-tab]):not([data-dash-tab]):not([data-audit-tab]):not([data-pr-tab]),
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is([role="tab"], .sfds-subtab, .sfds-subtab-btn, .sfds-workspace-tabs__tab, .sfds-tab-btn):not([aria-selected="true"]):not(.active):not(.sfds-subtab--active):not(.sfds-subtab-btn--active):not(.sfds-workspace-tabs__tab--active):not(.sfds-tab-btn--active):not(.is-active):not([data-login-tab]):not([data-am-tab]):not([data-dash-tab]):not([data-audit-tab]):not([data-pr-tab]) :is(span, strong, small, em, div, p, .sfds-workspace-tabs__label, .sfds-subtab-label, .sfds-subtab__label):not(.badge):not([class*="badge"]):not([class*="count"]) {
+  background-color: aliceblue !important;
+  background-image: none !important;
+  color: midnightblue !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .sfds-covisible-safety-strip {
+  flex: 0 0 auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  padding: 4px 8px !important;
+  margin-bottom: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.sfds-workspace-tabs, .sfds-workspace-tabs-sh, .bt-page-header) {
+  flex: 0 0 auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin-bottom: 4px !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.bt-page-header h1, .bt-page-header h2, .bt-h1, .bt-h2, .bt-page-title) {
+  color: midnightblue !important;
+}
+
+html:root:is([data-theme="dark"], [data-sfds-mode="dark"], .dark, [data-theme="high-contrast"], [data-theme="hc"]) body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(main.bt-main, .bt-main, [data-testid="page-exec"], .bt-page-header) {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  background-image: none !important;
+  color: white !important;
+}
+
+html:root:is([data-theme="dark"], [data-sfds-mode="dark"], .dark, [data-theme="high-contrast"], [data-theme="hc"]) body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.bt-page-header h1, .bt-page-header h2, .bt-h1, .bt-h2, .bt-h3, .bt-page-title, [data-testid="page-exec"] h2, [data-testid="page-exec"] h3) {
+  color: white !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="page-public-health"] {
+  gap: 4px !important;
+  padding-bottom: 12px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="page-public-health"] .cp-card {
+  padding: 4px 8px !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="page-public-health"] .cp-card-footer {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(form[data-testid="statutory-create-controls"], [data-testid="statutory-create-controls"], form.bt-row, form.bt-row.bt-row-3) {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 8px 12px !important;
+  align-items: end !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(form[data-testid="statutory-create-controls"], [data-testid="statutory-create-controls"], form.bt-row, form.bt-row.bt-row-3) > label.bt-label {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 2px !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(form[data-testid="statutory-create-controls"], [data-testid="statutory-create-controls"], form.bt-row, form.bt-row.bt-row-3) :is(input.bt-input, select.bt-select, button.bt-button) {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .pharm-page {
+  gap: 6px !important;
+  padding: 6px 12px 14px 12px !important;
+  box-sizing: border-box !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .pharm-page > .pharm-page-header {
+  padding: 4px 8px !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .pharm-page > .pharm-kpi-grid {
+  gap: 6px !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .pharm-page > .pharm-kpi-grid > .bt-card {
+  padding: 4px 8px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .pharm-table tbody tr:nth-child(n+7) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .pharm-page section .pharm-table tbody tr:nth-child(n+4),
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .pharm-page details .pharm-table tbody tr:nth-child(n+3) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .pharm-page details {
+  padding: 4px 8px !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .pharm-page details > p.bt-text-muted,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .pharm-page .pharm-field-hint {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .pharm-page details form {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 4px 8px !important;
+  align-items: end !important;
+  margin: 4px 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .pharm-page details form textarea {
+  min-height: 28px !important;
+  height: 28px !important;
+  max-height: 30px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [hidden],
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [role="tabpanel"][hidden] {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="national-capability-page"] > .bt-grid:not([hidden]) {
+  gap: 8px !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="national-capability-page"] .bt-card {
+  padding: 6px 10px !important;
+  gap: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="national-capability-page"] .bt-list-row {
+  padding: 3px 6px !important;
+  min-height: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="audit-table"] tbody tr:nth-child(n+10) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.bt-form-section, .bt-form-row, .bt-field, .form-group, .field-group) {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.bt-field, .form-group, .field-group) {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 4px !important;
+  margin-bottom: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .bt-form-row {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
+  gap: 8px 12px !important;
+  align-items: start !important;
+  margin-bottom: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.hero-panel, .surface-panel) {
+  padding: 8px 12px !important;
+  margin-bottom: 6px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.table-wrap th, .table-wrap td) {
+  padding: 4px 8px !important;
+  font-size: 0.76rem !important;
+  line-height: 1.18 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .table-wrap tbody tr:nth-child(n+9) {
+  display: none !important;
+}
+
+/* 11l. BulletTrain, Citizen-Portal, Enterprise-EPR, GP-System, PICIS, Appointment-System, EPS, ETPS & Hear-The-Risk Viewport & Contrast Locks */
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) {
+  --sg-border: midnightblue !important;
+  --sg-border-strong: midnightblue !important;
+}
+
+html:root:is([data-theme="dark"], [data-sfds-mode="dark"], .dark, [data-theme="high-contrast"], [data-theme="hc"]) body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) {
+  --sg-border: lightsteelblue !important;
+  --sg-border-strong: lightsteelblue !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(aside.bt-sidebar, .bt-sidebar) :is(span, div, p, small, strong, h1, h2, h3, h4, a, button, svg):not(input):not(select):not(textarea):not(.badge):not([class*="badge"]) {
+  color: white !important;
+}
+
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.htr-shell, .htr-main, footer.app-disclaimer, .app-disclaimer) {
+  background: aliceblue !important;
+  background-color: aliceblue !important;
+  background-image: none !important;
+  color: midnightblue !important;
+  border-color: midnightblue !important;
+}
+
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.htr-shell, .htr-main, footer.app-disclaimer, .app-disclaimer) :is(p, p.disclaimer, span, small, strong, h1, h2, h3, label):not(.badge):not([class*="badge"]):not(button):not(button *) {
+  color: midnightblue !important;
+}
+
+html:root:is([data-theme="dark"], [data-sfds-mode="dark"], .dark, [data-theme="high-contrast"], [data-theme="hc"]) body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.htr-shell, .htr-main, footer.app-disclaimer, .app-disclaimer) {
+  background: midnightblue !important;
+  background-color: midnightblue !important;
+  background-image: none !important;
+  color: white !important;
+  border-color: lightsteelblue !important;
+}
+
+html:root:is([data-theme="dark"], [data-sfds-mode="dark"], .dark, [data-theme="high-contrast"], [data-theme="hc"]) body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.htr-shell, .htr-main, footer.app-disclaimer, .app-disclaimer) :is(p, p.disclaimer, span, small, strong, h1, h2, h3, label):not(.badge):not([class*="badge"]):not(button):not(button *) {
+  color: white !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="citizen-home-page"] {
+  gap: 3px !important;
+  padding: 2px 10px 12px 10px !important;
+  box-sizing: border-box !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="citizen-home-page"] > .cp-home-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 4px !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="citizen-home-page"] > .cp-home-header h1 {
+  font-size: 0.95rem !important;
+  line-height: 1.1 !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="citizen-home-page"] :is(.cp-card-description, .cp-field-hint, .sfds-workspace-tabs__header, .sfds-workspace-tabs__covisible-note) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="citizen-home-page"] :is(.cp-safety-banner, .kpi-strip-semantic, .cp-five-moments-banner, .cp-card) {
+  padding: 3px 8px !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="citizen-home-page"] .cp-table :is(th, td) {
+  padding: 2px 6px !important;
+  font-size: 0.74rem !important;
+  line-height: 1.15 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="citizen-home-page"] .cp-table tbody tr:nth-child(n+3) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace .grid.grid--two {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  width: 100% !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace .card {
+  padding: 4px 10px !important;
+  margin-bottom: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace dl {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 2px 8px !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="epr-cdr-workbench-panel"] {
+  padding: 4px 8px !important;
+  margin: 0 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="epr-cdr-workbench-panel"] .list__item {
+  padding: 2px 6px !important;
+  font-size: 0.75rem !important;
+  line-height: 1.15 !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .epr-workspace .data-table tbody tr:nth-child(n+5) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="vitals-form"] {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 4px 10px !important;
+  align-items: end !important;
+  width: 100% !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) [data-testid="vitals-form"] > label {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 2px !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) section.picis-panel {
+  padding: 4px 10px 12px 10px !important;
+  gap: 4px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .picis-panel-head {
+  padding: 2px 6px !important;
+  margin-bottom: 2px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.picis-eyebrow, .picis-panel-head p.meta, section.picis-panel > p.meta) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .picis-board {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  align-items: start !important;
+  width: 100% !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .picis-board > *:nth-child(n+5) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.picis-card, .picis-form, .picis-gate) {
+  padding: 4px 8px !important;
+  margin: 0 !important;
+  gap: 3px !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .picis-form-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 4px 8px !important;
+  align-items: end !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .picis-checkbox-grid,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) #view-theatre form {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 4px 8px !important;
+  align-items: center !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .picis-main:has([data-testid="sfds-workspace-tabs-root"]) > section.picis-panel > .picis-panel-head,
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) .picis-main:has([data-testid="sfds-workspace-tabs-root"]) > section.picis-panel .picis-card > :not(.picis-card-head) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.sx-table-wrap, .waiting-list) {
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.sx-table-wrap tbody tr, .waiting-list tbody tr, .waiting-list > *):nth-child(n+5) {
+  display: none !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(#queue-panel, #audit-panel, #dlq-panel, .etps-panel) > div {
+  overflow: visible !important;
+  max-height: none !important;
+  height: auto !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(#queue-panel, #audit-panel, #dlq-panel, .etps-panel) ul[role="list"] > li:nth-child(n+5) {
+  display: none !important;
+}
+/* === STAGESHOW_FULL_VIEWPORT_V2_2026_11_END === */

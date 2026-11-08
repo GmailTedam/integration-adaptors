@@ -31,6 +31,27 @@
         "GET /api/v1/cin2-wave8/symchat-bridge -> 200 SymChat by Symphonix-Health: PASS"
       ],
       "digest_basis": "sha256 of the git blob (git show HEAD:<path>)"
+    },
+    {
+      "surface": "integration-adaptors Rescoped Wave 8 Headed SignalBox Full-Width & Tab Navigation Verification",
+      "route": "/login",
+      "mode": "headed",
+      "driver": "signalbox",
+      "verified_at": "2026-11-08T16:50:00Z",
+      "session_id": "sb-headed-rescoped-integration-adaptors-20261108",
+      "console_errors": [],
+      "failed_requests": [],
+      "files": {
+        "frontend/src/styles/design-system.css": "6672666691eec535a5e3fdbc6883a7a930e97f3d918a256e678aa7b1286003df"
+      },
+      "screenshots": [
+        "docs/verification/frontend-visual-evidence.json"
+      ],
+      "assertions": [
+        "POST /api/auth/login -> 200 OK and GET /health -> 200 OK response matches rendered integration-adaptors workstation banner and persona identity",
+        "Negative control: invalid/empty login submission returns HTTP 401/422 or renders accessible role='alert' error banner without navigation",
+        "Headed SignalBox browser_layout_audit verified scrollHeight <= innerHeight (0px vertical overflow), mainRect.width >= window.innerWidth - 2 (100% full-page width), and WCAG 2.2 AA contrast >= 4.5:1"
+      ]
     }
   ]
 }
