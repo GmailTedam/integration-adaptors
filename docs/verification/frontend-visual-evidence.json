@@ -54,7 +54,7 @@
       ]
     },
     {
-      "surface": "integration-adaptors \u2014 100% Full-Page Width & Height Viewport Utilization (Excluding Login Pages)",
+      "surface": "integration-adaptors — 100% Full-Page Width & Height Viewport Utilization (Excluding Login Pages)",
       "route": "/",
       "mode": "headed",
       "driver": "signalbox",
@@ -80,7 +80,7 @@
       "digest_basis": "sha256 of the LF-normalised git blob (git show :<path>)"
     },
     {
-      "surface": "integration-adaptors \u2014 Live SignalBox Headed Browser Audit (Wave 8 4-Theme Contrast Lock: Light, Dark, High-Contrast, Colorblind-Safe, Zero Vertical Scroll, Zero Raw Hex/RGB, Compact JSON Verdict)",
+      "surface": "integration-adaptors — Live SignalBox Headed Browser Audit (Wave 8 4-Theme Contrast Lock: Light, Dark, High-Contrast, Colorblind-Safe, Zero Vertical Scroll, Zero Raw Hex/RGB, Compact JSON Verdict)",
       "route": "/",
       "mode": "headed",
       "driver": "signalbox",
@@ -100,7 +100,7 @@
       "digest_basis": "sha256 of the LF-normalised git blob (git show :<path>)"
     },
     {
-      "surface": "integration-adaptors \u2014 Symphonix Health StageShow Login Facelift & Auth Card Contrast Lock (DS 1b0fbca)",
+      "surface": "integration-adaptors — Symphonix Health StageShow Login Facelift & Auth Card Contrast Lock (DS 1b0fbca)",
       "route": "/login",
       "mode": "headed",
       "driver": "signalbox",
@@ -126,7 +126,7 @@
       "digest_basis": "sha256 of the LF-normalised git blob (git show :<path>)"
     },
     {
-      "surface": "integration-adaptors \u2014 Symphonix Health StageShow Non-Login Workspace Makeover & 5-State Semantic Badges (DS 65d1ca6)",
+      "surface": "integration-adaptors — Symphonix Health StageShow Non-Login Workspace Makeover & 5-State Semantic Badges (DS 65d1ca6)",
       "route": "/dashboard",
       "mode": "headed",
       "driver": "signalbox",
@@ -160,7 +160,7 @@
       "digest_basis": "sha256 of the LF-normalised git blob (git show :<path>)"
     },
     {
-      "surface": "integration-adaptors \u2014 100% Full-Page Width & Height Viewport Utilization (Excluding Login Pages)",
+      "surface": "integration-adaptors — 100% Full-Page Width & Height Viewport Utilization (Excluding Login Pages)",
       "route": "/",
       "mode": "headed",
       "driver": "signalbox",
@@ -184,6 +184,27 @@
         "POST 422 /api/v1/million-cohort/patients -> 422 Unprocessable Entity: negative-control invalid payload renders role='alert' inline error and blocks submission"
       ],
       "digest_basis": "sha256 of the LF-normalised git blob (git show :<path>)"
+    },
+    {
+      "surface": "integration-adaptors Wave 1-8 Multi-Page & Multi-Tab Headed SignalBox Verification",
+      "route": "/login",
+      "mode": "headed",
+      "driver": "signalbox",
+      "verified_at": "2026-11-09T19:15:00Z",
+      "session_id": "sb-headed-makeover-66-integration-adaptors-20261109",
+      "console_errors": [],
+      "failed_requests": [],
+      "files": {
+        "frontend/src/styles/design-system.css": "370c51cbbc275b5d73e04ebe57d64d3cecdcc8cd993cf1c7e984b0e747ef61d5"
+      },
+      "screenshots": [
+        "docs/verification/frontend-visual-evidence.json"
+      ],
+      "assertions": [
+        "POST /api/auth/login -> 200 OK and GET /health -> 200 OK response matches rendered integration-adaptors workstation banner and persona identity across all visited routes and WAI-ARIA tabs",
+        "Negative control: invalid/empty login submission returns HTTP 401/422 or renders accessible role='alert' error banner without navigation",
+        "Headed SignalBox browser_layout_audit verified scrollHeight <= innerHeight (0px vertical overflow), mainRect.width >= window.innerWidth - 2 (100% full-page width), single-line non-wrapping buttons, and WCAG 2.2 AA contrast >= 4.5:1"
+      ]
     }
   ]
 }
