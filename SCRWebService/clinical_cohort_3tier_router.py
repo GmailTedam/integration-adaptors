@@ -232,7 +232,7 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{service_name} — SFDS v2.1 3-Tier Clinical Decision &amp; Cohort Workbench</title>
+  <title>{service_name} — Symphonix Health SFDS v2.4 3-Tier Clinical Decision &amp; Cohort Workbench</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Crect width=%2716%27 height=%2716%27 rx=%274%27 fill=%27%232563eb%27/%3E%3C/svg%3E" type="image/svg+xml"/>
   <style>
     *, *::before, *::after {{ box-sizing: border-box; }}
@@ -345,9 +345,12 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
     .sfds-card {{
       background: #0c0e38;
       border: 1px solid #94a3b8;
+      box-shadow: inset 0 3px 0 0 #4f46e5;
       border-radius: 6px;
       padding: 9px 12px;
     }}
+    #badge-pg-status {{ background: #065f46; border-color: #6ee7b7; color: #ffffff; }}
+    #badge-patient-count, #badge-episode-count {{ background: #1e3a8a; border-color: #93c5fd; color: #ffffff; font-variant-numeric: tabular-nums; }}
     .sfds-card-label {{
       font-size: 11px;
       color: #94a3b8;
@@ -358,6 +361,7 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
       font-size: 17px;
       font-weight: 700;
       color: #f8fafc;
+      font-variant-numeric: tabular-nums;
       margin-top: 2px;
       padding: 6px;
     }}
@@ -458,7 +462,7 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
 <body>
   <main class="sfds-shell" id="main-workbench">
     <header class="sfds-header">
-      <h1><span class="sx-brand-mark" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 15h5l3-7 4 13 3-8 2 2h7" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>{service_name} ({sibling_slug}) — 3-Tier Clinical Decision &amp; Million-Cohort Workbench</h1>
+      <h1><span class="sx-brand-mark" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 15h5l3-7 4 13 3-8 2 2h7" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Symphonix Health · {service_name} ({sibling_slug}) — 3-Tier Clinical Decision &amp; Million-Cohort Workbench</h1>
       <div class="sfds-badge-row">
         <span class="sfds-presence-strip" aria-label="SuperPersona Collaborators"><span class="sfds-presence-pill" data-persona-role="clinician"><span class="sfds-presence-dot"></span>MD</span><span class="sfds-presence-pill" data-persona-role="pharmacist"><span class="sfds-presence-dot"></span>Rx</span><span class="sfds-presence-pill" data-persona-role="nurse"><span class="sfds-presence-dot"></span>RN</span><span class="sfds-presence-pill" data-persona-role="icu-bed-manager"><span class="sfds-presence-dot"></span>BedMgr</span></span>
         <span class="sfds-badge" id="badge-pg-status">Dual-Engine: Synced</span>

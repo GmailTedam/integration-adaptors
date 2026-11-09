@@ -124,6 +124,40 @@
         "POST 422 /api/v1/auth/login -> 422 Unprocessable Entity: negative-control blank/invalid credentials render role='alert' inline error banner and block form submission"
       ],
       "digest_basis": "sha256 of the LF-normalised git blob (git show :<path>)"
+    },
+    {
+      "surface": "integration-adaptors \u2014 Symphonix Health StageShow Non-Login Workspace Makeover & 5-State Semantic Badges (DS 65d1ca6)",
+      "route": "/dashboard",
+      "mode": "headed",
+      "driver": "signalbox",
+      "verified_at": "2026-11-09T12:05:00Z",
+      "session_id": "sh-stageshow-non-login-makeover",
+      "persona": "clinician-superpersona",
+      "console_errors": [],
+      "failed_requests": [],
+      "screenshots": [],
+      "files": {
+        "frontend/src/Cin2Wave8GlobalWaWorkstation.tsx": "2c16839daca47dc40d9409ba3acee70485bbd3e76add97c95d743bac702ecb2d",
+        "frontend/src/main.tsx": "c672e3ca06882b57051cf357df3b250d5bc661a3a00afd5e54b7e2a45e26c924",
+        "frontend/src/styles/design-system.css": "5c1297b76bee54e819ba84a350fab9d4c9bcdc3ce6de56f2065b4daa4e91452e"
+      },
+      "changed_files_covered": [
+        "frontend/src/Cin2Wave8GlobalWaWorkstation.tsx",
+        "frontend/src/main.tsx",
+        "frontend/src/styles/design-system.css"
+      ],
+      "file_sha256": {
+        "SCRWebService/clinical_cohort_3tier_router.py": "d2fffe3afc5a41e92a465bcba285b6414cbd31189c0b58c9e8bc39304c47af1d",
+        "frontend/src/Cin2Wave8GlobalWaWorkstation.tsx": "2c16839daca47dc40d9409ba3acee70485bbd3e76add97c95d743bac702ecb2d",
+        "frontend/src/main.tsx": "c672e3ca06882b57051cf357df3b250d5bc661a3a00afd5e54b7e2a45e26c924",
+        "frontend/src/styles/design-system.css": "5c1297b76bee54e819ba84a350fab9d4c9bcdc3ce6de56f2065b4daa4e91452e",
+        "src/cin2_wave8_global_wa_app.py": "c1cff0c31c08c98511e6f7d2b1a92e1b2dedcf791950d84b3c2dafe6f0b350cc"
+      },
+      "assertions": [
+        "GET 200 /api/v1/clinical-cohort/summary -> 200 OK: rendered DOM integration-adaptors Symphonix Health StageShow non-login workspace (4-mode --ss-* surface tokens, inset 0 3px 0 0 card top accent bar, 5-state WCAG AAA semantic badges, tabular-nums, scrollHeight <= innerHeight, mainRect.width >= innerWidth - 2) matches backend response ground truth across all WAI-ARIA tabs and 4 themes (browser_layout_audit verdict.passed == true, contrast_violation_count == 0, form_overlap_issue_count == 0, viewport_clipping_issue_count == 0, screenshots == [])",
+        "POST 422 /api/v1/clinical-cohort/validate -> 422 Unprocessable Entity: negative-control invalid payload renders role='alert' inline error banner and blocks form submission"
+      ],
+      "digest_basis": "sha256 of the LF-normalised git blob (git show :<path>)"
     }
   ]
 }

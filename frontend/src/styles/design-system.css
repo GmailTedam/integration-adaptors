@@ -14,6 +14,58 @@
 .bt-shell { display: flex; width: 100%; }
 .bt-card, .cp-card { border-radius: 8px; }
 /* === STAGESHOW_FULL_VIEWPORT_V2_2026_11_START === */
+:root {
+  --ss-stage-backdrop: var(--bg-canvas, ghostwhite);
+  --ss-surface-card: var(--surface, white);
+  --ss-surface-well: var(--bg-subtle, aliceblue);
+  --ss-surface-chrome: var(--sx-chrome-bg, midnightblue);
+  --ss-border-hairline: var(--border-subtle, lightsteelblue);
+  --ss-border-card-top: var(--primary, royalblue);
+  --ss-badge-ok-bg: darkgreen;
+  --ss-badge-ok-border: mediumseagreen;
+  --ss-badge-warn-bg: color-mix(in srgb, saddlebrown 78%, black);
+  --ss-badge-warn-border: gold;
+  --ss-badge-danger-bg: darkred;
+  --ss-badge-danger-border: salmon;
+  --ss-badge-info-bg: color-mix(in srgb, royalblue 70%, midnightblue);
+  --ss-badge-info-border: lightskyblue;
+  --ss-badge-neutral-bg: midnightblue;
+  --ss-badge-neutral-border: lightsteelblue;
+}
+
+:root[data-theme="dark"],
+:root[data-sfds-mode="dark"],
+.dark {
+  --ss-stage-backdrop: var(--bg-canvas, midnightblue);
+  --ss-surface-card: var(--surface, darkslateblue);
+  --ss-surface-well: var(--bg-subtle, darkslategray);
+  --ss-surface-chrome: var(--sx-chrome-bg, midnightblue);
+  --ss-border-hairline: var(--border-subtle, slategray);
+  --ss-border-card-top: var(--primary, cornflowerblue);
+}
+
+:root[data-theme="high-contrast"],
+:root[data-theme="hc"],
+:root[data-sfds-mode="high-contrast"] {
+  --ss-stage-backdrop: var(--bg-canvas, black);
+  --ss-surface-card: var(--surface, black);
+  --ss-surface-well: var(--bg-subtle, midnightblue);
+  --ss-surface-chrome: var(--sx-chrome-bg, black);
+  --ss-border-hairline: var(--border-subtle, white);
+  --ss-border-card-top: var(--primary, gold);
+}
+
+:root[data-theme="warm"],
+:root[data-sfds-mode="warm"],
+.theme-warm {
+  --ss-stage-backdrop: var(--bg-canvas, floralwhite);
+  --ss-surface-card: var(--surface, ivory);
+  --ss-surface-well: var(--bg-subtle, oldlace);
+  --ss-surface-chrome: var(--sx-chrome-bg, midnightblue);
+  --ss-border-hairline: var(--border-subtle, tan);
+  --ss-border-card-top: var(--primary, royalblue);
+}
+
 html,
 body,
 #root,
@@ -163,12 +215,49 @@ main:not(.login-shell):not(.gp-login-shell):not(.p360-login-shell):not(.cp-auth-
   width: 100% !important;
 }
 
-/* High-specificity WCAG AA contrast, form anti-overlap & control-sizing locks */
+/* High-specificity WCAG AA contrast, form anti-overlap & control-sizing locks (Symphonix Health StageShow 5-State Semantic Badges) */
 html:root body:not(#_#_#_#_#_#_#_#_#_) :is(.bt-badge, [class*="bt-badge"], .cp-badge, [class*="cp-badge"], .pp-badge, [class*="pp-badge"], .ecs-badge, .gp-badge, .bt-tag, [class*="bt-tag"], .badge, .id-chip, [class*="id-chip"], [class*="status-badge"], [class*="role-badge"]),
 html:root body:not(#_#_#_#_#_#_#_#_#_) :is(.bt-badge, [class*="bt-badge"], .cp-badge, [class*="cp-badge"], .pp-badge, [class*="pp-badge"], .ecs-badge, .gp-badge, .bt-tag, [class*="bt-tag"], .badge, .id-chip, [class*="id-chip"], [class*="status-badge"], [class*="role-badge"]) :is(span, strong, small, em, code, .bt-sr-only) {
   background: midnightblue !important;
   background-color: midnightblue !important;
   color: white !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(.bt-badge-error, .bt-badge-danger, .cp-badge-danger, .pp-badge-danger, .ecs-badge-danger, .badge--danger, .badge--error, .badge--critical, .sfds-badge--critical, .sfds-safety-pill--critical, .sfds-layer0-pill--critical, .sfds-subtab__badge--critical, .sfds-subtab-badge--critical, .sfds-subtab-badge--danger, [class*="badge-danger"], [class*="badge-error"], [class*="badge-critical"], [data-tone="critical"], [data-tone="danger"], [data-tone="error"]),
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(.bt-badge-error, .bt-badge-danger, .cp-badge-danger, .pp-badge-danger, .ecs-badge-danger, .badge--danger, .badge--error, .badge--critical, .sfds-badge--critical, .sfds-safety-pill--critical, .sfds-layer0-pill--critical, .sfds-subtab__badge--critical, .sfds-subtab-badge--critical, .sfds-subtab-badge--danger, [class*="badge-danger"], [class*="badge-error"], [class*="badge-critical"], [data-tone="critical"], [data-tone="danger"], [data-tone="error"]) :is(span, strong, small, em, code, .bt-sr-only) {
+  background: var(--ss-badge-danger-bg, darkred) !important;
+  background-color: var(--ss-badge-danger-bg, darkred) !important;
+  color: white !important;
+  border-color: var(--ss-badge-danger-border, salmon) !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(.bt-badge-warning, .bt-badge-warn, .cp-badge-warning, .pp-badge-warning, .ecs-badge-warning, .badge--warning, .badge--warn, .sfds-safety-pill--warn, .sfds-layer0-pill--warn, .sfds-subtab__badge--warn, .sfds-subtab-badge--warn, .sfds-subtab-badge--warning, [class*="badge-warning"], [class*="badge-warn"], [data-tone="warning"], [data-tone="warn"], [data-tone="caution"]),
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(.bt-badge-warning, .bt-badge-warn, .cp-badge-warning, .pp-badge-warning, .ecs-badge-warning, .badge--warning, .badge--warn, .sfds-safety-pill--warn, .sfds-layer0-pill--warn, .sfds-subtab__badge--warn, .sfds-subtab-badge--warn, .sfds-subtab-badge--warning, [class*="badge-warning"], [class*="badge-warn"], [data-tone="warning"], [data-tone="warn"], [data-tone="caution"]) :is(span, strong, small, em, code, .bt-sr-only) {
+  background: var(--ss-badge-warn-bg, color-mix(in srgb, saddlebrown 78%, black)) !important;
+  background-color: var(--ss-badge-warn-bg, color-mix(in srgb, saddlebrown 78%, black)) !important;
+  color: white !important;
+  border-color: var(--ss-badge-warn-border, gold) !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(.bt-badge-success, .bt-badge-ok, .cp-badge-success, .pp-badge-success, .ecs-badge-success, .badge--success, .badge--ok, .sfds-safety-pill--ok, .sfds-layer0-pill--ok, .sfds-subtab__badge--ok, .sfds-subtab-badge--ok, .sfds-subtab-badge--success, [class*="badge-success"], [class*="badge-ok"], [data-tone="success"], [data-tone="ok"], [data-tone="normal"]),
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(.bt-badge-success, .bt-badge-ok, .cp-badge-success, .pp-badge-success, .ecs-badge-success, .badge--success, .badge--ok, .sfds-safety-pill--ok, .sfds-layer0-pill--ok, .sfds-subtab__badge--ok, .sfds-subtab-badge--ok, .sfds-subtab-badge--success, [class*="badge-success"], [class*="badge-ok"], [data-tone="success"], [data-tone="ok"], [data-tone="normal"]) :is(span, strong, small, em, code, .bt-sr-only) {
+  background: var(--ss-badge-ok-bg, darkgreen) !important;
+  background-color: var(--ss-badge-ok-bg, darkgreen) !important;
+  color: white !important;
+  border-color: var(--ss-badge-ok-border, mediumseagreen) !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(.bt-badge-info, .cp-badge-info, .pp-badge-info, .ecs-badge-info, .badge--info, .sfds-safety-pill--info, .sfds-subtab__badge--info, .sfds-subtab-badge--info, [class*="badge-info"], [data-tone="info"]),
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(.bt-badge-info, .cp-badge-info, .pp-badge-info, .ecs-badge-info, .badge--info, .sfds-safety-pill--info, .sfds-subtab__badge--info, .sfds-subtab-badge--info, [class*="badge-info"], [data-tone="info"]) :is(span, strong, small, em, code, .bt-sr-only) {
+  background: var(--ss-badge-info-bg, color-mix(in srgb, royalblue 70%, midnightblue)) !important;
+  background-color: var(--ss-badge-info-bg, color-mix(in srgb, royalblue 70%, midnightblue)) !important;
+  color: white !important;
+  border-color: var(--ss-badge-info-border, lightskyblue) !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(.kpi-card, .bt-kpi-value, .sfds-kpi-card__value, .id-chip, .sfds-covisible-safety-strip__meta, .sfds-covisible-safety-strip__news2, td, [data-tabular="true"]) {
+  font-variant-numeric: tabular-nums !important;
 }
 
 html:root body:not(#_#_#_#_#_#_#_#_#_) .bt-header,
@@ -295,6 +384,10 @@ html:root body:not(#_#_#_#_#_#_#_#_#_) :is(.card, .sfds-card, .bt-card, .cp-card
   border-width: 1px !important;
   border-style: solid !important;
   border-color: var(--sfds-border, var(--border-subtle, var(--border, lightslategray))) !important;
+}
+
+html:root body:not(#_#_#_#_#_#_#_#_#_) :is(.sfds-workspace-tabs__header, .sfds-covisible-safety-strip, .sfds-card, .bt-card, .cp-card, .pp-card, .ecs-card, .kpi-card) {
+  box-shadow: inset 0 3px 0 0 var(--ss-border-card-top, royalblue), var(--shadow-sm) !important;
 }
 
 html:root body:not(#_#_#_#_#_#_#_#_#_) hr {
@@ -532,6 +625,8 @@ html:root body:not(#_#_#_#_#_#_#_#_#_) :is(
   margin-left: auto !important;
   margin-right: auto !important;
   flex: 0 1 auto !important;
+  border-radius: 16px !important;
+  box-shadow: var(--shadow-md) !important;
 }
 
 
@@ -914,20 +1009,8 @@ html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([
 /* Clinical-Trial-System & Universal Safety Pills + Badges Contrast Lock */
 html:root body:not(#_#_#_)
   :is(
-    .sfds-safety-pill,
-    .sfds-safety-pill--info,
-    .sfds-safety-pill--ok,
-    .sfds-safety-pill--warn,
-    .sfds-safety-pill--critical,
-    .badge,
-    .badge--info,
-    .badge--success,
-    .badge--warning,
-    .badge--danger,
-    .sfds-subtab__badge--info,
-    .sfds-subtab__badge--ok,
-    .sfds-subtab__badge--warn,
-    .sfds-subtab__badge--critical
+    .sfds-safety-pill:not([class*="--"]):not([data-tone]),
+    .badge:not([class*="--"]):not([data-tone])
   ) {
   background: midnightblue !important;
   background-color: midnightblue !important;
@@ -969,34 +1052,32 @@ html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([
   color: midnightblue !important;
 }
 
-html:root body:not(#_#_#_) :is(.vr-btn, .vr-status-pill, [class*="vr-status-"]) {
-  background: midnightblue !important;
-  background-color: midnightblue !important;
+html:root body:not(#_#_#_) :is(.vr-btn, .vr-status-pill, [ class*="vr-status-" ]) {
+  background: royalblue !important;
+  background-color: royalblue !important;
   color: white !important;
-  border: 1px solid midnightblue !important;
+  border: 1px solid royalblue !important;
 }
 
-/* ORMDET, HMIS & Universal Auth Card Contrast Lock (midnightblue on white) */
-html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.bt-auth-card, .hmis-auth-card, .login-card, .auth-card, .login-panel, .vr-panel, .gp-login-card, .p360-login-card, .etps-login-card, .erp-login-card, .erp-login-form, [class*="-login-card"], [class*="-auth-card"], .sx-auth-form) {
+/* ORMDET, HMIS & Universal Auth Card Contrast Lock (midnightblue on white — Symphonix Health StageShow Facelift) */
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.bt-auth-card, .hmis-auth-card, .login-card, .auth-card, .gp-login-card, .p360-login-card, .etps-login-card, .erp-login-card, .erp-login-form, [class*="-login-card"], [class*="-auth-card"], .sx-auth-form) {
   background: white !important;
   background-color: white !important;
   background-image: none !important;
   color: midnightblue !important;
   border: 1px solid lightsteelblue !important;
   border-top: 4px solid midnightblue !important;
-  border-radius: 16px !important;
-  box-shadow: var(--shadow-md) !important;
 }
 
 html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_)
-  :is(.bt-auth-card, .hmis-auth-card, .login-card, .auth-card, .login-panel, .vr-panel, .gp-login-card, .p360-login-card, .etps-login-card, .erp-login-card, .erp-login-form, [class*="-login-card"], [class*="-auth-card"], .sx-auth-form)
+  :is(.bt-auth-card, .hmis-auth-card, .login-card, .auth-card, .gp-login-card, .p360-login-card, .etps-login-card, .erp-login-card, .erp-login-form, [class*="-login-card"], [class*="-auth-card"], .sx-auth-form)
   :is(h1, h2, h3, p, span, label, abbr, strong, small, div):not(button):not(button *):not([role="alert"]) {
   color: midnightblue !important;
   background: transparent !important;
   background-color: transparent !important;
 }
 
-html:root body:not(#_#_#_) :is(button[data-testid="login-submit"], button[data-testid="login-submit-btn"], button.bt-btn[type="submit"], .bt-auth-card button[type="submit"], .hmis-auth-card button[type="submit"], .login-card button[type="submit"], .auth-card button[type="submit"], .login-panel button[type="submit"], .vr-panel button[type="submit"], [class*="-login-card"] button[type="submit"]) {
+html:root body:not(#_#_#_) :is(button[data-testid="login-submit"], button.bt-btn[type="submit"], .bt-auth-card button[type="submit"], .hmis-auth-card button[type="submit"], .login-card button[type="submit"], .auth-card button[type="submit"], [class*="-login-card"] button[type="submit"], [class*="-auth-card"] button[type="submit"]) {
   background: royalblue !important;
   background-color: royalblue !important;
   color: white !important;
@@ -1006,43 +1087,13 @@ html:root body:not(#_#_#_) :is(button[data-testid="login-submit"], button[data-t
   font-weight: 700 !important;
 }
 
-.bt-auth-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  font-size: var(--sg-font-xs, 0.72rem);
-  font-weight: var(--sg-weight-bold, 700);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--sg-primary, midnightblue);
-  margin-bottom: 0.25rem;
-}
-
-.bt-auth-trust-line {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--sg-border, lightsteelblue);
-  font-size: var(--sg-font-xs, 0.75rem);
-  color: var(--sg-text-muted, slategray);
-}
-
 /* Form clarity & badge lock */
 html:root body:not(#_#_#_)
   :is(
-    .bt-badge,
-    .bt-badge-error,
-    .bt-badge-warning,
-    .bt-badge-success,
-    .bt-badge-info,
+    .bt-badge:not([class*="bt-badge-"]):not([data-tone]),
     .bt-badge-default,
-    [class*="bt-badge"],
-    [class*="status-badge"],
-    [class*="role-badge"]
+    [class*="status-badge"]:not([data-tone]),
+    [class*="role-badge"]:not([data-tone])
   ) {
   background: midnightblue !important;
   background-color: midnightblue !important;
