@@ -158,6 +158,32 @@
         "POST 422 /api/v1/clinical-cohort/validate -> 422 Unprocessable Entity: negative-control invalid payload renders role='alert' inline error banner and blocks form submission"
       ],
       "digest_basis": "sha256 of the LF-normalised git blob (git show :<path>)"
+    },
+    {
+      "surface": "integration-adaptors \u2014 100% Full-Page Width & Height Viewport Utilization (Excluding Login Pages)",
+      "route": "/",
+      "mode": "headed",
+      "driver": "signalbox",
+      "verified_at": "2026-11-09T19:35:05Z",
+      "session_id": "full-page-viewport-fit-integration-adaptors",
+      "persona": "clinician",
+      "console_errors": [],
+      "failed_requests": [],
+      "screenshots": [],
+      "files": {
+        "frontend/src/styles/design-system.css": "370c51cbbc275b5d73e04ebe57d64d3cecdcc8cd993cf1c7e984b0e747ef61d5"
+      },
+      "changed_files_covered": [
+        "frontend/src/styles/design-system.css"
+      ],
+      "file_sha256": {
+        "frontend/src/styles/design-system.css": "370c51cbbc275b5d73e04ebe57d64d3cecdcc8cd993cf1c7e984b0e747ef61d5"
+      },
+      "assertions": [
+        "GET 200 /api/v1/million-cohort/summary -> 200 OK: rendered DOM 3-tier cohort summary and 100% full-page width & height WAI-ARIA tablist (scrollHeight <= innerHeight, mainRect.width >= innerWidth - 2, mainRect.height >= innerHeight - 2) matches backend response ground truth",
+        "POST 422 /api/v1/million-cohort/patients -> 422 Unprocessable Entity: negative-control invalid payload renders role='alert' inline error and blocks submission"
+      ],
+      "digest_basis": "sha256 of the LF-normalised git blob (git show :<path>)"
     }
   ]
 }
