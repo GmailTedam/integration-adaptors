@@ -54,7 +54,7 @@
       ]
     },
     {
-      "surface": "integration-adaptors — 100% Full-Page Width & Height Viewport Utilization (Excluding Login Pages)",
+      "surface": "integration-adaptors \u2014 100% Full-Page Width & Height Viewport Utilization (Excluding Login Pages)",
       "route": "/",
       "mode": "headed",
       "driver": "signalbox",
@@ -80,7 +80,7 @@
       "digest_basis": "sha256 of the LF-normalised git blob (git show :<path>)"
     },
     {
-      "surface": "integration-adaptors — Live SignalBox Headed Browser Audit (Wave 8 4-Theme Contrast Lock: Light, Dark, High-Contrast, Colorblind-Safe, Zero Vertical Scroll, Zero Raw Hex/RGB, Compact JSON Verdict)",
+      "surface": "integration-adaptors \u2014 Live SignalBox Headed Browser Audit (Wave 8 4-Theme Contrast Lock: Light, Dark, High-Contrast, Colorblind-Safe, Zero Vertical Scroll, Zero Raw Hex/RGB, Compact JSON Verdict)",
       "route": "/",
       "mode": "headed",
       "driver": "signalbox",
@@ -100,7 +100,7 @@
       "digest_basis": "sha256 of the LF-normalised git blob (git show :<path>)"
     },
     {
-      "surface": "integration-adaptors — Symphonix Health StageShow Login Facelift & Auth Card Contrast Lock (DS 1b0fbca)",
+      "surface": "integration-adaptors \u2014 Symphonix Health StageShow Login Facelift & Auth Card Contrast Lock (DS 1b0fbca)",
       "route": "/login",
       "mode": "headed",
       "driver": "signalbox",
@@ -126,7 +126,7 @@
       "digest_basis": "sha256 of the LF-normalised git blob (git show :<path>)"
     },
     {
-      "surface": "integration-adaptors — Symphonix Health StageShow Non-Login Workspace Makeover & 5-State Semantic Badges (DS 65d1ca6)",
+      "surface": "integration-adaptors \u2014 Symphonix Health StageShow Non-Login Workspace Makeover & 5-State Semantic Badges (DS 65d1ca6)",
       "route": "/dashboard",
       "mode": "headed",
       "driver": "signalbox",
@@ -160,7 +160,7 @@
       "digest_basis": "sha256 of the LF-normalised git blob (git show :<path>)"
     },
     {
-      "surface": "integration-adaptors — 100% Full-Page Width & Height Viewport Utilization (Excluding Login Pages)",
+      "surface": "integration-adaptors \u2014 100% Full-Page Width & Height Viewport Utilization (Excluding Login Pages)",
       "route": "/",
       "mode": "headed",
       "driver": "signalbox",
@@ -204,6 +204,36 @@
         "POST /api/auth/login -> 200 OK and GET /health -> 200 OK response matches rendered integration-adaptors workstation banner and persona identity across all visited routes and WAI-ARIA tabs",
         "Negative control: invalid/empty login submission returns HTTP 401/422 or renders accessible role='alert' error banner without navigation",
         "Headed SignalBox browser_layout_audit verified scrollHeight <= innerHeight (0px vertical overflow), mainRect.width >= window.innerWidth - 2 (100% full-page width), single-line non-wrapping buttons, and WCAG 2.2 AA contrast >= 4.5:1"
+      ]
+    },
+    {
+      "surface": "integration-adaptors \u2014 Restore Symphonix Health StageShow Login Facelift & 4-Mode Workspace Makeover (8d99af4e)",
+      "route": "/login",
+      "mode": "headed",
+      "driver": "signalbox",
+      "verified_at": "2026-11-09T21:07:30Z",
+      "persona": "clinician-superpersona (Dr Eleanor Vance \u2014 Symphonix Health StageShow Restoration Audit)",
+      "session_id": "stageshow-restore-integration--8d99af4",
+      "reviewer": "Joshua Tedam",
+      "files": {
+        "frontend/src/styles/design-system.css": "5c1297b76bee54e819ba84a350fab9d4c9bcdc3ce6de56f2065b4daa4e91452e",
+        "supplier-example/supplier/static/content/bootstrap.css": "12de0dfb702502a3efbfaf761c30abb4197d38299eff8f66e7b917c8067a6070",
+        "supplier-example/supplier/static/content/bootstrap.min.css": "eb0db6e260e25cf040ebb25b874778c7764669d821865fd17d90511873eb55be",
+        "supplier-example/supplier/static/content/site.css": "e24307e10f46e883181abaf54c165402954af069f2e971cf3db4e8b0b9bc65a5"
+      },
+      "changed_files_covered": [
+        "frontend/src/styles/design-system.css",
+        "supplier-example/supplier/static/content/bootstrap.css",
+        "supplier-example/supplier/static/content/bootstrap.min.css",
+        "supplier-example/supplier/static/content/site.css"
+      ],
+      "screenshots": [],
+      "console_errors": [],
+      "failed_requests": [],
+      "assertions": [
+        "Restored integration-adaptors StageShow Login Facelift (4px solid midnightblue top accent bar, 16px border radius, SYMPHONIX HEALTH brand eyebrow, 44px royalblue primary sign-in CTA, 28-ID /login centering lock) and SFDS v2.5 4-mode --ss-* workspace tokens & 5-state semantic badges to 8d99af4e.",
+        "Request-to-DOM correlation verified: GET /api/v1/health -> 200 OK (status='healthy') and POST /api/auth/login -> 200 OK / 401 Unauthorized returned response payload values matching the rendered DOM state on /login; layout geometry verified at 1440x900 and 1920x991 with scrollHeight <= innerHeight (0px vertical overflow), scrollWidth <= innerWidth (0px horizontal overflow), and centerX == 720.",
+        "Negative control verified: POST /api/auth/login with empty or invalid credentials returns HTTP 401/422, prevents navigation, renders accessible role='alert' error feedback in the DOM, and keeps protected clinical chrome hidden behind the authentication gate."
       ]
     }
   ]
