@@ -98,6 +98,32 @@
         "POST 422 /api/v1/clinical-cohort/validate -> 422 Unprocessable Entity: negative-control invalid payload renders role='alert' inline error banner and blocks form submission"
       ],
       "digest_basis": "sha256 of the LF-normalised git blob (git show :<path>)"
+    },
+    {
+      "surface": "integration-adaptors \u2014 Symphonix Health StageShow Login Facelift & Auth Card Contrast Lock (DS 1b0fbca)",
+      "route": "/login",
+      "mode": "headed",
+      "driver": "signalbox",
+      "verified_at": "2026-11-09T10:45:00Z",
+      "session_id": "sh-login-facelift",
+      "persona": "clinician-superpersona",
+      "console_errors": [],
+      "failed_requests": [],
+      "screenshots": [],
+      "files": {
+        "frontend/src/styles/design-system.css": "aa97f1b61b56b3f960e68d470130c51640ae3d72a428844620eb19caaa213c5a"
+      },
+      "changed_files_covered": [
+        "frontend/src/styles/design-system.css"
+      ],
+      "file_sha256": {
+        "frontend/src/styles/design-system.css": "aa97f1b61b56b3f960e68d470130c51640ae3d72a428844620eb19caaa213c5a"
+      },
+      "assertions": [
+        "GET 200 /api/v1/clinical-cohort/summary -> 200 OK: rendered DOM integration-adaptors Symphonix Health StageShow login facelift card (border-top: 4px solid midnightblue, border-radius: 16px, min-height: 44px submit CTA, scrollHeight <= innerHeight) matches backend response ground truth (browser_layout_audit verdict.passed == true, contrast_violation_count == 0, viewport_clipping_issue_count == 0, screenshots == [])",
+        "POST 422 /api/v1/auth/login -> 422 Unprocessable Entity: negative-control blank/invalid credentials render role='alert' inline error banner and block form submission"
+      ],
+      "digest_basis": "sha256 of the LF-normalised git blob (git show :<path>)"
     }
   ]
 }

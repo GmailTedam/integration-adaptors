@@ -977,27 +977,58 @@ html:root body:not(#_#_#_) :is(.vr-btn, .vr-status-pill, [class*="vr-status-"]) 
 }
 
 /* ORMDET, HMIS & Universal Auth Card Contrast Lock (midnightblue on white) */
-html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.bt-auth-card, .hmis-auth-card, .login-card, .auth-card) {
+html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_) :is(.bt-auth-card, .hmis-auth-card, .login-card, .auth-card, .login-panel, .vr-panel, .gp-login-card, .p360-login-card, .etps-login-card, .erp-login-card, .erp-login-form, [class*="-login-card"], [class*="-auth-card"], .sx-auth-form) {
   background: white !important;
   background-color: white !important;
   background-image: none !important;
   color: midnightblue !important;
   border: 1px solid lightsteelblue !important;
+  border-top: 4px solid midnightblue !important;
+  border-radius: 16px !important;
+  box-shadow: var(--shadow-md) !important;
 }
 
 html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([data-theme="high-contrast"]):not([data-theme="hc"]) body:not([data-theme="dark"]):not(.dark):not(#_#_#_#_#_#_#_#_#_#_#_#_#_#_)
-  :is(.bt-auth-card, .hmis-auth-card, .login-card, .auth-card)
+  :is(.bt-auth-card, .hmis-auth-card, .login-card, .auth-card, .login-panel, .vr-panel, .gp-login-card, .p360-login-card, .etps-login-card, .erp-login-card, .erp-login-form, [class*="-login-card"], [class*="-auth-card"], .sx-auth-form)
   :is(h1, h2, h3, p, span, label, abbr, strong, small, div):not(button):not(button *):not([role="alert"]) {
   color: midnightblue !important;
   background: transparent !important;
   background-color: transparent !important;
 }
 
-html:root body:not(#_#_#_) :is(button[data-testid="login-submit"], button.bt-btn[type="submit"], .bt-auth-card button[type="submit"], .hmis-auth-card button[type="submit"]) {
+html:root body:not(#_#_#_) :is(button[data-testid="login-submit"], button[data-testid="login-submit-btn"], button.bt-btn[type="submit"], .bt-auth-card button[type="submit"], .hmis-auth-card button[type="submit"], .login-card button[type="submit"], .auth-card button[type="submit"], .login-panel button[type="submit"], .vr-panel button[type="submit"], [class*="-login-card"] button[type="submit"]) {
   background: royalblue !important;
   background-color: royalblue !important;
   color: white !important;
   border: 1px solid royalblue !important;
+  min-height: 44px !important;
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+}
+
+.bt-auth-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: var(--sg-font-xs, 0.72rem);
+  font-weight: var(--sg-weight-bold, 700);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sg-primary, midnightblue);
+  margin-bottom: 0.25rem;
+}
+
+.bt-auth-trust-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--sg-border, lightsteelblue);
+  font-size: var(--sg-font-xs, 0.75rem);
+  color: var(--sg-text-muted, slategray);
 }
 
 /* Form clarity & badge lock */
