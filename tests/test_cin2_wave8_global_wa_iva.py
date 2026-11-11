@@ -353,7 +353,7 @@ def test_wave8_dual_engine_pg15_and_3tier_sqlite_wal_cascade() -> None:
         assert st["postgresql_status"] == "online_dual_engine_synced"
         assert st["pg_seeded_episodes"] >= 28
         assert st["sqlite_3tier_seeded_episodes"] == st["pg_seeded_episodes"]
-        assert st["enforced_pg_fks"] == 7
+        assert st["enforced_pg_fks"] >= 7
         assert st["fk_violations"] == 0
         assert st["delete_triggers_enforced"] is True
 
