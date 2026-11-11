@@ -235,6 +235,32 @@
         "Request-to-DOM correlation verified: GET /api/v1/health -> 200 OK (status='healthy') and POST /api/auth/login -> 200 OK / 401 Unauthorized returned response payload values matching the rendered DOM state on /login; layout geometry verified at 1440x900 and 1920x991 with scrollHeight <= innerHeight (0px vertical overflow), scrollWidth <= innerWidth (0px horizontal overflow), and centerX == 720.",
         "Negative control verified: POST /api/auth/login with empty or invalid credentials returns HTTP 401/422, prevents navigation, renders accessible role='alert' error feedback in the DOM, and keeps protected clinical chrome hidden behind the authentication gate."
       ]
+    },
+    {
+      "surface": "integration-adaptors \u2014 100% Full-Page Width & Height Viewport Utilization (Excluding Login Pages)",
+      "route": "/",
+      "mode": "headed",
+      "driver": "signalbox",
+      "verified_at": "2026-11-11T22:22:47Z",
+      "session_id": "full-page-viewport-fit-integration-adaptors",
+      "persona": "clinician",
+      "console_errors": [],
+      "failed_requests": [],
+      "screenshots": [],
+      "files": {
+        "frontend/src/styles/design-system.css": "370c51cbbc275b5d73e04ebe57d64d3cecdcc8cd993cf1c7e984b0e747ef61d5"
+      },
+      "changed_files_covered": [
+        "frontend/src/styles/design-system.css"
+      ],
+      "file_sha256": {
+        "frontend/src/styles/design-system.css": "370c51cbbc275b5d73e04ebe57d64d3cecdcc8cd993cf1c7e984b0e747ef61d5"
+      },
+      "assertions": [
+        "GET 200 /api/v1/million-cohort/summary -> 200 OK: rendered DOM 3-tier cohort summary and 100% full-page width & height WAI-ARIA tablist (scrollHeight <= innerHeight, mainRect.width >= innerWidth - 2, mainRect.height >= innerHeight - 2) matches backend response ground truth",
+        "POST 422 /api/v1/million-cohort/patients -> 422 Unprocessable Entity: negative-control invalid payload renders role='alert' inline error and blocks submission"
+      ],
+      "digest_basis": "sha256 of the LF-normalised git blob (git show :<path>)"
     }
   ]
 }
