@@ -1,0 +1,35 @@
+{
+  "schema_version": "OIDC_SERVICE_ACCESS_V1",
+  "client_id": "integration-adaptors",
+  "subject": "service:integration-adaptors",
+  "tenant_claim_required": true,
+  "access_paths": [
+    {
+      "resource_server": "bullettrain-api-gateway",
+      "audience": "bullettrain",
+      "mode": "oidc-bearer",
+      "base_url_env": "INTEGRATION_ADAPTORS_BULLETTRAIN_API_GATEWAY_URL",
+      "token_env": "INTEGRATION_ADAPTORS_BULLETTRAIN_API_GATEWAY_TOKEN",
+      "tenant_env": "INTEGRATION_ADAPTORS_BULLETTRAIN_TENANT_ID",
+      "required_claims": [
+        "exp",
+        "iat",
+        "iss",
+        "aud",
+        "sub",
+        "tenant_id",
+        "scope"
+      ],
+      "required_scopes": [
+        "adaptor:translate",
+        "connector:exchange",
+        "patient:read",
+        "clinical:read",
+        "audit:write"
+      ],
+      "denied_scopes": [
+        "system:admin"
+      ]
+    }
+  ]
+}

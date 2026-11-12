@@ -1,0 +1,82 @@
+{
+  "schema_version": "OIDC_ACCESS_CONTRACT_V1",
+  "metadata": {
+    "owner": "integration-adaptors",
+    "purpose": "Declare repo-local OIDC access to the BulletTrain API gateway and the live runtime proof gate.",
+    "last_reviewed": "2026-11-12"
+  },
+  "jwt_baseline": {
+    "allowed_algorithms": [
+      "RS256"
+    ],
+    "required_signature_claims": [
+      "exp",
+      "iat",
+      "iss",
+      "aud",
+      "sub"
+    ],
+    "required_access_claim_groups": {
+      "tenant": [
+        "tenant_id",
+        "tenant",
+        "tenantId",
+        "tid"
+      ],
+      "scope": [
+        "scope",
+        "scopes",
+        "scp"
+      ]
+    },
+    "forbidden_algorithms": [
+      "none",
+      "HS256",
+      "HS384",
+      "HS512"
+    ]
+  },
+  "resource_servers": [
+    {
+      "id": "bullettrain-api-gateway",
+      "audience": "bullettrain",
+      "strict_access_claims": true
+    }
+  ],
+  "clients": [
+    {
+      "client_id": "integration-adaptors",
+      "repo": "integration-adaptors",
+      "subject": "service:integration-adaptors",
+      "audiences": [
+        "bullettrain"
+      ],
+      "tenant_claim_required": true,
+      "required_scopes": [
+        "adaptor:translate",
+        "audit:write",
+        "clinical:read",
+        "connector:exchange",
+        "patient:read"
+      ],
+      "denied_scopes": [
+        "system:admin"
+      ],
+      "evidence": [
+        {
+          "path": "oidc_service_access.json",
+          "contains": [
+            "OIDC_SERVICE_ACCESS_V1",
+            "service:integration-adaptors",
+            "bullettrain-api-gateway",
+            "audit:write"
+          ]
+        }
+      ]
+    }
+  ],
+  "assurance_gate": {
+    "script": "scripts/security/oidc_assurance_gate.py",
+    "runtime_pytest": "tests/security/test_oidc_sibling_runtime_http_proof.py"
+  }
+}
