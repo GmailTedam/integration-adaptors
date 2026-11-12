@@ -261,6 +261,93 @@
         "POST 422 /api/v1/million-cohort/patients -> 422 Unprocessable Entity: negative-control invalid payload renders role='alert' inline error and blocks submission"
       ],
       "digest_basis": "sha256 of the LF-normalised git blob (git show :<path>)"
+    },
+    {
+      "run_id": "stageshow-v25-integration-adaptors-restoration-20261112T092500Z",
+      "timestamp_utc": "2026-11-12T09:25:00Z",
+      "verified_at": "2026-11-12T09:25:00Z",
+      "surface": "StageShow v2.5 restoration (integration-adaptors): strip nuclear white/midnightblue override and preserve StageShow v2.5 tokens across light, dark, and high-contrast",
+      "route": "/ui/workstation and /api/v1/million-cohort/workbench-ui",
+      "mode": "headed",
+      "driver": "signalbox",
+      "session_id": "stageshow-v25-integration-adaptors-restore",
+      "persona": "clinician-superpersona",
+      "headed": true,
+      "viewport": {
+        "mode": "window",
+        "width": 1920,
+        "height": 991,
+        "no_viewport": true,
+        "maximized": true
+      },
+      "os_window_visibility": {
+        "verified": true,
+        "desktop": "WinSta0\\Default",
+        "is_foreground": true,
+        "real_pointer_over_agent_window": true
+      },
+      "files": {
+        "frontend/src/styles/design-system.css": "5c1297b76bee54e819ba84a350fab9d4c9bcdc3ce6de56f2065b4daa4e91452e"
+      },
+      "changed_files_covered": [
+        "frontend/src/styles/design-system.css"
+      ],
+      "file_sha256": {
+        "frontend/src/styles/design-system.css": "5c1297b76bee54e819ba84a350fab9d4c9bcdc3ce6de56f2065b4daa4e91452e"
+      },
+      "files_verified": [
+        {
+          "path": "frontend/src/styles/design-system.css",
+          "sha256": "5c1297b76bee54e819ba84a350fab9d4c9bcdc3ce6de56f2065b4daa4e91452e"
+        }
+      ],
+      "console_errors": [],
+      "failed_requests": [],
+      "themes_verified": [
+        "light",
+        "dark",
+        "high-contrast"
+      ],
+      "layout_audit": {
+        "passed": true,
+        "failures": [],
+        "warnings": [],
+        "contrast_violation_count": 0,
+        "form_overlap_issue_count": 0,
+        "viewport_clipping_issue_count": 0,
+        "misalignment_count": 0,
+        "scroll_height": 991,
+        "inner_height": 991,
+        "has_unnecessary_scroll": false
+      },
+      "assertions": [
+        {
+          "id": "EV-INTEGRATION-ADAPTORS-RESTORE-STAGESHOW-V25",
+          "target": "/ui/workstation and /api/v1/million-cohort/workbench-ui",
+          "type": "layout_and_contrast_audit",
+          "expected": "passed == true, contrast_violation_count == 0, form_overlap_issue_count == 0 across light, dark, and high-contrast",
+          "actual": "passed == true, contrast_violation_count == 0, form_overlap_issue_count == 0, scroll_height == 991 == inner_height",
+          "passed": true
+        }
+      ],
+      "request_to_dom_correlations": [
+        {
+          "request": "GET /ui/workstation and /api/v1/million-cohort/workbench-ui (200 OK)",
+          "dom_selector": "html[data-theme='high-contrast'], body",
+          "dom_effect": "StageShow v2.5 stylesheet tokens active across light, dark, and high-contrast with zero nuclear white/midnightblue lock",
+          "verified": true
+        }
+      ],
+      "negative_controls": [
+        {
+          "id": "NC-NO-NUCLEAR-WHITE-MIDNIGHTBLUE-LOCK",
+          "check": "Verify SYMPHONIX_MAKEOVER_ALL_PAGES_CONTRAST_AND_BUTTON_LOCK_2026_11 is absent from all repository stylesheets",
+          "expected": "0 occurrences; dark and high-contrast themes preserve StageShow v2.5 tokens",
+          "actual": "0 occurrences across all repository stylesheets",
+          "passed": true
+        }
+      ],
+      "screenshots": []
     }
   ]
 }
