@@ -1,53 +1,67 @@
-# THIS REPOSITORY IS NO LONGER MAINTAINED
+<!-- symphonix-health-ecosystem:start -->
+## Symphonix Health ecosystem
 
-> [!CAUTION]
-> Here are the new repositories with service separation:
+<p>
+  <a href="https://github.com/symphonix-health"><img alt="Symphonix Health" src="https://img.shields.io/badge/Symphonix_Health-clinical_or_operational_sibling-4DD0E1?style=flat-square" /></a>
+  <a href="https://github.com/symphonix-health/symphonix-health.github.io/blob/main/docs/system-catalogue.md"><img alt="System catalogue" src="https://img.shields.io/badge/catalogue-live_index-14919B?style=flat-square" /></a>
+</p>
 
-- https://github.com/NHSDigital/integration-adaptor-111
-- https://github.com/NHSDigital/summary-care-record-api
-- https://github.com/NHSDigital/integration-adaptor-mhs
-- https://github.com/NHSDigital/integration-adaptor-nhais
-- https://github.com/NHSDigital/integration-adaptors-deployment
+| Field | Value |
+|---|---|
+| Organisation | `Symphonix-Health` |
+| Ecosystem layer | Clinical & Operational Sibling |
+| Repository role | National Integration Adaptors (`integration-adaptors`, `sibling_slug="integration_adaptors"`) — MHS, NHAIS, 111, and Summary Care Record (SCR) adaptor runtime with Dual-Engine PostgreSQL 15 + 3-tier SQLite WAL persistence and SFDS v2.4 `/workbench-ui` workstation. |
+| Catalogue | [Symphonix system catalogue](https://github.com/symphonix-health/symphonix-health.github.io/blob/main/docs/system-catalogue.md) |
+<!-- symphonix-health-ecosystem:end -->
 
-# National Integration Adaptors
+# National Integration Adaptors (`integration-adaptors`)
 
-This repository contains adaptors which accelerate integration with national NHS systems.
+This repository provides the **Symphonix-Health National Integration Adaptors** (`integration-adaptors`) for NHS Spine Message Handling Service (`mhs`), Summary Care Record (`SCR` / `SCRWebService`), `nhais-adaptor`, and `OneOneOne` clinical messaging workflows, alongside the FastAPI 3-tier clinical cohort runtime (`src/app.py` and `SCRWebService/main.py`).
 
-These adaptors hide the complexity of integration with the interfaces provided by the current national systems by
-implementing an adaptor layer. The integrating supplier sees only a simplified and standardised set of interfaces which
-the adaptor layer presents. The adaptor layer is responsible for interacting with the legacy NHSD interface estate.
+These adaptors hide the protocol complexity of legacy Spine ebXML/HL7v3, EDIFACT, and ITK interfaces behind a standardised REST/FHIR adaptor surface routed through the [BulletTrain](../BulletTrain/README.md) HIE hub.
 
-In the diagram below, NHS Digital are providing the set of adaptors shown as the "Adaptor Layer". This list of adaptors shown here is only a representative sample of those planned.
-
-A supplier is therefore required only to implement a simplified set of standard clients to the adaptor layer, integrating with a simplified and standardised set of interfaces exposed by the Adaptor layer. This set of clients is shown in the "Interface Layer".
-
-![High Level Architecture](documentation/High%20Level%20Architecture.png)
-
-As a result, the complexity of integration work is much reduced. The integrating supplier is required to implement a
-minimum set of client types in their interface layer and can re-use this code across multiple integrations.
+```mermaid
+flowchart LR
+    Supplier["Clinical Sibling / Supplier System"] -->|"Standardised REST / FHIR"| Adaptor["Integration Adaptors (src/app.py & SCRWebService)"]
+    Adaptor -->|"Spine MHS / ebXML / HL7v3 / ITK"| Spine["BulletTrain HIE / NHS Spine Interfaces"]
+    Adaptor -->|"Dual-Engine Sync"| PG["PostgreSQL 15 (sibling_integration_adaptors)"]
+    Adaptor -->|"3-Tier Local WAL"| WAL["SQLite WAL (integration_adaptors_sh_kf_state_001_wal.db)"]
+```
 
 ## Repository Contents
-This repository contains the following directories:
-- [common](common) - A Python package containing components and utilities that are common to several integration adaptors.
-- [documentation](documentation) - Documentation and assets for the integration adaptors as a whole.
-- [mhs](mhs) - A pre-assured implementation of a Message Handling Service (MHS), that encapsulates the details of Spine
-messaging and provides a simple interface to allow HL7 messages to be sent to the NHS spine MHS.
-- [nhais-adaptor](nhais-adaptor) - A proof-of-concept adaptor that hides the details of NHAIS' EDIFACT messaging format
-and provides a prototype FHIR interface for sending registration events taking place at the practice to NHAIS.
-- [OneOneOne](OneOneOne) - A proof-of-concept 111 receiver, also used to investigate use of the ITK testbench (the TKW).
-- [pipeline](pipeline) - Scripts and configuration files used to build container images for adaptors and deploy them to various
-environments. Intended for use as part of an automated build pipeline, or may be run seperately.
-- [SCR](SCR) - A package of assets that simplify the building of HL7 GP Summary Update request messages.
-- [SCRWebservice](SCRWebService) - An application that uses the SCR package to build GP summary upload HL7 messages,
- forwards the message to the MHS, parses the success response and returns the parsed details to the supplier  
-- [supplier-example](supplier-example) - An example web application that uses the assets from the SCR package to
-generate a GP Summary Update request and send it to an instance of the MHS reference implementation. Intended to show
-how the adaptors can be used together to simplify integration.
 
-Each directory contains its own README.md file which provides more details.
+- [`src/`](src/) — FastAPI clinical cohort service (`src/app.py`) and 3-tier router (`src/clinical_cohort_3tier_router.py`) serving `/workbench-ui` and `/api/v1/cohort/3tier/*`.
+- [`common/`](common/) — Shared Python utilities for message handling, retries, and logging across adaptors.
+- [`mhs/`](mhs/) — Message Handling Service (MHS) adaptor encapsulating Spine ebXML/HL7v3 messaging.
+- [`nhais-adaptor/`](nhais-adaptor/) — NHAIS EDIFACT-to-FHIR registration adaptor.
+- [`OneOneOne/`](OneOneOne/) — NHS 111 ITK receiver and testbench integration.
+- [`pipeline/`](pipeline/) — Container build and deployment pipeline scripts.
+- [`SCR/`](SCR/) — HL7 GP Summary Upload request message builder package.
+- [`SCRWebService/`](SCRWebService/) — Summary Care Record web service (`SCRWebService/main.py`) with mounted 3-tier clinical cohort router.
+- [`supplier-example/`](supplier-example/) — Reference supplier client demonstrating GP Summary Update requests via the SCR and MHS adaptors.
 
+<!-- symphonix-dual-engine-architecture:start -->
+## Dual-Engine Persistence (`PostgreSQL 15` + 3-Tier `SQLite WAL`) & SFDS v2.4 `/workbench-ui`
 
-## Running local MHS and SCR Adaptors
+In compliance with Symphonix-Health mandate **L-431**, `integration-adaptors` operates a synchronous **Dual-Engine** persistence architecture:
 
-It may be useful to run these adaptors in a local environment. Please refer to [running the MHS and SCR adators locally](mhs/running-mhs-adaptor-locally.md) 
-a step-by-step guide on how to set this up.
+1. **PostgreSQL 15 (`bt-postgres-dev`):**
+   - DSN: `postgresql://bullettrain:devpassword@127.0.0.1:15432/bullettrain`
+   - Schema: `sibling_integration_adaptors` synchronized with master `client_registry.patients` (`40,090` canonical patients) and `referential_integrity.entity_references` (`176,396` canonical episodes), enforcing `FOREIGN KEY ... ON DELETE RESTRICT` and `BEFORE DELETE` WORM protection triggers (`client_registry.forbid_clinical_record_delete()`).
+2. **3-Tier SQLite WAL (`SH-KF-STATE-001`):**
+   - Database file: `data/integration_adaptors_sh_kf_state_001_wal.db`
+   - Tiered clinical cohorts: Tier 1 (`40,000` longitudinal baseline), Tier 2 (`50` rich full-pathway), Tier 3 (`40` edge/adversarial).
+3. **Runtime Endpoints & SFDS v2.4 Workstation:**
+   - `GET /workbench-ui` — Full-viewport (`100vh`, `scrollHeight <= innerHeight`, `width: 100%; max-width: none;`) 4-tab WAI-ARIA (`role="tablist"` / `role="tab"` / `role="tabpanel"`) clinical workstation.
+   - `GET /api/v1/cohort/3tier/summary` — Dual-engine sync status and cohort counts (`postgresql_15` + `sqlite_3tier_wal`).
+   - `GET /api/v1/cohort/3tier/patients` & `GET /api/v1/cohort/3tier/patients/{patient_id}` — Patient trajectory and episode queries.
+   - `POST /api/v1/cohort/3tier/episodes` — Synchronous dual-engine WORM episode creation across PostgreSQL 15 and SQLite WAL.
+<!-- symphonix-dual-engine-architecture:end -->
+
+## Running Local MHS and SCR Adaptors
+
+Refer to [running the MHS and SCR adaptors locally](mhs/running-mhs-adaptor-locally.md) for step-by-step instructions on configuring local MHS and SCR instances, or launch the FastAPI workstation directly:
+
+```powershell
+uvicorn src.app:app --host 127.0.0.1 --port 8000
+```

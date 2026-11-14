@@ -42,11 +42,13 @@ def main():
 
 
 from pathlib import Path as _CohortPath  # noqa: E402, I001
+from fastapi import FastAPI as _FastAPI  # noqa: E402, I001
 try:
     from .clinical_cohort_3tier_router import build_clinical_cohort_3tier_router as _build_cohort_3tier_router  # noqa: E402, I001
 except ImportError:
     from clinical_cohort_3tier_router import build_clinical_cohort_3tier_router as _build_cohort_3tier_router  # noqa: E402, I001
 
+app = _FastAPI(title="integration-adaptors")
 app.include_router(
     _build_cohort_3tier_router(
         service_name="integration-adaptors",
