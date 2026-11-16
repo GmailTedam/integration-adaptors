@@ -732,7 +732,7 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
         <div class="sfds-card" style="display:flex; flex-direction:column; justify-content:space-between; min-height:0; height:100%;">
           <div>
             <div class="sfds-card-label">Dual-Engine 3-Tier &amp; DCB0160 Validation Contract</div>
-            <div style="font-size:12px; color:#cbd5e1; line-height:1.55; padding:6px;">
+            <div class="sfds-contract-body" style="font-size:12px; line-height:1.55; padding:6px;">
               <div><strong>1. NHS Modulus-11 Checksum:</strong> Deterministic 10-digit national identifier verified before SQLite WAL &amp; PostgreSQL 15 write.</div>
               <div><strong>2. ICD-10-CM Clinical Coding:</strong> Enforces <code>^[A-Z][0-9]{{2}}(\.[0-9A-Z]{{1,4}})?$</code> pattern with immediate inline <code>422</code> rejection on invalid codes.</div>
               <div><strong>3. Non-Destructive Clinical Archive:</strong> Physical <code>DELETE</code> is blocked by SQLite &amp; PostgreSQL triggers; records transition via <code>/archive</code> with audit reason.</div>
