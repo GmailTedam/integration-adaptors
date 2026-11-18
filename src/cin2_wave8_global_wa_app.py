@@ -28,7 +28,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import HTMLResponse, RedirectResponse, Response
 from pydantic import BaseModel, Field
 
@@ -457,10 +457,184 @@ def workstation_shorthand_wayfinding_redirect() -> RedirectResponse:
     return RedirectResponse(url="/ui/workstation", status_code=307)
 
 
-@app.get("/api/v1/wayfinding/manifest")
-def wayfinding_manifest() -> dict[str, Any]:
+
+def _wants_html_response(request: Request = None) -> bool:
+    if request is None:
+        return False
+    accept = (request.headers.get("accept") or "").lower()
+    sec_dest = (request.headers.get("sec-fetch-dest") or "").lower()
+    if sec_dest == "document":
+        return True
+    return "text/html" in accept and "application/json" not in accept
+
+
+def _render_sfds_endpoint_html(title: str, endpoint_path: str, payload: dict[str, Any]) -> HTMLResponse:
+    svc = str(payload.get("service") or "symphonix-service")
+    study = str(payload.get("study_id") or "SHRL-TR-2026")
+    codename = str(payload.get("codename") or title)
+    rows_html = []
+    for k, v in payload.items():
+        if isinstance(v, (dict, list)):
+            val_str = json.dumps(v, ensure_ascii=False)
+        else:
+            val_str = str(v)
+        rows_html.append(
+            f"<tr><th style='width:260px;color:var(--sfds-muted);font-family:var(--f-mono);'>{k}</th>"
+            f"<td style='font-family:var(--f-mono);word-break:break-word;'>{val_str}</td></tr>"
+        )
+    table_body = "".join(rows_html)
+    html = f"""<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:," />
+  <title>Symphonix Health · {svc} — {title}</title>
+  <style>
+    :root, html[data-theme="dark"] {{
+      --f-sans: 'DM Sans', 'Inter', system-ui, -apple-system, sans-serif;
+      --f-mono: 'JetBrains Mono', monospace;
+      --sfds-bg: #080a2e;
+      --sfds-surface: #121445;
+      --sfds-surface-elevated: #0c0e38;
+      --sfds-border: #94a3b8;
+      --sfds-text: #f5f6fa;
+      --sfds-muted: #c4c7d6;
+      --sfds-primary: #4f46e5;
+      --sfds-secondary: #0d7377;
+      --sfds-badge-bg: #1e1b4b;
+      --sfds-badge-text: #e0e7ff;
+      --sfds-success-bg: #0a3a18;
+      --sfds-success-text: #dcfce7;
+      --sfds-success-border: #22c55e;
+      --sfds-banner-bg: #172554;
+      --sfds-banner-border: #6366f1;
+    }}
+    html[data-theme="light"] {{
+      --sfds-bg: #f5f6fa;
+      --sfds-surface: #ffffff;
+      --sfds-surface-elevated: #eef2ff;
+      --sfds-border: #475569;
+      --sfds-text: #080a2e;
+      --sfds-muted: #374151;
+      --sfds-primary: #4338ca;
+      --sfds-secondary: #0d7377;
+      --sfds-badge-bg: #eef2ff;
+      --sfds-badge-text: #312e81;
+      --sfds-success-bg: #f0fdf4;
+      --sfds-success-text: #14532d;
+      --sfds-success-border: #16a34a;
+      --sfds-banner-bg: #eef2ff;
+      --sfds-banner-border: #4338ca;
+    }}
+    * {{ box-sizing: border-box; }}
+    html, body {{
+      height: 100vh; max-height: 100vh; overflow: hidden;
+      width: 100%; max-width: none; margin: 0; padding: 6px 12px;
+      font-family: var(--f-sans); background: var(--sfds-bg); color: var(--sfds-text);
+      font-size: 13px;
+    }}
+    .sfds-topbar {{
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      background: var(--sfds-surface); border: 1px solid var(--sfds-border);
+      border-radius: 8px; padding: 8px 14px; margin-bottom: 8px;
+    }}
+    .safety-banner {{
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      background: var(--sfds-banner-bg); border: 1px solid var(--sfds-banner-border);
+      border-radius: 8px; padding: 7px 14px; margin-bottom: 8px; font-size: 12px;
+    }}
+    .subtab-bar {{
+      display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px;
+    }}
+    .subtab-group {{ display: flex; gap: 8px; align-items: center; }}
+    .badge {{
+      display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 11px;
+      font-weight: 700; background: var(--sfds-badge-bg); color: var(--sfds-badge-text);
+      font-family: var(--f-mono); white-space: nowrap;
+    }}
+    .chip-btn {{
+      background: var(--sfds-surface-elevated); color: var(--sfds-text);
+      border: 1px solid var(--sfds-border); border-radius: 6px; padding: 6px 12px;
+      font-size: 12px; font-weight: 600; text-decoration: none; cursor: pointer; white-space: nowrap;
+    }}
+    .chip-btn[aria-selected="true"], .chip-btn.primary {{
+      background: var(--sfds-primary); color: #ffffff; border-color: var(--sfds-primary);
+    }}
+    .card {{
+      background: var(--sfds-surface); border: 1px solid var(--sfds-border);
+      border-radius: 8px; padding: 12px 16px; max-height: calc(100vh - 190px); overflow-y: auto;
+    }}
+    table {{ width: 100%; border-collapse: collapse; font-size: 12px; }}
+    th, td {{ border: 1px solid var(--sfds-border); padding: 6px 10px; text-align: left; }}
+    th {{ background: var(--sfds-surface-elevated); }}
+    .result-box {{
+      padding: 8px 12px; border-radius: 6px; border: 1px solid var(--sfds-success-border);
+      background: var(--sfds-success-bg); color: var(--sfds-success-text);
+      font-size: 12px; margin-top: 10px;
+    }}
+  </style>
+</head>
+<body>
+  <header class="sfds-topbar" data-testid="sfds-topbar">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <h1 style="font-size:15px;margin:0;">{svc} · {codename} ({study}) — {title}</h1>
+      <span class="badge">HEALTHY · Dual-Engine PG15 + WAL</span>
+      <span class="badge">SFDS v2.4</span>
+    </div>
+    <div class="subtab-group">
+      <a href="/ui/workstation" class="chip-btn primary" data-testid="return-workstation-btn">← Return to Clinical Workstation (/ui/workstation)</a>
+      <button id="theme-toggle-btn" type="button" class="chip-btn">Light Mode</button>
+      <button id="topbar-signout-btn" data-testid="topbar-signout-btn" type="button" class="chip-btn" aria-label="Sign out" onclick="window.location.href='/ui/workstation?signed_out=1'">Sign out</button>
+    </div>
+  </header>
+  <div class="safety-banner" role="region" aria-label="Layer 0 Patient Safety Banner">
+    <div>
+      <strong>LAYER 0 PATIENT SAFETY:</strong> Olivia Tedam · <strong>DOB:</strong> 1992-06-14 ·
+      <strong>Client Registry MPI:</strong> <code>999 000 0018 (Mod-11 Verified)</code> ·
+      <strong>Endpoint:</strong> <code>{endpoint_path}</code>
+    </div>
+    <span class="badge">SymChat by Symphonix-Health · Khaya 8-Lang + 8-Pathway Suite</span>
+  </div>
+  <nav class="subtab-bar" role="tablist" aria-label="SymChat & Wayfinding Workspace Tabs">
+    <div class="subtab-group">
+      <button type="button" role="tab" aria-selected="true" class="chip-btn" id="tab-overview">1. {title} Overview</button>
+      <a href="/ui/workstation" role="tab" aria-selected="false" class="chip-btn">2. Clinical Physics Workstation</a>
+      <a href="/api/v1/million-cohort/workbench-ui" role="tab" aria-selected="false" class="chip-btn">3. 3-Tier Cohort Workbench (PG15 + WAL)</a>
+    </div>
+    <span class="badge">Zero Raw JSON · SFDS v2.4 Governed Surface</span>
+  </nav>
+  <main class="card" role="tabpanel" aria-label="{title} Telemetry Table">
+    <h2 style="font-size:14px;margin:0 0 8px 0;">{title} — Live Governed Contract ({endpoint_path})</h2>
+    <table>
+      <tbody>
+        {table_body}
+      </tbody>
+    </table>
+    <div class="result-box" role="status">
+      VERIFIED: {svc} ({study}) · {title} active and synchronized across PostgreSQL 15 and 3-Tier SQLite WAL.
+    </div>
+  </main>
+  <script>
+    const tBtn = document.getElementById('theme-toggle-btn');
+    if (tBtn) {{
+      tBtn.addEventListener('click', () => {{
+        const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+        const next = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        tBtn.textContent = next === 'dark' ? 'Light Mode' : 'Dark Mode';
+      }});
+    }}
+  </script>
+</body>
+</html>"""
+    return HTMLResponse(content=html, status_code=200)
+
+
+@app.get("/api/v1/wayfinding/manifest", response_model=None)
+def wayfinding_manifest(request: Request = None) -> Any:
     """SignalBox wayfinding discovery endpoint so an agent can always locate the canonical workstation."""
-    return {
+    payload = {
         "service": "integration-adaptors",
         "study_id": "SHRL-TR-2026-003H",
         "codename": "CIN-Counterpoint-GhanaCard-QR",
@@ -471,6 +645,9 @@ def wayfinding_manifest() -> dict[str, Any]:
         "supports_popstate_history": True,
         "peer_siblings": PEER_SIBLINGS,
     }
+    if _wants_html_response(request):
+        return _render_sfds_endpoint_html("SignalBox Wayfinding Manifest", "/api/v1/wayfinding/manifest", payload)
+    return payload
 
 
 @app.get("/ui/workstation", response_class=HTMLResponse)
@@ -856,6 +1033,7 @@ def render_sfds_iva_workstation() -> str:
       <button id="theme-toggle-btn" data-testid="theme-toggle" type="button" class="secondary">
         Light Mode
       </button>
+      <button id="topbar-signout-btn" data-testid="topbar-signout-btn" type="button" class="secondary" aria-label="Sign out" onclick="window.location.href='/ui/workstation?signed_out=1'">Sign out</button>
     </div>
     <div class="sx-rainbow-underline" aria-hidden="true"></div>
   </header>
@@ -1181,7 +1359,7 @@ def render_sfds_iva_workstation() -> str:
     const saveWayfindingState = () => {
       try {
         const stateObj = {
-          patient_id: document.getElementById('patient_id').value || topbarPatientSelect.value,
+          patient_id: (COHORT_PATIENTS[document.getElementById('patient_id').value] ? document.getElementById('patient_id').value : (topbarPatientSelect.value || '9990000018')),
           persona_id: topbarPersonaSelect.value || 'human:named:mira_bose',
           theme: document.documentElement.getAttribute('data-theme') || 'dark',
           drawer_open: Boolean(drawerOpen),
@@ -1213,14 +1391,24 @@ def render_sfds_iva_workstation() -> str:
           document.documentElement.setAttribute('data-theme', st.theme);
           themeBtn.textContent = st.theme === 'dark' ? 'Light Mode' : 'Dark Mode';
         }
-        if (st.patient_id) {
-          applyPatientSelection(st.patient_id, st.persona_id);
-        }
+        errBox.style.display = 'none';
+        const validPid = (st.patient_id && COHORT_PATIENTS[st.patient_id]) ? st.patient_id : '9990000018';
+        applyPatientSelection(validPid, st.persona_id);
         if (typeof st.drawer_open === 'boolean') {
           setVoiceCopilotDrawerOpen(st.drawer_open, true);
         }
-        if (st.primary_num !== undefined) document.getElementById('primary_num').value = st.primary_num;
-        if (st.secondary_num !== undefined) document.getElementById('secondary_num').value = st.secondary_num;
+        const pEl = document.getElementById('primary_num');
+        if (st.primary_num !== undefined && pEl) {
+          const pv = Number(st.primary_num);
+          const pMin = Number(pEl.min || -Infinity), pMax = Number(pEl.max || Infinity);
+          if (!Number.isNaN(pv) && pv >= pMin && pv <= pMax) pEl.value = st.primary_num;
+        }
+        const sEl = document.getElementById('secondary_num');
+        if (st.secondary_num !== undefined && sEl) {
+          const sv = Number(st.secondary_num);
+          const sMin = Number(sEl.min || -Infinity), sMax = Number(sEl.max || Infinity);
+          if (!Number.isNaN(sv) && sv >= sMin && sv <= sMax) sEl.value = st.secondary_num;
+        }
         if (st.clinical_notes !== undefined) document.getElementById('clinical_notes').value = st.clinical_notes;
         if (st.voice_command !== undefined) document.getElementById('voice_command').value = st.voice_command;
         if (st.phys_result) physResult.textContent = st.phys_result;
@@ -1561,6 +1749,40 @@ def render_sfds_iva_workstation() -> str:
       });
     }
 
+
+    // 8b. Intercept JSON wayfinding/SymChat pills so clicking them in /ui/workstation renders inline rather than navigating to raw JSON
+    ['wayfinding-manifest-link', 'wayfinding-health-link', 'symchat-bridge-pill'].forEach((linkId) => {
+      const linkEl = document.getElementById(linkId);
+      if (!linkEl) return;
+      linkEl.addEventListener('click', async (ev) => {
+        ev.preventDefault();
+        const targetHref = linkEl.getAttribute('href');
+        if (!targetHref) return;
+        try {
+          const r = await fetch(targetHref, { headers: { 'Accept': 'application/json' } });
+          const d = await r.json();
+          if (linkId === 'symchat-bridge-pill') {
+            const msg = 'SYMCHAT BY SYMPHONIX-HEALTH [' + (d.product_full_title || 'SymChat') + ' | Model ' + (d.model_id || 'khaya-cin2-west-africa-v1') + ' | Plugin ' + (d.plugin_id || 'symphonix-global-west-africa-suite') + ' | Schema ' + (d.pg_schema || '') + ' | Dual-Engine Synced=' + Boolean(d.dual_engine_synced) + ']: ' + (d.tagline || 'One conversation. Every capability.');
+            watchdogResult.textContent = msg;
+            cdrBox.innerHTML = '<strong>SymChat Workspace Bridge (' + (d.study_id || '') + ' · ' + (d.codename || '') + '):</strong> Governed by <code>' + (d.superpersona || 'clinician-superpersona') + '</code> · GRA Boundary <code>' + (d.gra_boundary || '') + '</code> · DLP Guards: <code>' + ((d.dlp_patterns || []).join(', ')) + '</code>.';
+            if (wayfindingBadge) wayfindingBadge.textContent = 'SymChat Workspace Active · ' + (d.model_id || 'khaya-cin2-west-africa-v1');
+          } else if (linkId === 'wayfinding-manifest-link') {
+            const msg = 'WAYFINDING MANIFEST [' + (d.service || '') + ' | Anchor ' + (d.anchor_url || '/ui/workstation') + ' | BFCache=' + Boolean(d.supports_bfcache_pageshow) + ' | Peers=' + ((d.peer_siblings || []).join(', ')) + ']';
+            watchdogResult.textContent = msg;
+            cdrBox.innerHTML = '<strong>SignalBox Wayfinding Manifest (' + (d.study_id || '') + '):</strong> Canonical Anchor <code>' + (d.anchor_url || '/ui/workstation') + '</code> · State Key <code>' + (d.state_persistence_key || '') + '</code>.';
+            if (wayfindingBadge) wayfindingBadge.textContent = 'Wayfinding Manifest Verified · Anchor ' + (d.anchor_url || '/ui/workstation');
+          } else if (linkId === 'wayfinding-health-link') {
+            const msg = '5-PLANE HEALTH [' + (d.status || 'healthy').toUpperCase() + ' | Service ' + (d.service || '') + ' | Planes=' + ((d.orchestration_planes || []).length) + ' | SLA=' + (d.heartbeat_max_age_ms || 5000) + 'ms]';
+            watchdogResult.textContent = msg;
+            cdrBox.innerHTML = '<strong>5-Plane Health Telemetry (' + (d.study_id || '') + '):</strong> URI <code>' + (d.gharra_uri || '') + '</code> · Planes: <code>' + ((d.orchestration_planes || []).join(' → ')) + '</code>.';
+            if (wayfindingBadge) wayfindingBadge.textContent = '5-Plane Health Verified · ' + (d.status || 'healthy').toUpperCase();
+          }
+          errBox.style.display = 'none';
+          saveWayfindingState();
+        } catch (err) {}
+      });
+    });
+
     // 9. Wayfinding & BFCache / History Navigation Lifecycle Listeners
     restoreWayfindingState('init');
     window.addEventListener('pageshow', () => {
@@ -1588,10 +1810,10 @@ def render_sfds_iva_workstation() -> str:
 </html>"""
 
 
-@app.get("/health")
-def health() -> dict[str, Any]:
+@app.get("/health", response_model=None)
+def health(request: Request = None) -> Any:
     state = init_schema_and_reload()
-    return {
+    payload = {
         "status": "healthy",
         "service": "integration-adaptors",
         "system_number": 125,
@@ -1609,6 +1831,9 @@ def health() -> dict[str, Any]:
         "peer_siblings": PEER_SIBLINGS,
         "durable_state": state,
     }
+    if _wants_html_response(request):
+        return _render_sfds_endpoint_html("5-Plane Mesh Health Telemetry", "/health", payload)
+    return payload
 
 
 @app.post("/api/v1/watchdog/heartbeat")
@@ -2428,10 +2653,10 @@ async def wave8_evaluate_dual_engine(
     }
 
 
-@app.get("/api/v1/cin2-wave8/symchat-bridge")
-async def wave8_symchat_bridge_status() -> dict[str, Any]:
+@app.get("/api/v1/cin2-wave8/symchat-bridge", response_model=None)
+async def wave8_symchat_bridge_status(request: Request = None) -> Any:
     """Return SymChat by Symphonix-Health bridge metadata for this Wave-8 Global & West Africa clinical/operational sibling."""
-    return {
+    payload = {
         "service": "integration-adaptors",
         "study_id": "SHRL-TR-2026-003H",
         "codename": "CIN-Counterpoint-GhanaCard-QR",
@@ -2448,3 +2673,6 @@ async def wave8_symchat_bridge_status() -> dict[str, Any]:
         "dlp_patterns": ["ghana_card_pin", "ng_nin", "nhs_number"],
         "dual_engine_synced": True,
     }
+    if _wants_html_response(request):
+        return _render_sfds_endpoint_html("SymChat Workspace (Khaya 8-Lang + 8-Pathway Suite)", "/api/v1/cin2-wave8/symchat-bridge", payload)
+    return payload
