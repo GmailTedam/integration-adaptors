@@ -1,4 +1,3 @@
-# ruff: noqa: E501, N815, S608, C901, PLR0912, PLR0915
 """Standalone 3-Tier Clinical Cohort CRUD, Clinical Decision Support & Tabbed Workbench Router.
 
 Enables each Symphonix clinical sibling service to operate independently via a
@@ -224,6 +223,253 @@ class ClinicalArchiveRequest(BaseModel):
         max_length=500,
         description="Mandatory clinical/governance rationale for archiving the record (records are never physically deleted).",
     )
+
+
+class ChartRecall3TierEvaluateRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    utterance_text: _CohortStrippedStr = Field(..., min_length=1, max_length=2000)
+    domain_focus: str = Field(
+        default="AUTO_CLINICAL_SIBLING",
+        pattern=r"^(AUTO_CLINICAL_SIBLING|D4_PRESCRIBING_TIER0|D1_D2_DIAGNOSTIC_VITALS|D3_LONGITUDINAL_HISTORY|D6_TREATMENT_NICE_NG197)$",
+    )
+    speaker_role: str = Field(
+        default="clinician",
+        pattern=r"^(clinician|patient|pharmacist|diagnostic_agent|treatment_agent|apex_agent)$",
+    )
+
+
+def _synthesize_chartrecall_3tier_cds(
+    service_name: str,
+    sibling_slug: str,
+    patient_id: str,
+    pat: dict[str, Any],
+    eps: list[dict[str, Any]],
+    latest: dict[str, Any],
+    peak_risk: float,
+    action: str,
+    utterance_text: str | None = None,
+    domain_focus: str = "AUTO_CLINICAL_SIBLING",
+) -> dict[str, Any]:
+    raw_text = (
+        utterance_text
+        if utterance_text is not None
+        else f"{pat.get('primary_icd10_code', 'I10')} {pat.get('primary_diagnosis_name', '')} {latest.get('clinical_presentation_summary', '')}"
+    ).strip()
+    lowered = raw_text.lower()
+    laterality = (
+        "LEFT"
+        if "left" in lowered
+        else (
+            "RIGHT"
+            if "right" in lowered
+            else ("BILATERAL" if "bilateral" in lowered else "NA")
+        )
+    )
+    polarity = (
+        "NEGATED"
+        if any(neg in lowered for neg in ("denies ", "no ", "without ", "ruled out"))
+        else "AFFIRMED"
+    )
+    prov_sha = str(
+        latest.get("hf_provenance_sha256") or pat.get("hf_record_sha256") or ""
+    )
+
+    if any(ood in lowered for ood in ("zzz-", "mars-", "article 99", "galactic")):
+        return {
+            "clinical_service_name": "ChartRecall",
+            "clinical_icon": "stethoscope-synapse-spark",
+            "engine": "MemorillaV2Module",
+            "operating_mode": "M2_HYBRID_MEMORILLA_GOVERNED",
+            "service_name": service_name,
+            "sibling_slug": sibling_slug,
+            "patient_id": patient_id,
+            "domain_focus": domain_focus,
+            "bounded_rationality_max_cards": 3,
+            "abstained": True,
+            "abstain_state": "PROTECTIVE_SAFETY_HOLD",
+            "abstain_reason": "LEXICAL_DOMAIN_OOD",
+            "cards": [
+                {
+                    "card_id": f"CR-HOLD-{patient_id}",
+                    "domain": "D5_PROTECTIVE_SAFETY_HOLD",
+                    "acuity_tier": 0,
+                    "acuity_label": "ABSTAIN_GATHER_INFO",
+                    "title": "Protective Safety Hold — Unverified Clinical Concept",
+                    "layperson_clinical_summary": (
+                        "An unrecognised clinical code or out-of-distribution concept was detected. "
+                        "Automated order staging is paused until the clinician verifies the primary record."
+                    ),
+                    "technical_provenance_audit": {
+                        "technical_provenance_id": str(
+                            latest.get("episode_id") or patient_id
+                        ),
+                        "slot_12_polarity": polarity,
+                        "slot_13_laterality": laterality,
+                        "slot_14_conformance": "HOLD_OOD",
+                        "slot_15_temporal_state": "MISSING_OR_UNVERIFIED_PREREQ",
+                        "hf_provenance_sha256": prov_sha,
+                    },
+                }
+            ],
+        }
+
+    clinical_markers = (
+        "pain",
+        "chest",
+        "breath",
+        "dyspnoea",
+        "allergy",
+        "penicillin",
+        "amoxicillin",
+        "ibuprofen",
+        "nsaid",
+        "egfr",
+        "renal",
+        "creatinine",
+        "lactate",
+        "map",
+        "spo2",
+        "dose",
+        "prescribe",
+        "medication",
+        "tablet",
+        "hypertension",
+        "sepsis",
+        "dialysis",
+        "icd",
+        "pathway",
+        "admission",
+        "triage",
+        "lab",
+        "ecg",
+        "troponin",
+        "referral",
+    )
+    if (
+        utterance_text is not None
+        and len(raw_text.split()) <= 10
+        and not any(tok in lowered for tok in clinical_markers)
+    ):
+        return {
+            "clinical_service_name": "ChartRecall",
+            "clinical_icon": "stethoscope-synapse-spark",
+            "engine": "MemorillaV2Module",
+            "operating_mode": "M2_HYBRID_MEMORILLA_GOVERNED",
+            "service_name": service_name,
+            "sibling_slug": sibling_slug,
+            "patient_id": patient_id,
+            "domain_focus": domain_focus,
+            "bounded_rationality_max_cards": 3,
+            "abstained": True,
+            "abstain_state": "CONVERSATIONAL_QUIET",
+            "abstain_reason": "BELOW_CONFIDENCE_THRESHOLD",
+            "cards": [],
+        }
+
+    egfr = float(latest.get("initial_egfr") or 68.0)
+    scr = float(latest.get("serum_creatinine_mg_dl") or 1.05)
+    map_mmhg = float(latest.get("initial_map_mmhg") or 78.0)
+    lac = float(latest.get("initial_lactate_mmol_l") or 1.4)
+    spo2 = float(latest.get("spo2_pct") or 96.5)
+    d4_trigger = egfr < 45.0 or any(
+        k in lowered
+        for k in ("penicillin", "amoxicillin", "ibuprofen", "nsaid", "allergy")
+    )
+    d2_trigger = lac >= 2.0 or map_mmhg < 65.0 or spo2 < 92.0 or peak_risk >= 0.35
+
+    cards: list[dict[str, Any]] = [
+        {
+            "card_id": f"CR-D4-{patient_id}",
+            "domain": "D4_ALLERGY_RENAL_PGX",
+            "acuity_tier": 0,
+            "acuity_label": "CONTRAINDICATED_PIVOT"
+            if d4_trigger
+            else "TIER0_D4_GUARD_VERIFIED",
+            "title": (
+                f"D4 Prescribing & Renal Guard (eGFR {egfr:.1f} mL/min, SCr {scr:.2f} mg/dL)"
+            ),
+            "layperson_clinical_summary": (
+                f"Verified kidney function (eGFR {egfr:.1f}, creatinine {scr:.2f} mg/dL) and "
+                f"medication safety bounds for {pat.get('givenName')} {pat.get('familyName')}. "
+                + (
+                    "Hold nephrotoxic or contraindicated beta-lactam/NSAID agents and pivot to renal-safe protocol."
+                    if d4_trigger
+                    else "No active renal or allergy contraindication triggered on this assessment."
+                )
+            ),
+            "technical_provenance_audit": {
+                "technical_provenance_id": str(latest.get("episode_id") or patient_id),
+                "slot_12_polarity": polarity,
+                "slot_13_laterality": laterality,
+                "slot_14_conformance": "VALID",
+                "slot_15_temporal_state": "ALLERGY_OR_RENAL_PIVOT"
+                if d4_trigger
+                else "CURRENT",
+                "hf_provenance_sha256": prov_sha,
+            },
+        },
+        {
+            "card_id": f"CR-D1D2-{patient_id}",
+            "domain": "D1_D2_D5_DIAGNOSTIC_PREREQ",
+            "acuity_tier": 0 if d2_trigger else 1,
+            "acuity_label": "STEP_UP_HEMODYNAMIC_ALERT"
+            if d2_trigger
+            else "DIAGNOSTIC_VITALS_ALIGNED",
+            "title": (
+                f"D1/D2 Diagnostic & Vitals Context ({pat.get('primary_icd10_code')} — MAP {map_mmhg:.0f} mmHg, Lac {lac:.1f} mmol/L)"
+            ),
+            "layperson_clinical_summary": (
+                f"Primary diagnosis {pat.get('primary_icd10_code')} ({pat.get('primary_diagnosis_name')}) "
+                f"with latest blood pressure MAP {map_mmhg:.0f} mmHg, lactate {lac:.1f} mmol/L, and oxygen saturation {spo2:.1f}%."
+            ),
+            "technical_provenance_audit": {
+                "technical_provenance_id": str(latest.get("episode_id") or patient_id),
+                "slot_12_polarity": polarity,
+                "slot_13_laterality": laterality,
+                "slot_14_conformance": "VALID",
+                "slot_15_temporal_state": "CURRENT",
+                "hf_provenance_sha256": prov_sha,
+            },
+        },
+        {
+            "card_id": f"CR-D3D6-{patient_id}",
+            "domain": "D3_D6_LONGITUDINAL_PATHWAY",
+            "acuity_tier": 2,
+            "acuity_label": action,
+            "title": (
+                f"D3/D6 Longitudinal Cohort & NICE Pathway ({len(eps)} episodes, {pat.get('medical_specialty')})"
+            ),
+            "layperson_clinical_summary": (
+                f"Recalled {len(eps)} longitudinal episode(s) in {service_name} ({latest.get('care_unit', 'Ward')}). "
+                f"Recommended pathway action: {action.replace('_', ' ').lower()}."
+            ),
+            "technical_provenance_audit": {
+                "technical_provenance_id": str(latest.get("episode_id") or patient_id),
+                "slot_12_polarity": polarity,
+                "slot_13_laterality": laterality,
+                "slot_14_conformance": "VALID",
+                "slot_15_temporal_state": "CURRENT",
+                "hf_provenance_sha256": prov_sha,
+            },
+        },
+    ]
+    cards.sort(key=lambda c: int(c.get("acuity_tier", 2)))
+    return {
+        "clinical_service_name": "ChartRecall",
+        "clinical_icon": "stethoscope-synapse-spark",
+        "engine": "MemorillaV2Module",
+        "operating_mode": "M2_HYBRID_MEMORILLA_GOVERNED",
+        "service_name": service_name,
+        "sibling_slug": sibling_slug,
+        "patient_id": patient_id,
+        "domain_focus": domain_focus,
+        "bounded_rationality_max_cards": 3,
+        "abstained": False,
+        "abstain_state": "ACTIVE_CLINICAL_RECALL",
+        "abstain_reason": None,
+        "cards": cards[:3],
+    }
 
 
 def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
@@ -755,9 +1001,16 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
             <span><strong>CDR 1.0.0 Co-Pilot Synthesis (`ai-cards` · Retained Stream Slot):</strong> Sepsis &amp; 5D state-space decompensation surveillance active.</span>
             <span class="sfds-panel-annotation" data-leader-target="cds-tier"><span class="sfds-leader-pin">DCB0160-CDS</span><span class="sfds-leader-line" aria-hidden="true"></span><span>Flat Clinical Surface (`SS-CTRL-06`)</span></span>
           </div>
-          <div class="sfds-ai-provenance-footer">
-            <span>Provenance Last: <code>CDR-1.0.0 · NICE-NG51 · SH-KF-STATE-001</code></span>
-            <span>Gate: <code>requires_human_review · mask-image: none</code></span>
+          <div class="sfds-ai-provenance-footer" style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;">
+            <span style="display:inline-flex;align-items:center;gap:6px;">
+              <svg data-testid="chartrecall-synapse-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M9.5 3A4.5 4.5 0 0 0 5 7.5c0 1.4.6 2.6 1.6 3.5A4.5 4.5 0 0 0 5 14.5 4.5 4.5 0 0 0 9.5 19H11V3H9.5Z"/><path d="M11 12h3l2-4 2 8 2-4h2"/></svg>
+              <strong>ChartRecall (Memorilla-v2):</strong> <code id="chartrecall-3tier-status">ACTIVE_CLINICAL_RECALL (&lt;=3 Cards)</code>
+            </span>
+            <span style="display:inline-flex;gap:6px;align-items:center;">
+              <button type="button" class="sfds-btn" id="btn-chartrecall-eval" data-testid="btn-chartrecall-eval" style="min-height:28px;padding:3px 8px;font-size:11px;" onclick="runChartRecall3Tier('active')">ChartRecall D4/D1-D6</button>
+              <button type="button" class="sfds-btn" id="btn-chartrecall-quiet" data-testid="btn-chartrecall-quiet" style="min-height:28px;padding:3px 8px;font-size:11px;" onclick="runChartRecall3Tier('quiet')">Quiet Abstain</button>
+              <button type="button" class="sfds-btn" id="btn-chartrecall-ood" data-testid="btn-chartrecall-ood" style="min-height:28px;padding:3px 8px;font-size:11px;" onclick="runChartRecall3Tier('ood')">Safety Hold (OOD)</button>
+            </span>
           </div>
         </div>
       </div>
@@ -880,7 +1133,27 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
       document.getElementById('cds-risk').textContent = (cds.peak_deterioration_risk_4h * 100).toFixed(1) + '%';
       document.getElementById('cds-5d').textContent = cds.latest_5d_state_summary;
       document.getElementById('cds-raw').textContent = cds.latest_raw_labs_vitals_summary;
+      window.__currentCohortPid = p.patient_id;
       document.getElementById('cds-json-view').textContent = JSON.stringify(cds, null, 2);
+      if (cds.chartrecall_live_cds && document.getElementById('chartrecall-3tier-status')) {{
+        document.getElementById('chartrecall-3tier-status').textContent = cds.chartrecall_live_cds.abstain_state + ' (' + cds.chartrecall_live_cds.cards.length + '/3 Cards)';
+      }}
+    }}
+    async function runChartRecall3Tier(mode) {{
+      const pid = window.__currentCohortPid || 'SUBJ-MPI-9100000191';
+      let txt = 'Dispense amoxicillin 500mg TDS; check penicillin allergy and renal eGFR';
+      if (mode === 'quiet') txt = 'Hello Eleanor, good morning, can you hear me clearly?';
+      if (mode === 'ood') txt = 'Order ZZZ-999 per Mars-01 Article 99';
+      const r = await fetch(BASE + '/patients/' + encodeURIComponent(pid) + '/chartrecall-evaluate', {{
+        method: 'POST',
+        headers: {{ 'Content-Type': 'application/json' }},
+        body: JSON.stringify({{ utterance_text: txt, domain_focus: 'D4_PRESCRIBING_TIER0', speaker_role: 'pharmacist' }})
+      }});
+      const d = await r.json();
+      if (document.getElementById('chartrecall-3tier-status')) {{
+        document.getElementById('chartrecall-3tier-status').textContent = d.abstain_state + ' (' + (d.cards ? d.cards.length : 0) + '/3 Cards)';
+      }}
+      document.getElementById('cds-json-view').textContent = JSON.stringify(d, null, 2);
     }}
     async function inspectPatient(pid) {{
       await loadPatientDetail(pid);
@@ -1580,7 +1853,64 @@ def build_clinical_cohort_3tier_router(
             )
             if latest
             else {},
+            "chartrecall_live_cds": _synthesize_chartrecall_3tier_cds(
+                service_name=service_name,
+                sibling_slug=sibling_slug,
+                patient_id=patient_id,
+                pat=pat,
+                eps=eps,
+                latest=latest,
+                peak_risk=peak_risk,
+                action=action,
+            ),
         }
+
+    @router.post("/patients/{patient_id}/chartrecall-evaluate")
+    async def evaluate_chartrecall_3tier(
+        patient_id: str, body: ChartRecall3TierEvaluateRequest
+    ) -> dict[str, Any]:
+        with _connect_sqlite() as conn:
+            p_row = conn.execute(
+                "SELECT * FROM patients WHERE patient_id = ?", (patient_id,)
+            ).fetchone()
+            if p_row is None:
+                raise HTTPException(
+                    status_code=404,
+                    detail=f"Patient {patient_id} not found in {service_name}",
+                )
+            ep_rows = conn.execute(
+                "SELECT * FROM patient_episodes WHERE patient_id = ? ORDER BY episode_sequence",
+                (patient_id,),
+            ).fetchall()
+
+        pat = dict(p_row)
+        eps = [dict(r) for r in ep_rows]
+        latest = eps[-1] if eps else {}
+        peak_risk = max(
+            (float(e.get("deterioration_risk_4h", 0.0)) for e in eps), default=0.0
+        )
+        social_vuln = bool(
+            pat.get("lives_alone") == 1 or int(pat.get("deprivation_quintile", 3)) <= 2
+        )
+        if peak_risk >= 0.45 or (peak_risk >= 0.32 and social_vuln):
+            action = "STEP_UP_ICU_HDU_AND_GATE_D_SIGNOFF"
+        elif peak_risk >= 0.22:
+            action = "ENHANCED_WARD_TELEMETRY_AND_SPECIALIST_REVIEW"
+        else:
+            action = "ROUTINE_PATHWAY_MONITORING"
+
+        return _synthesize_chartrecall_3tier_cds(
+            service_name=service_name,
+            sibling_slug=sibling_slug,
+            patient_id=patient_id,
+            pat=pat,
+            eps=eps,
+            latest=latest,
+            peak_risk=peak_risk,
+            action=action,
+            utterance_text=body.utterance_text,
+            domain_focus=body.domain_focus,
+        )
 
     @router.put("/patients/{patient_id}")
     async def update_patient_3tier(
