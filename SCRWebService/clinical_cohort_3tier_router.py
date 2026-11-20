@@ -1188,6 +1188,34 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
 </html>"""
 
 
+def _resolve_3tier_data_dir(repo_root: Path) -> Path:
+    """Where this repository's 3-tier SQLite WAL data lives.
+
+    The tier is seeded estate-wide into each repository's main checkout
+    (BulletTrain huggingface_million_seeder.py, then cin2-research
+    build_symphonix_global_wa_v7.py), the way every checkout already shares one
+    PostgreSQL. A linked git worktree holds no copy of its own, so it reads its
+    main checkout's data/. SYMPHONIX_3TIER_DATA_ROOT, when set, names a root
+    that holds <repo>/data (CI, a seeded volume) and wins over both.
+    """
+    repo_root = Path(repo_root).resolve()
+    main_root = repo_root
+    git_marker = repo_root / ".git"
+    if git_marker.is_file():
+        text = git_marker.read_text(encoding="utf-8").strip()
+        if text.startswith("gitdir:"):
+            gitdir = Path(text[len("gitdir:"):].strip())
+            if not gitdir.is_absolute():
+                gitdir = (repo_root / gitdir).resolve()
+            # a linked worktree's gitdir is <main>/.git/worktrees/<name>
+            if gitdir.parent.name == "worktrees" and gitdir.parent.parent.name == ".git":
+                main_root = gitdir.parent.parent.parent
+    override = os.environ.get("SYMPHONIX_3TIER_DATA_ROOT", "").strip()
+    if override:
+        return Path(override) / main_root.name / "data"
+    return main_root / "data"
+
+
 def build_clinical_cohort_3tier_router(
     service_name: str,
     sibling_slug: str,
@@ -1196,9 +1224,9 @@ def build_clinical_cohort_3tier_router(
     router = APIRouter(
         prefix="/api/v1/million-cohort", tags=["million-cohort-3tier-crud"]
     )
-    db_file = repo_root / "data" / f"{sibling_slug}_sh_kf_state_001_wal.db"
+    db_file = _resolve_3tier_data_dir(repo_root) / f"{sibling_slug}_sh_kf_state_001_wal.db"
     pg_schema = f"sibling_{sibling_slug}"
-    workspace_root = repo_root.parent
+    workspace_root = db_file.parent.parent.parent
     cr_sqlite_path = (
         workspace_root / "BulletTrain" / "data" / "client_registry_million_wal.db"
     )
