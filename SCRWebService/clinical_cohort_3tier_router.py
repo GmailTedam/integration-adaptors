@@ -228,7 +228,7 @@ class ClinicalArchiveRequest(BaseModel):
 class ChartRecall3TierEvaluateRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    utterance_text: _CohortStrippedStr = Field(..., min_length=1, max_length=2000)
+    utterance_text: str = Field(..., min_length=1, max_length=2000)
     domain_focus: str = Field(
         default="AUTO_CLINICAL_SIBLING",
         pattern=r"^(AUTO_CLINICAL_SIBLING|D4_PRESCRIBING_TIER0|D1_D2_DIAGNOSTIC_VITALS|D3_LONGITUDINAL_HISTORY|D6_TREATMENT_NICE_NG197)$",
