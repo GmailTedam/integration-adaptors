@@ -2307,9 +2307,35 @@ WAVE8_PG_DSN = os.environ.get(
     "postgresql://bullettrain:devpassword@127.0.0.1:15432/bullettrain",
 )
 WAVE8_PG_SCHEMA = "sibling_integration_adaptors"
-WAVE8_3TIER_SQLITE_PATH = (
-    REPO_ROOT / "data" / "integration_adaptors_sh_kf_state_001_wal.db"
-)
+def _resolve_3tier_data_dir(repo_root: Path) -> Path:
+    """Where this repository's 3-tier SQLite WAL data lives.
+
+    The tier is seeded estate-wide into each repository's main checkout
+    (BulletTrain huggingface_million_seeder.py, then cin2-research
+    build_symphonix_global_wa_v7.py), the way every checkout already shares one
+    PostgreSQL. A linked git worktree holds no copy of its own, so it reads its
+    main checkout's data/. SYMPHONIX_3TIER_DATA_ROOT, when set, names a root
+    that holds <repo>/data (CI, a seeded volume) and wins over both.
+    """
+    repo_root = Path(repo_root).resolve()
+    main_root = repo_root
+    git_marker = repo_root / ".git"
+    if git_marker.is_file():
+        text = git_marker.read_text(encoding="utf-8").strip()
+        if text.startswith("gitdir:"):
+            gitdir = Path(text[len("gitdir:"):].strip())
+            if not gitdir.is_absolute():
+                gitdir = (repo_root / gitdir).resolve()
+            # a linked worktree's gitdir is <main>/.git/worktrees/<name>
+            if gitdir.parent.name == "worktrees" and gitdir.parent.parent.name == ".git":
+                main_root = gitdir.parent.parent.parent
+    override = os.environ.get("SYMPHONIX_3TIER_DATA_ROOT", "").strip()
+    if override:
+        return Path(override) / main_root.name / "data"
+    return main_root / "data"
+
+
+WAVE8_3TIER_SQLITE_PATH = _resolve_3tier_data_dir(REPO_ROOT) / "integration_adaptors_sh_kf_state_001_wal.db"
 WAVE8_SIBLING_SLUG = "integration_adaptors"
 WAVE8_GOVERNED_SUPERPERSONA = "clinical-safety-officer-superpersona"
 
@@ -2322,7 +2348,7 @@ try:
         if not any(
             part
             in {".claude", "worktrees", ".codex-worktrees", ".venv", "node_modules"}
-            for part in p.parts
+            for part in p.relative_to(REPO_ROOT).parts
         )
     ]
     if _rtr_candidates:

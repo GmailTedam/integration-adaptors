@@ -352,6 +352,11 @@ def test_wave8_dual_engine_pg15_and_3tier_sqlite_wal_cascade() -> None:
         assert st["pg_schema"] == "sibling_integration_adaptors"
         assert st["postgresql_status"] == "online_dual_engine_synced"
         assert st["pg_seeded_episodes"] >= 28
+        assert st["sqlite_3tier_seeded_episodes"] > 0, (
+            f"3-tier SQLite WAL tier is not seeded at {st['sqlite_3tier_wal_path']}: run BulletTrain "
+            "services/client_registry/huggingface_million_seeder.py, then cin2-research "
+            "scripts/build_symphonix_global_wa_v7.py, or set SYMPHONIX_3TIER_DATA_ROOT to a seeded root"
+        )
         assert st["sqlite_3tier_seeded_episodes"] == st["pg_seeded_episodes"]
         assert st["enforced_pg_fks"] >= 7
         assert st["fk_violations"] == 0
