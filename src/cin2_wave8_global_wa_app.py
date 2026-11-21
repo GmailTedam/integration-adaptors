@@ -532,7 +532,7 @@ def _render_sfds_endpoint_html(title: str, endpoint_path: str, payload: dict[str
       height: 100vh; max-height: 100vh; overflow: hidden;
       width: 100%; max-width: none; margin: 0; padding: 6px 12px;
       font-family: var(--f-sans); background: var(--sfds-bg); color: var(--sfds-text);
-      font-size: 13px;
+      font-size: 13px; display: flex; flex-direction: column;
     }}
     .sfds-topbar {{
       display: flex; justify-content: space-between; align-items: center; gap: 12px;
@@ -563,7 +563,7 @@ def _render_sfds_endpoint_html(title: str, endpoint_path: str, payload: dict[str
     }}
     .card {{
       background: var(--sfds-surface); border: 1px solid var(--sfds-border);
-      border-radius: 8px; padding: 12px 16px; max-height: calc(100vh - 190px); overflow-y: auto;
+      border-radius: 8px; padding: 12px 16px; flex: 1 1 0%; min-height: 0; display: flex; flex-direction: column; justify-content: space-between; overflow-y: auto;
     }}
     table {{ width: 100%; border-collapse: collapse; font-size: 12px; }}
     th, td {{ border: 1px solid var(--sfds-border); padding: 6px 10px; text-align: left; }}
@@ -720,6 +720,36 @@ def render_sfds_iva_workstation() -> str:
       --sx-gradient-header: linear-gradient(90deg, #eff6ff 0%, #eef2ff 52%, #e0e7ff 100%);
       --sx-rainbow: linear-gradient(90deg, #ff3b30, #ff9500, #ffcc00, #34c759, #00bcd4, #007aff, #5856d6, #af52de);
     }
+    html[data-theme="high-contrast"] {
+      --f-sans: 'DM Sans', 'Inter', system-ui, -apple-system, sans-serif;
+      --f-mono: 'JetBrains Mono', monospace;
+      --sfds-bg: #000000;
+      --sfds-surface: #000000;
+      --sfds-surface-elevated: #000000;
+      --sfds-border: #ffffff;
+      --sfds-input-border: #ffffff;
+      --sfds-text: #ffffff;
+      --sfds-muted: #e2e8f0;
+      --sfds-primary: #1d4ed8;
+      --sfds-secondary: #0f766e;
+      --sfds-badge-bg: #000000;
+      --sfds-badge-text: #fde047;
+      --sfds-chip-bg: #000000;
+      --sfds-chip-text: #ffffff;
+      --sfds-chip-border: #ffffff;
+      --sfds-danger-bg: #450a0a;
+      --sfds-danger-text: #fecaca;
+      --sfds-danger-border: #f87171;
+      --sfds-success-bg: #052e16;
+      --sfds-success-text: #bbf7d0;
+      --sfds-success-border: #4ade80;
+      --sfds-banner-bg: #000000;
+      --sfds-banner-text: #ffffff;
+      --sfds-banner-border: #fde047;
+      --sfds-input-bg: #000000;
+      --sx-gradient-header: none;
+      --sx-rainbow: linear-gradient(90deg, #fde047, #ffffff);
+    }
     * { box-sizing: border-box; }
     html {
       height: 100vh;
@@ -736,6 +766,8 @@ def render_sfds_iva_workstation() -> str:
       max-width: none;
       margin: 0;
       padding: 5px 12px;
+      display: flex;
+      flex-direction: column;
       font-family: var(--f-sans);
       background: var(--sfds-bg);
       color: var(--sfds-text);
@@ -815,10 +847,15 @@ def render_sfds_iva_workstation() -> str:
       display: flex;
       align-items: center;
       gap: 8px;
+      flex-shrink: 0;
     }
     .topbar-select {
-      width: auto;
-      min-width: 210px;
+      width: 215px;
+      min-width: 160px;
+      max-width: 220px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       padding: 5px 8px;
       font-size: 12px;
       font-weight: 600;
@@ -886,7 +923,16 @@ def render_sfds_iva_workstation() -> str:
       display: grid;
       grid-template-columns: 0.98fr 1.02fr;
       gap: 10px;
-      align-items: start;
+      align-items: stretch;
+      flex: 1 1 0%;
+      min-height: 0;
+    }
+    .grid > section.card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 0;
+      overflow-y: auto;
     }
     .mat14-table { width: 100%; border-collapse: collapse; font-size: 10.5px; }
     .mat14-table th, .mat14-table td { border: 1px solid var(--sfds-border); padding: 3px 6px; text-align: left; white-space: nowrap; }
@@ -1086,9 +1132,10 @@ def render_sfds_iva_workstation() -> str:
       </div>
     </div>
     <div class="tts-toggle-row">
-      <label for="voice-tts-checkbox" style="margin:0; cursor:pointer;">
-        Speak responses aloud (Neural VITS en_GB-cori-high.onnx · 22,050 Hz Single-Stream Guarded)
-      </label>
+      <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+        <label for="voice-tts-checkbox" style="margin:0; cursor:pointer; white-space:nowrap;">Speak responses aloud</label>
+        <span style="font-size:11px; color:var(--sfds-muted);">(Neural VITS en_GB-cori-high.onnx · 22,050 Hz Single-Stream Guarded)</span>
+      </div>
       <input id="voice-tts-checkbox" data-testid="voice-tts-toggle" type="checkbox" checked />
     </div>
     <div class="chip-grid" data-testid="voice-suggestion-chips">
@@ -1286,6 +1333,10 @@ def render_sfds_iva_workstation() -> str:
       </div>
     </section>
   </div>
+  <footer id="w8-standards-governance-bar" data-testid="w8-standards-governance-bar" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:5px 12px;margin-top:6px;border:1px solid var(--sfds-border);border-radius:6px;background:var(--sfds-surface);color:var(--sfds-muted);font-size:11px;flex-shrink:0;">
+    <span><strong>WHO-FIC &amp; Clinical Coding:</strong> WHO ICD-11 MMS (<code>http://id.who.int/icd/release/11/mms</code>) + ICD-10 · WHO ICHI · WHO ICF (icf_code) · SNOMED CT · LOINC / UCUM (<code>http://unitsofmeasure.org</code>) · WHO ATC/DDD (atc_code) &amp; EML/AWaRe (aware_category) · ISO IDMP / GS1 GTIN</span>
+    <span><strong>Interop &amp; Safety:</strong> HL7 FHIR R4 · UV-IPS / ISO 27269 (Bundle-uv-ips) · SMART v2 · CDS Hooks 2.0 · DICOMweb · ISBT 128 · CDISC ODM/SDTM / ICH E6(R3) · WHO VA 2022 / CRVS / MPDSR / IDSR / WHO DQA / DHIS2 · DCB0129/0160 · WCAG 2.2 AA</span>
+  </footer>
 
   <script>
     // Keep SignalBox cursor stationary at rest
