@@ -348,6 +348,53 @@
         }
       ],
       "screenshots": []
+    },
+    {
+      "run_id": "signalbox-headed-2026-11-23T21:40:00Z",
+      "name": "integration-adaptors \u2014 Live Headed SignalBox Layout Audit & CSS Token Alignment (clinician-superpersona)",
+      "timestamp": "2026-11-23T21:40:00Z",
+      "verified_at": "2026-11-23T21:40:00Z",
+      "route": "http://127.0.0.1:8000/ui/workstation",
+      "url": "http://127.0.0.1:8000/ui/workstation",
+      "mode": "headed",
+      "driver": "signalbox",
+      "persona": "clinician-superpersona",
+      "evidence_eligible": true,
+      "screenshots": [],
+      "console_errors": [],
+      "failed_requests": [],
+      "design_system_sha": "6adf8cc0af21b02aa446c25653f53dc06b6bcc72",
+      "passed": true,
+      "failing_rule_ids": [],
+      "viewport": {
+        "width": 1920,
+        "height": 991
+      },
+      "verdict_summary": {
+        "status": "PASS",
+        "horizontal_overflow": false,
+        "vertical_overflow_px": 0,
+        "issue_count": 0
+      },
+      "assertions": [
+        {
+          "kind": "signalbox_layout_audit",
+          "request": "GET /ui/workstation and /api/v1/million-cohort/workbench-ui -> 200",
+          "expected": "verdict.passed=true, 0 contrast/overflow/underfill violations at 1920x991 across Light, Dark, HC",
+          "observed": "verdict.passed=true, 0 failures, 0 warnings",
+          "passed": true
+        },
+        {
+          "kind": "negative_control",
+          "request": "GET /ui/workstation -> 200",
+          "expected": "0 degraded output banners and 0 vertical page scroll overflow",
+          "observed": "degraded_output_banner_count=0, has_vertical_page_scroll=false",
+          "passed": true
+        }
+      ],
+      "files": {
+        "frontend/src/styles/design-system.css": "939df4db7e2ba024cc473fa56b9e0b07296b51f63a7a04cf85f7118866d7b822"
+      }
     }
   ]
 }

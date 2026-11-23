@@ -1052,7 +1052,7 @@ html:root:not([data-theme="dark"]):not([data-sfds-mode="dark"]):not(.dark):not([
   color: midnightblue !important;
 }
 
-html:root body:not(#_#_#_) :is(.vr-btn, .vr-status-pill, [ class*="vr-status-" ]) {
+html:root body:not(#_#_#_) :is(.vr-btn, .vr-status-pill, [class*="vr-status-"]) {
   background: royalblue !important;
   background-color: royalblue !important;
   color: white !important;
