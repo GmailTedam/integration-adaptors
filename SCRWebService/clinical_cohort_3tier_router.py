@@ -869,6 +869,43 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
       color: #e0e7ff;
       flex-shrink: 0;
     }}
+    @media print {{
+      @page {{
+        size: A4 portrait;
+        margin: 12mm 10mm 15mm 10mm;
+      }}
+      html, body {{
+        background: #ffffff !important;
+        color: #0f172a !important;
+        font-size: 10pt !important;
+        overflow: visible !important;
+        height: auto !important;
+      }}
+      .sfds-header-actions,
+      .sfds-tabs,
+      .sfds-search-bar,
+      .sfds-btn,
+      .sfds-live-indicator,
+      #wb-print-btn,
+      [data-print-hidden="true"] {{
+        display: none !important;
+      }}
+      .sfds-card, .sfds-table-wrap {{
+        box-shadow: none !important;
+        border: 1px solid #cbd5e1 !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-bottom: 8pt !important;
+      }}
+      .sfds-tab-panel {{
+        display: block !important;
+      }}
+      .sfds-header {{
+        border-bottom: 2pt solid #0f172a !important;
+        margin-bottom: 8pt !important;
+        padding-bottom: 4pt !important;
+      }}
+    }}
   </style>
 </head>
 <body>
@@ -883,6 +920,7 @@ def _render_workbench_html(service_name: str, sibling_slug: str) -> str:
         <span class="sfds-badge">Zero Abandoned Attributes (26 Pat / 26 Ep Cols)</span>
         <a href="/ui/workstation" class="sfds-badge" style="text-decoration:none; background:#4f46e5; color:#ffffff; border-color:#818cf8;">&larr; Wave-8 Workstation</a>
         <button type="button" id="wb-voice-btn" data-testid="voice-copilot-trigger" class="sfds-badge" style="cursor:pointer;" onclick="const voiceDrawer=document.getElementById('wb-voice-drawer'); if(voiceDrawer){{voiceDrawer.style.display=voiceDrawer.style.display==='none'?'block':'none';}}">Voice Co-Pilot (Alt+V)</button>
+        <button type="button" id="wb-print-btn" data-action="print-page" data-print-hidden="true" data-testid="btn-page-print" class="sfds-badge" style="cursor:pointer;" onclick="window.print();" aria-label="Print current view (A4)">Print View (A4)</button>
         <button type="button" id="wb-theme-toggle-btn" data-testid="theme-toggle" class="sfds-badge" style="cursor:pointer;" onclick="const cur=document.documentElement.getAttribute('data-theme')||'dark'; const nxt=cur==='dark'?'light':(cur==='light'?'high-contrast':'dark'); document.documentElement.setAttribute('data-theme',nxt); this.textContent=nxt==='dark'?'Light Mode':(nxt==='light'?'High Contrast':'Dark Mode');">Light Mode</button>
       </div>
       <div class="sx-rainbow-underline" aria-hidden="true"></div>

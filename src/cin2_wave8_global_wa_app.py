@@ -1046,6 +1046,39 @@ def render_sfds_iva_workstation() -> str:
       height: 15px;
       margin: 0;
     }
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 12mm 10mm 15mm 10mm;
+      }
+      html, body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        font-size: 10pt !important;
+        overflow: visible !important;
+        height: auto !important;
+      }
+      .sfds-topbar-actions,
+      .topbar-right,
+      .subtab-bar,
+      button,
+      #wb-print-btn,
+      [data-print-hidden="true"] {
+        display: none !important;
+      }
+      .card, .table-wrap {
+        box-shadow: none !important;
+        border: 1px solid #cbd5e1 !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-bottom: 8pt !important;
+      }
+      .sfds-topbar {
+        border-bottom: 2pt solid #0f172a !important;
+        margin-bottom: 8pt !important;
+        padding-bottom: 4pt !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1078,6 +1111,9 @@ def render_sfds_iva_workstation() -> str:
       </button>
       <button id="theme-toggle-btn" data-testid="theme-toggle" type="button" class="secondary">
         Light Mode
+      </button>
+      <button id="wb-print-btn" data-action="print-page" data-print-hidden="true" data-testid="btn-page-print" type="button" class="secondary" onclick="window.print();" aria-label="Print current view (A4)">
+        Print View (A4)
       </button>
       <button id="topbar-signout-btn" data-testid="topbar-signout-btn" type="button" class="secondary" aria-label="Sign out" onclick="window.location.href='/ui/workstation?signed_out=1'">Sign out</button>
     </div>
